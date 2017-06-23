@@ -1,0 +1,22 @@
+# Site settings
+title: 松饼社区主站
+email: rolevax@gmail.com
+description: >
+    松饼——基于实战的挂力学研♀究社区
+baseurl: ""
+url: ""
+github_username:  mjpancake
+header_pages:
+  - docs.md
+  - feedback.md
+  - contribute.md
+  - about.md
+
+# Build settings
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock

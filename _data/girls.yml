@@ -1,0 +1,766 @@
+-
+  id: 0
+  name: 須賀京太郎
+  skills:
+    -
+      name: 帅哥你谁啊
+      descs:
+        -
+          content: 可在同一桌上重复登场
+-
+  id: 710111
+  name: 宮永照
+  skills:
+    -
+      name: （*）照魔镜
+      descs:
+        -
+          content: 能看穿对手的本质
+          subdescs:
+            - 启动前需要一定的时间观察对手
+            - 发动后一定时间内无法再次观察同一对手
+    -
+      name: （*）连续和了
+      descs:
+        -
+          content: 容易连续和牌且火力不断上升
+        -
+          content: 和牌被打断后火力需重新从低点涨起
+        -
+          content: 和牌速度与点数无关，任何情况下都容易在早巡和牌
+    -
+      name: （*）王者的余裕
+      descs:
+        - 
+          content: 手牌素点不大于前一局和牌素点收入时无法宣告和牌
+          subdescs:
+            - 被头跳抢和，致使无实际收入时天梯重置
+            - 发生荒牌流局、各种途中流局、流局满贯时天梯重置
+    - 
+      name: （*）唧唧唧
+      descs:
+        - 
+          content: ？
+    -
+      name: （*）牌风
+      descs:
+        -
+          content: 适合默听
+        -
+          content: 容易做成678的三色同顺
+        -
+          content: 时常形成纠结的多面听牌并刚好避开低目自摸
+    -
+      name: （*）感知
+      descs:
+        -
+          content: 能够分辨出手中的铳牌
+    -
+      name: （*）教练
+      descs:
+        -
+          content: 可发掘队友的潜能，提升其战斗力
+-
+  id: 710112
+  name: 弘世菫
+  skills:
+    -
+      name: （*）农家乐之打猎的
+      descs:
+        -
+          content: 门前默听后可开始对一名对手进行瞄准
+        -
+          content: 瞄准完成后固定牌型并保持默听，即可发起任意次数射击
+        -
+          content: 被射击的对手进张会变顺，使得铳牌多余
+          subdescs:
+            - '"变顺"包括摸入有效牌、摸入改良牌、遇到有效鸣牌机会'
+            - '摸回打过的牌不属于"变顺"，作为特殊情况排除'
+        -
+          content: '被射击的对手不存在使得铳牌多余的"变顺"可能时，会直接摸入铳牌'
+-
+  id: 710113
+  name: 渋谷尭深
+  skills:
+    -
+      name: 农家乐之种田的
+      descs:
+        -
+          content: 最终局配牌时会摸回之前每一局的首张弃牌（播种）
+          subdescs:
+            - 播种超出13张时超出部分不计
+            - 播种当中同一种牌超出4张时超出部分不计
+-
+  id: 710114
+  name: 亦野誠子
+  skills:
+    -
+      name: 农家乐之钓鱼的
+      descs:
+        -
+          content: 手牌中容易形成碰牌的机会
+        -
+          content: 以明刻/明杠三副露后进张变好
+- 
+  id: 710115
+  name: 大星淡
+  skills:
+    - 
+      name: 序盘支配
+      descs:
+        -
+          content: 除自己外，全员配牌五/六向听
+    - 
+      name: 自动麻将机
+      descs:
+        -
+          content: 每局都可以有意识地做到双立直
+        -
+          content: 该意识下会在牌山末转角前摸到杠材
+        -
+          content: 暗杠后和了牌会从末转角开始处连续出现
+        -
+          content: 双立直暗杠和了后暗杠将中为4张杠里宝牌
+- 
+  id: 710411
+  name: 花田煌
+  skills:
+    - 
+      name: （*）好棒
+      descs:
+        -
+          content: 牌感简直不能太棒，无挂胜有挂
+    - 
+      name: （*）不飞
+      descs:
+        -
+          content: 无法被击飞
+- 
+  id: 710414
+  name: 白水哩
+  skills:
+    - 
+      name: （*）三年ACE担当
+      descs:
+        -
+          content: 分数刷不够，根本停不下来
+    - 
+      name: （*）束缚
+      descs:
+        -
+          content: 配牌后可选择加上N番缚
+        -
+          content: 束缚后和牌，之后出场的姬子将在同一局目拿到2N番钥匙
+        -
+          content: 束缚后未能和牌，之后出场的姬子将在同一局目难以和牌，和也只有一番
+- 
+  id: 710415
+  name: 鶴田姫子
+  skills:
+    - 
+      name: （*）连携
+      descs:
+        -
+          content: 拿到钥匙的局目必然以对应番数和牌
+- 
+  id: 712411
+  name: 松実玄
+  skills:
+    - 
+      name: 龙王
+      descs:
+        -
+          content: 容易摸到宝牌
+        -
+          content: 他家摸不到宝牌
+        -
+          content: 被他家能力绝对收集的牌不会成为宝牌
+        -
+          content: 一旦舍弃宝牌，能力效果反转并持续到终局
+          subdescs:
+            - 自己将摸不到宝牌，同时解除对他家的宝牌封锁
+- 
+  id: 712412
+  name: 松実宥
+  skills: 
+    - 
+      name: 暧牌收集
+      descs:
+        -
+          content: 容易摸到暧色的牌
+          subdescs:
+            - 越暧越容易摸到
+- 
+  id: 712413
+  name: 新子憧
+  skills:
+    - 
+      name: 锻神看了都说好
+      descs:
+        -
+          content: 食三色和食一通做起来特别舒♀服
+- 
+  id: 712415
+  name: 高鴨穏乃
+  skills:
+    - 
+      name: （*）深山之主
+      descs:
+        -
+          content: ——踏过现实中修行的山路
+        -
+          content: ——越过尘世间山谷的深处
+        -
+          content: ——在那前方的
+        -
+          content: ——是深山幽谷的化身
+-
+  id: 712611
+  name: 園城寺怜
+  skills:
+    - 
+      name: 未来视・进化
+      descs:
+        -
+          content: 行动遇到分歧点时，可对各个未来分支进行预知。
+        -
+          content: 未来分支中再次出现<i>二级分支</i>时按以下规则自动行动：
+          subdescs:
+            - 出现鸣牌/食和机会时一律放过；
+            - 出现鸣牌后的打牌机会时随意打一张；
+            - 出现自摸和牌机会时宣告自摸并结束分支；
+            - 出现其它分歧点时什么都不做并结束分支。
+        -
+          content: 根据预知改变行动时，能力会出现一段CD。
+          subdescs:
+            - 大体上，最终行动与最初想法差距越大，付出的CD代价就越大。
+            - CD的单位是未来遇到的分歧点次数。
+            - 依次查看若干分支后，实际进入第n个分支时，产生的CD为*2(n-1)*次。
+            - 查看k个分支后，实际未进入其中任何分支时，产生的CD为*2k*次。
+            - 二级分支上的自动行动系免费赠送，不在CD代价之列。
+            - 一局内未等完的CD会延续到下一局。
+            - 例1：试拆12m见次巡入3m，改拆78s：k = 1，CD = 2
+            - 例2：试拆12m见次巡入无效牌，仍拆12m：n = 1，CD = 0
+            - 例3：见对手自摸，鸣牌错开：二级分支自动，CD = 0
+            - 例4：见对手自摸，对比碰与杠，选后者：n = 2，CD = 2
+            - 例5：试默听见自摸，试立直见一发，遂立直：n = 2，CD = 2
+            - 例6：试默听见自摸，试立直见错开，遂默听：n = 1，CD = 0
+            - 例7：试默听见自摸，试立直见错开还自摸，遂立直：n = 2，CD = 2
+            - 例8：试默听无自摸，试立直见错开而自摸，遂立直：n = 2，CD = 2
+            - 例9：试默听无自摸，试立直当然仍无自摸，遂默听：n = 1，CD = 0
+            - 例10：试攻见铳，遂兜牌 -> k = 1，CD = 2
+            - 例11：试攻见铳，试兜牌铳另家，另兜其牌：k = 2，CD = 4
+            - 例12：试送铳，连试四张而成 -> n = 4，CD = 6
+        -
+          content: <i>牌山不变定律</i>：对于所有未来分支，牌山相同。
+          subdescs:
+            - 一张牌在牌山中的绝对位置不随世界线的变动而变动。
+            - 岭上牌以及各种指示牌也不例外。
+        -
+          content: （*）代价
+          subdescs:
+            - 使用未来视会消耗体力，长时间停用则慢速恢复体力
+            - 随着体力降低，视线会逐渐变得模糊
+            - 体力耗尽将导致比赛后住院
+    -
+      name: （*）未来视・二巡
+      descs:
+        - 
+          content: 比起一巡，多一次在未来中摸打的机会，但体力消耗与CD代价也随之变大
+    -
+      name: （*）未来视・三巡
+      descs:
+        - 
+          content: 二巡的延续，共有三次在未来中摸打的机会，同时体力也会尽乎耗尽
+    -
+      name: 信念
+      descs:
+        - 
+          content: 自从当了ACE，腰不酸了，腿不痛了，配牌和进张都变好了。
+-
+  id: 712613
+  name: 江口セーラ
+  skills:
+    - 
+      name: 不明觉厉
+      descs:
+        - 
+          content: 虽然不是很明白，但觉得好厉害的样子
+- 
+  id: 712615
+  name: 清水谷竜華
+  skills:
+    - 
+      name: （*）从小R量不科学
+      descs:
+        - 
+          content: 平均获得素点关西首屈一指
+    - 
+      name: （*）枕神
+      descs:
+        - 
+          content: 配牌开始前可以召唤怜
+        - 
+          content: 召唤成功后，将会看到本局的最佳打法，能见即能和
+        - 
+          content: 召唤需要消耗储存在膝枕中的能量
+        - 
+          content: 怜没有住院的情况下能量可在休息时通过膝枕补回
+        - 
+          content: 怜本体在场时无法进行召唤
+        - 
+          content: 和牌点数与枕神的大小只无关
+- 
+  id: 712713
+  name: 滝見春
+  skills:
+    - 
+      name: （*）武功再高
+      descs:
+        - 
+          content: 一番撂倒
+- 
+  id: 712714
+  name: 薄墨初美
+  skills:
+    - 
+      name: 鬼门
+      descs:
+        - 
+          content: 做北家时将鬼门牌置于鬼门方位，手牌将向里鬼门进展。
+- 
+  id: 712715
+  name: 石戸霞
+  skills:
+    - 
+      name: Defensiveな Style
+      descs:
+        - 
+          content: （*）常态下全守打法的顺位期望优于普通打法
+    - 
+      name: 形代
+      descs:
+        - 
+          content: 降神启动进攻模式，该模式会一直持续到终局
+        - 
+          content: 进攻模式下自己的数牌皆为一色，同时他家进入该色的绝一门状态
+        - 
+          content: 牌局进行到深山时绝一门的支配力下降
+- 
+  id: 712915
+  name: 姉帯豊音
+  skills:
+    - 
+      name: 先胜（*）
+      descs:
+        - 
+          content: ？
+    - 
+      name: 友引
+      descs:
+        - 
+          content: 裸单骑则自摸和
+    - 
+      name: 先负
+      descs:
+        - 
+          content: 被他家先制立直后，门前未听状态下进张变好
+        - 
+          content: 追立直后先制者立即摸铳
+    - 
+      name: 佛灭（*）
+      descs:
+        - 
+          content: ？
+    - 
+      name: 大安（*）
+      descs:
+        - 
+          content: ？
+    - 
+      name: 赤口（*）
+      descs:
+        - 
+          content: ？
+- 
+  id: 713311
+  name: 片岡優希
+  skills:
+    - 
+      name: 东风之神
+      descs:
+        - 
+          content: 容易成为起家
+        - 
+          content: 这场比赛没有东二局
+          subdescs:
+            - 就算不小心有了东二局，东场好歹还是东场
+- 
+  id: 713313
+  name: 竹井久
+  skills:
+    - 
+      name: （*）人生恶听
+      descs:
+        - 
+          content: 听牌时<u><i>舍弃两面或以上的良形</i></u>而选择愚形时容易和牌
+          subdescs:
+            - 并且容易中里宝牌
+            - 不知为什么多面听的机会超乎常人
+        - 
+          content: 故意去听被他家能力所收集的牌时容易和牌
+        - 
+          content: 故意破坏手牌役种时容易通过一发和里宝牌提高打点
+        - 
+          content: 莫名其妙留住的孤张宝牌容易成为关键牌
+        - 
+          content: 坏的都是好的，好的还是好的
+          subdescs:
+            - 愚形容易和牌不代表良形不容易和牌——良形照样容易和牌
+            - 乖戾过头也是要吃苦头的，不过一路都是这么过来的
+- 
+  id: 713314
+  name: 原村和
+  skills:
+    - 
+      name: 这太不科学了
+      descs:
+        - 
+          content: 容易做成七对子
+        - 
+          content: （*）对运势流能力免疫
+        - 
+          content: （*）对隐身能力免疫
+    - 
+      name: 信念
+      descs:
+        - 
+          content: 关键时刻牌运会变好
+- 
+  id: 713315
+  name: 宮永咲
+  skills:
+    - 
+      name: （*）正负零
+      descs:
+        - 
+          content: 意识可以支配整个空间
+        - 
+          content: 容易调整出+4600到+5500之间的终局点数
+    - 
+      name: （*）牌风
+      descs:
+        - 
+          content: 普通的麻将，普通的岭上开花
+        - 
+          content: 不会通过开杠为自己增加宝牌
+        - 
+          content: 不容易中里宝牌
+        - 
+          content: 容易摸到西风
+    - 
+      name: （*）大魔王
+      descs:
+        - 
+          content: 自带灵压雷达
+        - 
+          content: 赛前可对擦前而过的路人造成心灵创伤
+        - 
+          content: 可远程对能力侦测类道具造成永久性物理破坏
+- 
+  id: 713325
+  name: 天江衣
+  skills:
+    - 
+      name: （*）魑魅魍魉
+      descs:
+        - 
+          content: 保有全国大会史上最高火力纪录
+        - 
+          content: 节奏变化快，从早巡到海底都很擅长
+        - 
+          content: 控场之严犹如无法摆脱的命运
+        - 
+          content: 时间越接近满月的夜晚支配力越强
+    - 
+      name: （*）恶趣味
+      descs:
+        - 
+          content: 无法宣告只击飞一家的和牌
+        - 
+          content: 有一定几率因弄坏闹钟导致骑马
+    - 
+      name: （*）牌风
+      descs:
+        - 
+          content: 容易做出古役满
+    - 
+      name: （*）感知
+      descs:
+        - 
+          content: 可察觉对手是否听牌，并大致知晓打点预期
+- 
+  id: 713301
+  name: 南浦数絵
+  skills: 
+    - 
+      name: 好暧和的风
+      descs:
+        - 
+          content: 南入后牌运变好
+        - 
+          content: （*）今年的规则没有不利
+- 
+  id: 713302
+  name: 夢乃マホ
+  skills:
+    - 
+      name: （*）小魔王
+      descs:
+        - 
+          content: 每局可复制一次周围在场者的能力，持续一局
+        - 
+          content: 终局结算前无法再次山寨复制过的能力者
+        - 
+          content: 部分能力无法在与本尊同场时复制，例如：
+          subdescs:
+            - 绝一门、海底捞月、宝牌封锁等将自己与他三家极端对立的能力
+            - 未来视等因复制导致因果悖论的能力
+        - 
+          content: 部分能力即使本尊不在场也无法复制，例如：
+          subdescs:
+            - 正负零、SM连携、收获之时、运势分配等不能单看一局的能力
+            - 记忆宫殿、枕神、神威等需要事前特殊准备的能力
+        - 
+          content: 东风之神等需要食物的能力复制后仍然需要相应的食物
+        - 
+          content: 风神、爆发、暖牌等能力复制后牌山资源会与同场本尊以同等强度争抢
+        - 
+          content: 两个隐身者之间无法感觉到对方存在
+        - 
+          content: 两个决斗者互相伤害，结果五五开
+        - 
+          content: 两台自动桌同时W立，杠里宝牌优先指向和牌者，双响则五五开
+        - 
+          content: 治水、山神等能力复制后力场会与同场本尊叠加，控场强度翻倍
+        - 
+          content: 照魔镜只能照出复制能力本身，而照不出当前被复制者是谁
+- 
+  id: 713811
+  name: 上重漫
+  skills:
+    - 
+      name: 爆发
+      descs:
+        - 
+          content: 随机爆发，爆发效果可持续到终局
+        - 
+          content: 爆发后极容易摸到6、7、8、9的数牌；摸到6、7、8、9的概率依次递增
+-
+  id: 713813
+  name: 愛宕洋榎
+  skills:
+    - 
+      name: （*）宙斯盾
+      descs:
+        - 
+          content: 除非故意，永不放铳
+        - 
+          content: 可大致察觉他家手牌进展与打点预期
+-
+  id: 713815
+  name: 末原恭子
+  skills:
+    - 
+      name: 超速攻
+      descs:
+        - 
+          content: 配牌适合速攻时容易在早巡鸣到牌
+        - 
+          content: '同时他家会“不知为什么有点迟钝”'
+- 
+  id: 714914
+  name: 真屋由暉子
+  skills:
+    - 
+      name: （*）每日一次
+      descs:
+        - 
+          content: 每天可向对手申请一次使用左手立直
+          subdescs:
+            - 你问支持不支持，她们能说不支持吗？
+        - 
+          content: 然后就是一次闪耀的自摸
+- 
+  id: 714915
+  name: 獅子原爽
+  skills:
+    - 
+      name: 五色云
+      descs:
+        - 
+          content: 每局可在对应时机使用任意朵云
+        - 
+          content: 各颜色的云效果如下：
+          subdescs:
+            - 青云：尚未实现
+            - 黄云：尚未实现
+            - 赤云：被施放者一局内摸不到字牌
+            - 白云：使用后一局内配牌和进张偏向索子
+            - 黑云：尚未实现
+        - 
+          content: 云是一次性用品，用掉以后需要<i>很长</i>时间才能补充回来
+    - 
+      name: 神威
+      descs:
+        - 
+          content: 局中可在任意时机施放神威
+        - 
+          content: 各神威效果如下：
+          subdescs:
+            - 瘟神威：听牌后诅咒对手，使其不断摸铳，持续1局
+            - 海神威：染红牌河与牌山，持续1局
+            - 蛇神威：（*）保护自己不受他人能力影响
+            - 鸟神威：招来手牌中已有的除自风以外的风牌，持续2局
+            - 淫神威：（*）对人施放，使其口嫌体正直，欲罢不能
+        - 
+          content: 神威是一次性用品，用掉以后需返回北海道重新收集
+- 
+  id: 715211
+  name: 辻垣内智葉
+  skills:
+    - 
+      name: （*）黑社会拔刀爷
+      descs:
+        - 
+          content: 可以砍了对手
+- 
+  id: 715212
+  name: 郝慧宇
+  skills:
+    - 
+      name: '麻"将"'
+      descs: 
+        - 
+          content: 容易以国标麻将的打法摸到好牌
+        - 
+          content: 无法宣告在国标规则下不足8番的错和
+          subdescs:
+            - 明暗杠计5番
+            - 宝牌指示牌计入绝张判定
+        - 
+          content: 无法立直
+        - 
+          content: （*）对记忆类能力有干涉作用
+- 
+  id: 990001
+  name: 稲村杏果
+  skills:
+    - 
+      name: 直向手
+      descs:
+        - 
+          content: 容易摸到对子和暗刻
+        - 
+          content: （*）对读牌类能力有一定的免疫作用
+-
+  id: 990002
+  name: 白築慕
+  skills:
+    - 
+      name: 自古南三出奇迹
+      descs:
+        - 
+          content: 容易在终前局与最终局逆转
+          subdescs:
+            - 凹大牌/速攻连庄自选
+    - 
+      name: 牌风
+      descs:
+        - 
+          content: 容易做成平和、一杯、三色、全带
+        - 
+          content: 与此同时手牌不失灵活性，可随机应变而不拘泥于以上役种
+        - 
+          content: （*）容易听1s
+        - 
+          content: 听牌为1s时容易自摸
+        - 
+          content: 见逃低目振听状态下容易高目和牌
+    - 
+      name: 感知
+      descs:
+        - 
+          content: 能够察觉到对手拆掉对子的向听倒退
+- 
+  id: 990003
+  name: 本藤悠慧
+  skills:
+    - 
+      name: 无限混一色洗脑循环
+      descs:
+        - 
+          content: 擅长用客风做门混
+- 
+  id: 990004
+  name: 瑞原はやり
+  skills:
+    - 
+      name: （*）好早
+      descs:
+        - 
+          content: 某些部位的确很早
+- 
+  id: 990008
+  name: 小鍛治健夜
+  skills:
+    - 
+      name: （*）不明植物
+      descs:
+        - 
+          content: 虽然不是很明白，但是会爆出一堆植物
+- 
+  id: 990011
+  name: 三尋木咏
+  skills:
+    - 
+      name: （*）布吉岛
+      descs:
+        - 
+          content: 布吉岛，啥也布吉岛
+        - 
+          content: 带上可以弯曲的条形猫，胜率会提高
+- 
+  id: 990017
+  name: 椋千尋
+  skills:
+    - 
+      name: （*）魔物同学
+      descs:
+        - 
+          content: 魔物同学，你的思想很危险啊
+    - 
+      name: （*）不是宠物
+      descs:
+        - 
+          content: 有一定机率临场骑马
+- 
+  id: 990020
+  name: Lotta Niemann
+  skills:
+    - 
+      name: （*）Schadenzauber
+      descs:
+        - 
+          content: 输了也没关系，这个时候把对手监禁play就行了
+        - 
+          content: 对隐身能力免疫
+- 
+  id: 990023
+  name: 松実露子
+  skills:
+    - 
+      name: （*）……
+      descs:
+        - 
+          content: 随便一句话就能让人获得能力
