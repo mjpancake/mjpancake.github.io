@@ -8,6 +8,7 @@ permalink: /docs/
 
 - [FAQ](/docs/faq/)
 - [能力表](/docs/girl/)
+- [零食时髦表](/docs/cost/)
 - [麻将规则](/docs/rule/)
 - [段位规则](/docs/level/)
 
