@@ -4,61 +4,98 @@ title: 项目介绍与工作流程
 permalink: /docs/workflow/
 ---
 
-### 项目介绍
+### <a name="intro"></a>项目介绍
 
-- 松饼相关项目都在GibHub组织[`mjpancake`](https://github.com/mjpancake)里维护
-- 制作组乃分库狂魔，分出了一堆repo
-- `mjpancake/libsaki` 挂力学实现库，一切的核心，在服务器和客户端中作为submodule使用
-- `mjpancake/mjpancake` 客户端
-- 服务器用决赛4校的4个部长命名：
-    - `mjpancake/hisa` TCP服务器，入口及日常逻辑
-    - `mjpancake/arata` 牌桌逻辑服务器
-    - `mjpancake/sumire` HTTP服务器，处理一次性事务
-    - `mjpancake/satoha` DB封装
+松饼麻雀为开源项目，以开放、分享为原则，
+鼓励所有人积极讨论，参与制作，形成挂力学研究社区。
+在松饼社区，参与越多、贡献越多，受尊重的程度也会越高。
 
-### 需要的姿势水平
+社区中不存在用户与开发者的分别——
+因为这里没有专职的开发者，每一名开发者都源自用户，既服务于其它用户，也服务于自己。
+社区长期以来一直都在从玩家中发掘开发者，人数多多益善，从而适应日渐增长的开发需求。
 
-为参与松饼项目，需要以下技能确保流畅的工作体验：
-- 学过至少一门编程语言
-- 常见的数据结构及算法
-- 英文日常读写
-- Git及GitHub的使用
-- 借助Google自学
+松饼的开发本属志愿性工作，
+作为象征性的奖励，开发者会获得大量的稀有道具"饮料"（奖励额度远超其它途径）。
 
-其余的都好说，但以上几项请在加入制作组之前自行搞定。
+松饼麻雀的多数组件采用MIT协议发布，Qt客户端采用LGPLv3协议发布。
+若基于松饼进行二次开发，建议（非强制）注明"基于松饼麻雀"字样并附以主站链接。
+
+松饼项目采用Git管理，
+相关仓库在GibHub组织[`mjpancake`](https://github.com/mjpancake)中维护
+- [`mjpancake/libsaki`](https://github.com/mjpancake/libsaki)
+  挂力学实现库，一切的核心，在服务器和客户端中作为submodule使用
+- [`mjpancake/mjpancake`](https://github.com/mjpancake/mjpancake)
+  客户端
+- [`mjpancake/inhigh`](https://github.com/mjpancake/inhigh)
+  服务器
+- [`mjpancake/mjpancake.github.io`](https://github.com/mjpancake/mjpancake.github.io)
+  静态主站
 
 ### 工作流程
 
-1. 加入制作组  
+开发流程大体上采取"悬赏——揭榜"制度。
+该制度以GitHub的Issue Tracker作为悬赏布告板，发布项目中待解决的问题，并标明悬赏饮料额度。
+有意解决悬赏问题的，先进行"揭榜"操作，再完成任务，从而获得饮料。
+
+具体工作流程如下：
+
+1. __加入制作组__  
    在[Gitter聊天室]({{ site.data.link.gitter }})私信以下内容给`rolevax`
    ```
    <your-github-username>申请加入制作组
    ```
    根据情况替换尖括号部分，例如：
    ```
-   rolevax申请加入制作组
+   abc233申请加入制作组
    ```
    通常会在24小时内处理。
-1. 确定想做的事  
-   能做的事有两种：发起新issue，完成现有issue。
-   - 发起新issue：
-       1. 按照[规范](/feedback/)在[发布贴]({{ site.data.link.tie }})回帖以领取松饼奖励
-	   1. 在对应repo添加issue，描述内容为对发布贴回复内容的简要概括
-	   1. 下面的步骤与"完成现有issue"相同
-   - 完成现有issue：
-       1. 如果没有对应repo的写权限，[申请一个](#write)
-	   1. 将issue的assignee改成自己
-	   1. (TODO)
-
-### <a name="write"></a>申请仓库写权限
-
-   在[Gitter聊天室]({{ site.data.link.gitter }})私信以下内容给`rolevax`
+1. __申请写入权限__  
+   成为`mjpancake`成员后，
+   参考[项目介绍](#intro)，确认感兴趣的仓库，申请该仓库的写入权限。
+   申请时在[Gitter聊天室]({{ site.data.link.gitter }})私信以下内容给`rolevax`
    ```
-   <your-github-username>申请<repo-name>写权限
+   <your-github-username>申请<repo-name>写入权限
    ```
    根据情况替换尖括号部分，例如：
    ```
-   rolevax申请libsaki写权限
+   abc233申请libsaki写入权限
    ```
    通常会在24小时内处理。
+1. __揭榜__  
+   找到想做的悬赏issue，将该issue的assignee改成自己  
+   如果想做的内容未包含在悬赏issue当中，可先走[有奖反馈](/feedback/)流程，等到对应issue被添加
+   （反馈与开发工作的饮料奖励重复计算，互不影响）
+1. __正片开始__  
+   Assignee修改完成后即可开始喵作，参考[Git工作流](#git)
+
+特殊情况处理：
+1. 已经有assignee的issue是已经有人在做的，无法揭榜
+1. 制作太慢，或质量不达标，该任务会被收回，重新变回可揭榜状态
+1. 遇到任何问题，在[Gitter]({{ site.data.link.gitter }})房间提问
+    - 为了让后人乘凉，建议公开提问，不建议私信
+
+### <a name="git"></a>Git工作流
+
+概要：
+- 项目整体处于实验阶段，默认分支为`develop`，不设`master`分支
+- 所有的改动都需要先提交到新建的分支上，再通过pull request进行review及合并
+- 利用写入权限，直接将新建分支上推到源仓库以便互舔，不必fork到自己的账户下
+- 采用单线提交历史，活用rebase，全程只允许fast-forward合并
+
+分支名规范：
+- `issue/%d`，其中`%d`替换成悬赏issue的号码，例如`issue/233`
+
+提交消息规范：
+- 使用首字母小写，动词开头，句尾无句号的英文祈使句
+- 开头单词必须是`add`, `delete`, `update`, `change`,
+  `fix`, `enhance`, `refactor`, `optimize`之一
+
+示例流程（以`libsaki`仓库143号issue为例）：
+1. 下载 `git clone git@github.com:mjpancake/libsaki.git`
+1. 新建分支 `cd libsaki; git checkout -b issue/143`
+1. 喵改代码
+1. 提交 `git commit -a`
+1. 衍合到上流最新提交 `git pull --rebase origin develop`
+1. 上推 `git push --set-upstream origin issue/143`
+1. 前往GitHub创建pull request，等待审查结果
 
