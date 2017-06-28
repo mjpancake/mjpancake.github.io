@@ -139,7 +139,7 @@ It simply fix a tile on a position in the maintain
 to make it escape from all the probability rules.
 
 "Collapse" means the tile is never in a superpositional quantum state
-but collapsed into a unchangeable fact.
+but collapsed into an unchangeable fact.
 In the code, we use the object *Erwin*
 to denote an uncertain tile since it is kind of like an Erwin Schrodinger's cat.
 

@@ -58,4 +58,3 @@ Those step-methods can return 0 to mean formal ready hands or -1 to mean formal 
 
 (TODO)
 
-[<< Back to Home](https://github.com/mjpancake/libsaki/wiki/Home)
