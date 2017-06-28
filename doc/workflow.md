@@ -86,9 +86,14 @@ permalink: /docs/workflow/
 - `issue/%d`，其中`%d`替换成悬赏issue的号码，例如`issue/233`
 
 提交消息规范：
-- 使用首字母小写，动词开头，句尾无句号的英文祈使句
-- 开头单词必须是`add`, `delete`, `update`, `change`,
-  `fix`, `enhance`, `refactor`, `optimize`之一
+- 英语
+- 祈使句
+- 首字母小写
+- 句尾无句号
+- 开头单词必须是一个简单有力的实义动词原形，
+  例如`add`, `delete`, `update`, `change`, `fix`, `enhance`, `refactor`,
+  `optimize`, `adapt`, `use`, `apply`等；
+  不使用`make`, `let`, `do`等偏委婉的动词
 
 示例流程（以`libsaki`仓库143号issue为例）：
 1. 下载 `git clone git@github.com:mjpancake/libsaki.git`
