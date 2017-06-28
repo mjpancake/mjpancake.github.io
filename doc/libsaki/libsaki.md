@@ -39,12 +39,12 @@ Detailed documentation for each layer in a bottom-up order:
 2. Abstract Container Layer
   - [Multiset for Tiles `TileCount`](/docs/libsaki/tilecount/)
 
-3. Main Entiry Layer
+3. Main Entity Layer
   - [Status of One's Hand `Hand`](/docs/libsaki/hand/)
   - [The Mountain System `Mount`](/docs/libsaki/mount/)
 
 4. Standard Mahjong Layer
-  - [Main Mahjong Logics `Table`](/docs/libsaki/table/)
+  - [Main Mahjong Logic `Table`](/docs/libsaki/table/)
 
 5. Skill Interfering Layer
   - [Character Skills `Girl`](/docs/libsaki/girl/)

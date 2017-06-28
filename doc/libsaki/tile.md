@@ -14,7 +14,7 @@ Terms like "color", "set", or "number" are not used here.
 
 We use the letter *M*, *P*, and *S* to denote the three *number* suits, 
 and use the letter *F* and *Y* to denote the wind and the dragon suits. 
-The honour suits can be summarized as a letter *Z*. 
+The honor suits can be summarized as a letter *Z*. 
 In details, all the 34 tiles are denoted as follow:
 
 - 1m, 2m, 3m, 4m, 5m, 6m, 7m, 8m, 9m
@@ -67,12 +67,12 @@ assert(ta == tb);
 There are two constructors taking suit and value as parameters: the `T34(Suit s, val v)` and the `T34(val v, Suit s)`. The difference is that the latter is a `constexpr`, which also has an alternative syntax (implemented by C++11 user defined literals):
 
 ```
-using nsmespace tiles34;
+using namespace tiles34;
 T34 ta = 3_p; // same as T34(3, Suit::P)
 T34 tb = 2_y; // same as T34(2, Suit::Y)
 ```
 
-For syntatical convenience, we can also use the no-parameter `T34()` to construct a tile containing uninitialized garbage value. Such an object only performs as a placeholder and any method invocation on a garbage tile object may trigger assertion failure. 
+For syntactical convenience, we can also use the no-parameter `T34()` to construct a tile containing uninitialized garbage value. Such an object only performs as a placeholder and any method invocation on a garbage tile object may trigger assertion failure. 
 
 Now as we can construct tiles, let's look at how to use them. 
 

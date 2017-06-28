@@ -4,7 +4,7 @@ title: The Dual-Space Quantum Mountain System
 permalink: /docs/libsaki/mount/
 ---
 
-The mounntain system can be regarded as the core part of an unscientific mahjong game.
+The mountain system can be regarded as the core part of an unscientific mahjong game.
 Currently, in v0.8.3, we use the one called *Dual-Space Quantum Mountain System (DSQMS)*,
 whose key feature is a binarily divided tile source space where each space is polarized before generating a tile
 according to a distortable probability distribution. 
@@ -64,7 +64,7 @@ Suppose we have this mountain status:
 | 9p | 2 | 20mk |
 
 
-In a scientific case, the probablity of drawing a 8p is 3/7,
+In a scientific case, the probability of drawing a 8p is 3/7,
 computed from "30mk / (20mk + 30mk + 20mk)".
 
 Now a skill adds 100mk to 8p, thus the mountain status becomes:
@@ -75,7 +75,7 @@ Now a skill adds 100mk to 8p, thus the mountain status becomes:
 | 8p | 3 | 130mk |
 | 9p | 2 | 20mk |
 
-Then the probablity of drawing a 8p is 13/17,
+Then the probability of drawing a 8p is 13/17,
 computed from "130mk / (20mk + 130mk + 20mk)".
 
 In another case, if a skill subtracted 100mk from 8p, the maintain will become:
