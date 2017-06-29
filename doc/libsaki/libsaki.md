@@ -17,7 +17,7 @@ All the files are located in the root folder.
 
 ## Layering
 
-The design of Libsaki is based on a layered approach.
+The architecture of Libsaki is based on a layered approach.
 
 | Level | Layer Name                      |
 | :---: | :-----------------------------: |
@@ -30,7 +30,11 @@ The design of Libsaki is based on a layered approach.
 | 1     | Base Unit Layer                 |
 
 <br />
-Detailed documentation for each layer in a bottom-up order:
+
+It is recommended to read the following detailed documents
+**together with their correspending source code**.
+(We don't use doxygen since it is painful
+ to rebuild a C++ project due to every comment change)
 
 1. Base Unit Layer
   - [Mahjong Tiles `T34` and `T37`](/docs/libsaki/tile/)

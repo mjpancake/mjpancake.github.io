@@ -76,7 +76,8 @@ permalink: /docs/workflow/
    （反馈与开发工作的饮料奖励重复计算，互不影响）
 4. __正片开始__  
    Assignee修改完成后即可开始喵作，参考[Git工作流](#git)
-5. __返回第3步__  
+5. __完成__  
+   完成任务，获得饮料，返回第3步
 
 ### 特殊情况处理
 1. 已经有assignee的issue是已经有人在做的，无法揭榜
@@ -102,7 +103,7 @@ permalink: /docs/workflow/
 - 句尾无句号
 - 开头单词必须是一个简单有力的实义动词原形，
   例如`add`, `delete`, `update`, `change`, `fix`, `enhance`, `refactor`,
-  `optimize`, `adapt`, `use`, `apply`等；
+  `optimize`, `adapt`, `apply`等；
   不使用`make`, `let`, `do`等偏委婉的动词
 
 示例流程（以`libsaki`仓库143号issue为例）：

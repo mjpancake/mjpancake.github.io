@@ -6,7 +6,7 @@ permalink: /docs/
 
 ### 食用者文档
 
-- [FAQ](/docs/faq/)
+- [FAQ 常见问题](/docs/faq/)
 - [能力表](/docs/girl/)
 - [零食时髦表](/docs/cost/)
 - [麻将规则](/docs/rule/)
