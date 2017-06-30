@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 零食时髦表
+title: 黄豆糕时髦表
 permalink: /docs/cost/
 ---
 
@@ -21,7 +21,7 @@ permalink: /docs/cost/
 {% for girl in site.data.girls %}
 {% if girl.costs %}
 <h3><a name="{{ girl.id }}"></a>{{ girl.name }}</h3>
-<h4>零食收获条件</h4>
+<h4>黄豆糕收获条件</h4>
 <ul>
 {% for gain in girl.gains %}
 <li>{{ gain }}</li>

@@ -15,7 +15,7 @@ permalink: /docs/workflow/
 社区长期以来一直都在从玩家中发掘开发者，人数多多益善，从而适应日渐增长的开发需求。
 
 松饼的开发本属志愿性无偿工作。
-作为象征性的奖励，开发者会获得大量的稀有道具"饮料"。
+作为象征性的奖励，开发者会获得大量的稀有道具"榴莲汁"。
 
 松饼麻雀的多数组件采用MIT协议发布，Qt客户端采用LGPLv3协议发布。
 改造定制，发布MOD，搭建私服都是没有问题的。
@@ -35,8 +35,9 @@ permalink: /docs/workflow/
 ## 工作流程
 
 开发流程大体上采取"悬赏—揭榜"制度。
-该制度以GitHub的Issue Tracker作为悬赏布告板，发布项目中待解决的问题，并标明悬赏饮料额度。
-有意解决悬赏问题的，先进行"揭榜"操作，再完成任务，从而获得饮料。
+该制度以GitHub的Issue Tracker作为悬赏布告板，
+发布项目中待解决的问题，并标明悬赏榴莲汁额度。
+有意解决悬赏问题的，先进行"揭榜"操作，再完成任务，从而获得榴莲汁。
 
 ### 先决条件
 
@@ -77,7 +78,7 @@ permalink: /docs/workflow/
 4. __正片开始__  
    Assignee修改完成后即可开始喵作，参考[Git工作流](#git)
 5. __完成__  
-   完成任务，获得饮料，返回第3步
+   完成任务，获得榴莲汁，返回第3步
 
 ### 特殊情况处理
 1. 已经有assignee的issue是已经有人在做的，无法揭榜
@@ -104,14 +105,18 @@ permalink: /docs/workflow/
 - 开头单词必须是一个简单有力的实义动词原形，
   例如`add`, `delete`, `update`, `change`, `fix`, `enhance`, `refactor`,
   `optimize`, `adapt`, `apply`等；
-  不使用`make`, `let`, `do`等偏委婉的动词
+  不使用`make`, `let`, `do`等微妙的动词
 
 示例流程（以`libsaki`仓库143号issue为例）：
-1. 下载 `git clone git@github.com:mjpancake/libsaki.git`
-1. 新建分支 `cd libsaki; git checkout -b issue/143`
-1. 喵改代码
-1. 提交 `git commit -a`
-1. 衍合到上流最新提交 `git pull --rebase origin develop`
-1. 上推 `git push --set-upstream origin issue/143`
-1. 前往GitHub创建pull request，等待审查结果
+```
+git clone git@github.com:mjpancake/libsaki.git
+cd libsaki
+git checkout -b issue/143
+vim girl.cpp
+git commit -a
+git pull --rebase origin develop
+git push --set-upstream origin issue/143
+# ... Open a pull request on GitHub
+```
+以上示例仅供参考，具体情况具体分析。
 
