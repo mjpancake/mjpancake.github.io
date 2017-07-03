@@ -11,6 +11,9 @@ header_pages:
   - feedback.md
   - contribute.md
   - about.md
+webrick:
+  headers:
+    Access-Control-Allow-Origin: "*"
 
 # Build settings
 markdown: kramdown
