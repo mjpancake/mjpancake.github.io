@@ -74,7 +74,7 @@ permalink: /docs/workflow/
    找到想做的悬赏issue，将该issue的assignee改成自己。Assignee被修改即视为揭榜完成。  
    如果想做的内容未包含在悬赏issue当中，
    可先走[有奖反馈](/feedback/)流程，等到对应issue被添加，再进行揭榜
-   （反馈与开发工作的饮料奖励重复计算，互不影响）
+   （反馈与开发工作的榴莲汁奖励重复计算，互不影响）
 4. __正片开始__  
    Assignee修改完成后即可开始喵作，参考[Git工作流](#git)
 5. __完成__  
@@ -103,20 +103,24 @@ permalink: /docs/workflow/
 - 首字母小写
 - 句尾无句号
 - 开头单词必须是一个简单有力的实义动词原形，
-  例如`add`, `delete`, `update`, `change`, `fix`, `enhance`, `refactor`,
-  `optimize`, `adapt`, `apply`等；
-  不使用`make`, `let`, `do`等微妙的动词
+  例如add、delete、update、fix等；
+  不使用make、let、do等微妙的动词
+- 消息用来描述人改了什么，而不是程序于了什么。
+  例如比起"check user input"这种，"add user input validation"要好很多。
 
-示例流程（以`libsaki`仓库143号issue为例）：
+示例流程：
+
+（只是举个栗子，消上文歧义用，具体情况具体分析）
 ```
 git clone git@github.com:mjpancake/libsaki.git
 cd libsaki
 git checkout -b issue/143
 vim girl.cpp
+# ... 5 hours later
 git commit -a
 git pull --rebase origin develop
 git push --set-upstream origin issue/143
 # ... Open a pull request on GitHub
 ```
-以上示例仅供参考，具体情况具体分析。
+
 

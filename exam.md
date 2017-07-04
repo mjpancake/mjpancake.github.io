@@ -37,7 +37,7 @@ function onSubmit() {
 	for (var i = 1; i <= {{ site.data.qs | size }}; i++) {
 		var answer = form["q" + i].value;
 		if (!answer) {
-			hint("请回答第" + i + "题");
+			hint("第" + i + "题还没有填呢");
 			return;
 		}
 		answers += answer;
@@ -72,12 +72,12 @@ function send(msg) {
 				hint("激活失败 " + sc.Error);
 				submit.disabled = false;
 			} else {
-				// TODO redirect
-				hint("激活成功");
+				// prevent showing anything while redirecting
+				document.getElementById("hint").style.displayed = "none";
+				window.location.href = "/pass";
 			}
 		} else {
-			hint("出现网络错误，激活失败 " + xmlhttp.readyState + " " + xmlhttp.status);
-			submit.disabled = false;
+			console.log("ajax failed: " + xmlhttp.readyState + " " + xmlhttp.status);
 		}
 	};
 	xmlhttp.send(msg);
