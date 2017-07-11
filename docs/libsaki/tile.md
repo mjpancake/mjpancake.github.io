@@ -49,7 +49,10 @@ The class `T37` inherits `T34`, with an additional `bool mAkadora` field to deno
 
 ### T34
 
-The only member filed of `T34` is the `int mId34`, whose value varies between 0 and 33, corresponding to 1m, 2m, 3m, ..., 3y. To get the suit or the value of a tile, call the `suit()` or the `val()` method on a `T34` object: 
+The only member field of `T34` is `mId34`,
+whose value varies between 0 and 33, corresponding to 1m, 2m, 3m, ..., 3y.
+To get the suit or the value of a tile,
+call `suit()` or `val()` on a `T34` object: 
 
 ```
 T34 tile(0); // "0" represents 1m
@@ -61,7 +64,7 @@ Besides directly passing the integer, we can also construct a tile by telling it
 ```
 T34 ta(26);
 T34 tb(Suit::S, 9);
-assert(ta == tb);
+assert(ta == tb); // both ta and tb are 9s
 ```
 
 There are two constructors taking suit and value as parameters: the `T34(Suit s, val v)` and the `T34(val v, Suit s)`. The difference is that the latter is a `constexpr`, which also has an alternative syntax (implemented by C++11 user defined literals):
@@ -81,32 +84,68 @@ The most frequently called method might be `T34::id34()`, which simply returns t
 T34 t = 3_m;
 int ti = t.id34(); // now "ti" equals to 2
 ```
-The underlying idea of representing tiles by integers is to use those integers directly as array indices to facilitate container operations. Since there are only 34 kinds of tiles, using more complex data structures, such as a tree, can be considered an over-design which costs too many unnecessary pointers. The continuous integer representation make it possible to access elements in a tile container with constant time and also allows iterating across the container. 
-Within the project, we frequently use the name `ti` the denote such a tile index. 
+The underlying idea of representing tiles by integers
+is to use those integers directly as array indices to facilitate container operations.
+Since there are only 34 kinds of tiles,
+using more complex data structures, such as a tree, can be considered an over-design
+which costs too many unnecessary pointers.
+The continuous integer representation makes it possible to access elements
+in a tile container with constant time
+and also allows iterating across such a container. 
+Within this project, we frequently use the name `ti` the denote such a tile index. 
 
 Most methods of `T34` are trivial and have short definitions, so reading the code directly can be the fastest way to understand what they do. Here let's highlight some "weird" ones:
 
-- The operator `%`: expression `t1 % t2` checks if `t2` is the dora indicated by `t1`. Here the `%` sign is used since the indicator-dora relation is circularly periodic, just like the mod operation. 
-- The operator `|`: expression `t1 | t2` checks if the operands are neighbors, in order. 8m and 9m are neighbors. 9m and 1m are not neighbors. 9m and 1p are not neighbors. 
-- The operator `||`: expression `t1 || t2` checks if the operands sandwich a common neighbor, in order, such as 7m and 9m
-- The operator `^`: expression `t1 ^ t2` check if the operands are *suji(筋)* tiles, in order, such as 1s and 4s. The exclusive-or sign is used since two tiles having suji-relation are kind of exclusive. 
+- The operator `%`:  
+  expression `t1 % t2` checks if `t2` is the dora indicated by `t1`. Here the `%` sign is used since the indicator-dora relation is circularly periodic, just like the mod operation. 
+- The operator `|`:  
+  expression `t1 | t2` checks if the operands are neighbors, in order. 8m and 9m are neighbors. 9m and 1m are not neighbors. 9m and 1p are not neighbors. 
+- The operator `||`:  
+  expression `t1 || t2` checks if the operands sandwich a common neighbor, in order, such as 7m and 9m
+- The operator `^`:  
+  expression `t1 ^ t2` check if the operands are *suji(筋)* tiles, in order, such as 1s and 4s. The exclusive-or sign is used since two tiles having suji-relation are kind of exclusive. 
 
 BTW, we always use the term *indicator* to mean the dora-indicator(ドラ表示牌). Since the word is long, it is usually abbreviated as *indic*, or sometimes even *id*. 
 
 ### T37 
 
 `T37` is the tile class strictly distinguishes red and black tiles. 
-`T37` publicly inherits `T34`, however, neither of them contains any virtual method, even the destructor. 
-The idea under this design is to encourage passing `T34` as values without considering the cost: actually it's just an `int`. We never use a pointer or a reference to a `T34`. A `T34` object is treated immutable, as all of its member method (except assignment) is declared as `const`. The client code of `T34` should be aware of that `T34` is just an integer wrapper and contains no virtual table. Besides, although `T37` is-a `T34`, we don't expect any dynamic binding behavior since that really causes a lot of logical trouble: `T34` and `T37` should always be carefully compared and chosen before being used. 
+`T37` publicly inherits `T34`, however, neither of them contains any virtual method,
+even the destructor. 
+The idea under this design is to encourage passing `T34` as values
+without considering the cost: actually it's just an `int`.
+We never use a pointer or a reference to a `T34`.
+A `T34` object is treated immutable,
+  as all of its member method (except assignment) is declared as `const`.
+The client code of `T34` should be aware of that `T34` is just an integer wrapper
+and contains no virtual table.
+Besides, although `T37` is-a `T34`, we don't expect any polymorphic behavior
+since polymorphism really causes a lot of logical troubles in our cases:
+`T34` and `T37` should always be carefully compared and chosen before being used. 
 
-The constructors of `T37` is similar to those `T34`'s, except that some of them may take an extra parameter to tell whether the tile should be an akadora. 
+The constructors of `T37` is similar to those `T34`'s,
+except that some of them may take an extra parameter
+to tell whether the tile should be an akadora. 
 
-Here we have one important point to note: we don't have a `T37` constructor which receives a `T34` as parameter. This design is deliberately made: we need `T34` -> `T37` conversion to be inconvenient as this is really a dangerous operation in many cases: it causes a lot of logic bugs since you are blindly assuming that there is no akadora. Whenever a `T34` needs to be converted to a `T37`, think again, be sure of what you are doing, and use the `T37(t34.id34())` form. 
+Here we have one important point to note:
+we don't have a `T37` constructor which receives a `T34` as parameter.
+This design is deliberately made:
+we need `T34` -> `T37` conversion to be inconvenient
+as this is really a dangerous operation in many cases:
+it causes a lot of logic bugs since you are blindly assuming
+that there is no akadora.
+Whenever a `T34` needs to be downcasted to a `T37`,
+think again, be sure of what you are doing, and use the `T37(t34.id34())` form. 
 
 On the contrary, `T37` -> `T34` conversion is relatively safe, and we can just do that by the C++ object slicing. 
 
-There is another important point: the `==` operator is not overridden, thus `0_m == 5_m` returns `true`.
+There is another important point: the `==` operator is not overridden,
+thus `0_m == 5_m` returns `true`.
 To check equality with considering red/black difference, use `T37::looksSame()`
 
-Unlike `T34`, `T37`'s are typically passed by reference. This convention aims to distinguish `T34` and `T37` more explicitly (for human code readers) and has nothing to do with the machine efficiency. 
+Unlike `T34`, `T37`'s are typically passed by reference.
+This convention aims to distinguish `T34` and `T37` more explicitly
+and has nothing to do with the machine efficiency. 
+The underlying intuition is that `T34` usually represents a logical "concept", 
+while `T37` usually represents a visible, touchable, and uncopyable solid matter.
 

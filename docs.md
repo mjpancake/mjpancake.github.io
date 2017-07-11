@@ -19,6 +19,6 @@ permalink: /docs/
 - [Libsaki Tutorial](/docs/libsaki/)
 - [Client Tutorial](/docs/client/)
 - [Server Tutorial](/docs/server/)
-- [C++ Coding Convention](/docs/cpp/)
-- [QML Coding Convention](/docs/qml/)
+- [C++ Style Guide](/docs/cpp/)
+- [QML Style Guide](/docs/qml/)
 

@@ -29,7 +29,7 @@ whenever you find a rule hard to understand.
 
 - Zero-warning is required under debug build.
   - Unused variable warning is allowed under release build
-  - Warnings caused by bugs are allowed in any build mode
+  - A Warning caused by a compiler's bug is allowed in any build mode
     (such as [this one](http://stackoverflow.com/a/33306000))
 - Basically the high level readability and the development efficiency
   is considered more important, 
@@ -37,21 +37,8 @@ whenever you find a rule hard to understand.
 
 ## Comments
 
-- Only explainatory comments, TODO comments, and end-of comments are allowed.
-  Doxygen or doxygen-like interface comments are disallowed
-  because we have separatly maintained documentation web pages.
-- An explainatory comment applys to
-  either a block of implementation which is not self-explainatory,
-  or an interface which is not trivial to use.
-- Try to make the implementation self-explainatory and the interfaces trivial 
-  such that the use of explainatory comments can be reduced.
-- A TODO comment starts with "`// TODO`" or "`// FIXIT`".
-  It marks a task to be done in the future,
-  which must not be a known severe threat to the basic functionality.
-  Known severe threats should be eliminated before committing.
-- An end-of comment marks the end of an include guard or a namespace.
-  Other blocks, such as an `if` statement,
-  should be short enough so that the end is visible together with the beginning.
+- Avoid commenting by making the code self-explainatory.
+- Always mark ends of include guards and namespaces with comments.
 - Use only `//` comments in committed code. `/* */` is reserved for debugging. 
 
 ## Naming
@@ -134,7 +121,7 @@ fox_slow_white.h
 
 ## Container Preferences
 
-- Use arrays and array-likes for small data
+- Use arrays and array-likes for small data regardless of big-O
   - Less than 1KiB is considered small
   - Use `std::array` for fix length arrays
   - Use `saki::util::Stactor` for variable length arrays
@@ -148,6 +135,7 @@ fox_slow_white.h
 - Omit `virtual` in overloading functions.
 - Constructors taking one or more arguments should be prefixed by `explicit`
   unless they are meant to be non-explicit
+- Prefer `= delete` over hiding by making `private`.
 
 ## Statement Formatting
 
@@ -175,6 +163,9 @@ fox_slow_white.h
 - A typical iterator `for` condition should look like
   `(auto it = v.begin(); it != v.end(); ++it)`
   (use `auto`, `!=`, and prefix `++`)
+- Avoid long function definition.
+- Avoid deep indentation level.
+- Prefer `using` over `typedef`.
 
 ## Expression Formatting
 
@@ -185,6 +176,10 @@ fox_slow_white.h
 - Directly use `b` or `!b` to check boolean conditions.
   Do not use `b == true` or `b == false`.
 - Do not use Yoda conditions. 
+- Do not rely on the precedence between `&&` and `||`
+  - Bad: `a && b || c`
+  - Good: `(a && b) || c`
+- Do not rely on the precedence between bitwise operators and always use parenthesises.
 
 
 ## Other
