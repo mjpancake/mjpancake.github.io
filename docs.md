@@ -6,7 +6,7 @@ permalink: /docs/
 
 ### 食用者文档
 
-- [FAQ 常见问题](/docs/faq/)
+- [入坑必读](/docs/readme/)
 - [能力表](/docs/girl/)
 - [黄豆糕时髦表](/docs/cost/)
 - [麻将规则](/docs/rule/)

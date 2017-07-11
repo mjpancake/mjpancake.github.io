@@ -80,9 +80,11 @@ permalink: /docs/workflow/
    ```
    通常会在24小时内处理。
 3. __揭榜__  
-   找到想做的悬赏issue，将该issue的assignee改成自己。Assignee被修改即视为揭榜完成。  
+   找到想做的悬赏issue，将该issue的assignee改成自己。Assignee被修改即视为揭榜完成
+   - 所谓“悬赏issue”指由名为`rolevax`的用户发布的，标题中注有榴莲汁额度的issue
+     - 不是`rolevax`发布的，或标题中未标明榴莲汁的，不是悬赏issue
    - 如果想做的内容未包含在悬赏issue当中，
-     可先走[有奖反馈](/feedback/)流程，等到对应issue被添加，再进行揭榜
+     可先走[有奖反馈](/feedback/)流程，等到对应悬赏issue被添加，再进行揭榜
    - 反馈与开发工作的榴莲汁奖励重复计算，互不影响
    - 一个issue对应一个人的工作量。
      已经有assignee的issue是已经有人在做的，无法揭榜
@@ -101,7 +103,7 @@ permalink: /docs/workflow/
 
 概要：
 - 项目整体处于实验阶段，默认分支为`develop`，不设`master`分支
-- 所有的改动都需要先提交到新建的分支上，再通过pull request进行review及合并
+- 所有的改动都需要先提交到新建的分支上，再通过pull request合回`develop`分支
 - 利用写入权限，直接将新建分支上推到源仓库以便互舔，不必fork到自己的账户下
 - 采用单线提交历史，活用rebase，全程只允许fast-forward合并
 
