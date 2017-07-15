@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ID已成功激活
-permalink: /pass/
+permalink: /exam-pass/
 ---
 
 - 喜大普奔！该账号已成功激活。

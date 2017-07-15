@@ -4,15 +4,15 @@ title: 文档
 permalink: /docs/
 ---
 
-### 食用者文档
+## 食用指南
 
-- [入坑必读](/docs/readme/)
+- [世界观](/docs/world/)
 - [能力表](/docs/girl/)
 - [黄豆糕时髦表](/docs/cost/)
 - [麻将规则](/docs/rule/)
 - [段位规则](/docs/level/)
 
-### 开发者文档
+## 开发者文档
 
 - [设计哲♂学](/docs/phil/)
 - [项目介绍与工作流程](/docs/workflow/)

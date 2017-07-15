@@ -72,7 +72,7 @@ function send(msg) {
 			} else {
 				// prevent showing anything while redirecting
 				document.getElementById("hint").style.displayed = "none";
-				window.location.href = "/pass";
+				window.location.href = "/exam-pass";
 			}
 		} else {
 			console.log("ajax failed: " + xmlhttp.readyState + " " + xmlhttp.status);
