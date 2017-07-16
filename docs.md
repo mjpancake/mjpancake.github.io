@@ -8,7 +8,6 @@ permalink: /docs/
 
 - [世界观](/docs/world/)
 - [能力表](/docs/girl/)
-- [黄豆糕时髦表](/docs/cost/)
 - [麻将规则](/docs/rule/)
 - [段位规则](/docs/level/)
 
