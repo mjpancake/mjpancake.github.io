@@ -127,7 +127,7 @@ permalink: /docs/workflow/
   - 正面例子：solve xxxx
   - 反面例子1：make the problem of xxxx solved
   - 反面例子2：provide a solution to xxxx
-- 消息用来描述人改了什么，而不是程序于了什么
+- 消息用来描述人改了什么，而不是程序干了什么
   - 正面例子：add user input validation
   - 反面例子：validate user input
 
