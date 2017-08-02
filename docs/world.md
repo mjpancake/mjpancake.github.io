@@ -4,6 +4,8 @@ title: 世界观
 permalink: /docs/world/
 ---
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
 ## 用语说明
 
 ### 少女
@@ -73,7 +75,6 @@ permalink: /docs/world/
 })
 \]
 </p>
-<script type="text/javascript" src="http://www.hostmath.com/Math/MathJax.js?config=OK"></script>
 
 其中
 - Value = 顺位价值
