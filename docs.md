@@ -6,7 +6,7 @@ permalink: /docs/
 
 ## 食用指南
 
-- [世界观](/docs/world/)
+- [松饼制作计划](/docs/target/)
 - [能力表](/docs/girl/)
 - [麻将规则](/docs/rule/)
 

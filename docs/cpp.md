@@ -8,7 +8,7 @@ permalink: /docs/cpp/
 
 All participants of `libsaki` and/or `mjpancake`
 are expected to check through all the rules in this guide carefully.
-Some of these rules are common and trivial, *yet some are not*.
+Some of these rules are uncommon.
 
 You can reference to `libsaki` for an example
 whenever you find a rule hard to understand.
@@ -17,7 +17,7 @@ whenever you find a rule hard to understand.
 
 - This guide is basically a strict constraint. 
   However, in rare cases,
-  the rules can be partially broken when things become weird under such rules. 
+  the rules can be partially broken when styling become weird under such rules. 
 - This guide only regulates newly added code.
   Old code can be re-formatted when convenient.
 - This guide may be updated with a notification in the Gitter room. 
@@ -28,16 +28,16 @@ whenever you find a rule hard to understand.
 ## General
 
 - Zero-warning is required under debug build.
-  - Unused variable warning is allowed under release build
-  - A Warning caused by a compiler's bug is allowed in any build mode
+  - Unused variable warnings are allowed under release build
+  - Warnings caused by compiler's bugs are allowed under any build mode
     (such as [this one](http://stackoverflow.com/a/33306000))
-- Basically the high level readability and the development efficiency
+- Basically high level readability and development efficiency
   is considered more important, 
-  and the low level optimizations should only be taken to critical performance problems. 
+  and low level optimizations should only be taken to critical performance problems. 
 
 ## Comments
 
-- Avoid commenting by making the code self-explainatory.
+- Avoid commenting, by making the code self-explainatory.
 - Always mark ends of include guards and namespaces with comments.
 - Use only `//` comments in committed code. `/* */` is reserved for debugging. 
 
