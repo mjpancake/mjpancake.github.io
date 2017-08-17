@@ -3,9 +3,7 @@ layout: home
 title: "松饼社区主站"
 ---
 
-# 本站目前仅供预览，所有内容于松饼0.8.3发布前均无效。
-
-## 松饼麻雀简介
+# 松饼麻雀简介
 
 「松饼」是一个Saki麻将程序，
 利用黑科技再现原作能力，还原度远超“某作”。
@@ -33,7 +31,7 @@ Windows与Android版下载安装即可食用，
 ---
 <br />
 
-## <a name="newbie"></a>新手上路
+# <a name="newbie"></a>新手上路
 
 再次强调两点：
 1. 本作不适合日麻零基础新手
@@ -52,7 +50,7 @@ Windows与Android版下载安装即可食用，
 ---
 <br />
 
-## <a name="news" />更新公告（内含客户端下载地址）
+# <a name="news" />更新公告（内含客户端下载地址）
 <ul class="post-list">
 {% for post in site.posts limit:10 %}
   <li>
