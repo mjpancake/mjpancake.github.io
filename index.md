@@ -42,26 +42,10 @@ Windows与Android版下载安装即可食用，
 2. 掌握日麻基础
 3. 吃掉[食用指南](/docs/)
 4. 加入企鹅群 253708512
-5. 从[更新公告](#news)中下载最新客户端
+5. 从[更新公告]({{ site.data.link.releases }}){:target="_blank"}中下载最新客户端
 6. 打麻将，掉节操
 7. 参照[反馈规范](/feedback/)，把吐槽、建议、bug发到[发布贴]({{ site.data.link.tie }})
 8. 返回第6步
 
----
-<br />
-
-# <a name="news" />更新公告（内含客户端下载地址）
-<ul class="post-list">
-{% for post in site.posts limit:10 %}
-  <li>
-	{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-	<span class="post-meta">{{ post.date | date: date_format }}</span>
-
-	<h2>
-	  <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-	</h2>
-  </li>
-{% endfor %}
-</ul>
 
 
