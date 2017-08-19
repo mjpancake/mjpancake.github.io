@@ -24,10 +24,10 @@ permalink: /docs/workflow/
 
 | 仓库                | 地址   | 语言/框架 |
 | ------------------- | ------ | --------- |
-| 核心库              | [`rolevax/libsaki`][libsaki] | C++ |
-| 客户端              | [`rolevax/mjpancake`][mjpancake] | C++, QML, Javascript |
-| 服务器（运维暂停中）| [`rolevax/ih`][ih] | Go, SQL |
-| 静态主站            | [`mjpancake/mjpancake.github.io`][pages] | Jekyll |
+| 核心库    | [`rolevax/libsaki`][libsaki]{:target="_blank"} | C++ |
+| 客户端    | [`rolevax/mjpancake`][mjpancake]{:target="_blank"} | C++, QML, Javascript |
+| 服务器（运维暂停中）| [`rolevax/ih`][ih]{:target="_blank"} | Go, SQL |
+| 静态主站  | [`mjpancake/mjpancake.github.io`][pages]{:target="_blank"} | Jekyll |
 
 [libsaki]: https://github.com/rolevax/libsaki
 [mjpancake]: https://github.com/rolevax/mjpancake
@@ -46,6 +46,11 @@ permalink: /docs/workflow/
 1. 一定的编程基础
   - 如果没有相关基础，可自行搜索学习，网上教程多如牛毛
   - 参考[项目介绍](#intro)确认需要学习的语言
+1. 熟悉项目源码
+  - 可通过[开发者文档](/docs/)快速了解整体设计
+  - 有问题基本靠吼，遇到疑点时不要犹豫，
+    尽管在[Gitter]({{ site.data.link.gitter }}){:target="_blank"}提问
+  - 目前文档只写到了一半，剩下的一半会根据大家实际问出的疑点定向完善
 1. 不穿胖次
   - 不穿胖次有助于减少bug
 
@@ -55,8 +60,8 @@ permalink: /docs/workflow/
 - 基本沿用普通的fork及pull request流程
 - 改动需提交到从`develop`分出的新分支上，再通过pull request合回`develop`分支
 - 采用单线提交历史，全程只允许fast-forward合并
-  - 参考[Git Branching - Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
-- 有问题可在[Gitter聊天室]({{ site.data.link.gitter }})提问
+  - 参考[Git Branching - Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"}
+- 有问题可在[Gitter聊天室]({{ site.data.link.gitter }}){:target="_blank"}提问
   - 为方便后人乘凉，建议公开提问，不建议私信
 
 ### 分支名规范
