@@ -4,6 +4,8 @@ title: 注册
 permalink: /signup/
 ---
 
+<script src="/js/teru.js"></script>
+
 <script>
 function onSubmit() {
     var form = document.getElementById("form");
@@ -48,39 +50,26 @@ function onSubmit() {
         Username: username,
         Password: password
     });
-    send(cs);
+
+    var submit = document.getElementById("submit");
+    submit.disabled = true;
+    hint("正在提交...");
+
+    teru.send("POST", "/account/create", cs, function(sc) {
+        if (sc.Error) {
+            hint("注册失败 " + sc.Error);
+            submit.disabled = false;
+        } else {
+            // prevent showing anything while redirecting
+            document.getElementById("hint").style.displayed = "none";
+            window.location.href = "/signup-pass";
+        }
+    });
 }
 
 function hint(str) {
     var hint = document.getElementById("hint");
     hint.innerHTML = str;
-}
-
-function send(msg) {
-    var submit = document.getElementById("submit");
-    submit.disabled = true;
-    hint("正在提交...");
-
-    var url = "http://127.0.0.1:8080/account/create";
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/json");
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var sc = JSON.parse(xmlhttp.responseText);
-            if (sc.Error) {
-                hint("注册失败 " + sc.Error);
-                submit.disabled = false;
-            } else {
-                // prevent showing anything while redirecting
-                document.getElementById("hint").style.displayed = "none";
-                window.location.href = "/signup-pass";
-            }
-        } else {
-            console.log("ajax failed: " + xmlhttp.readyState + " " + xmlhttp.status);
-        }
-    };
-    xmlhttp.send(msg);
 }
 </script>
 
@@ -90,12 +79,15 @@ table td, table td * {
 }
 </style>
 
+老版本的联机对战ID就是松饼社区ID，现在仍可继续使用，
+已经有ID的无需再注册。
+
 <form id="form" action="javascript:onSubmit()">
   <table>
     <tr>
       <td>用户名：</td>
       <td><input type="text" name="username" value="" /></td>
-      <td>1~16字。既是登录名，也是显示名。过后可修改。</td>
+      <td>1~16字。既是登录名，也是显示名。</td>
     </tr>
     <tr>
       <td>密码：</td>
@@ -130,11 +122,9 @@ table td, table td * {
 
 ## <a name="license"></a>松饼在线功能使用协议
 
-1. 注册账号即视为同意本协议。如果不同意，可以不注册。
-1. 本平台不存在任何“隐私”或“安全”的概念，
-   使用者产生的一切数据（包括密码）都在保密强度上等同于全网公开。
-   使用者需自行保护好自己的隐私，例如避免与其它重要帐号使用相同的密码。
+1. 注册账号即视为同意本协议。若不同意，则不应当注册。
 1. 松饼麻雀处于删档测试阶段。平台有权随时无理由删除或篡改任何数据。
-1. 平台不提供任何质量保证。
+1. 平台对产品和服务不提供任何质量保证。
    出现故障，不保证修复；出现损失，无义务赔偿。
+1. 平台不提供任何隐私或安全的保障，对于用户数据（包括密码在内）的泄露不负任何责任。
 1. 平台有权随时无理由暂停或终止一切运维。

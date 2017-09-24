@@ -34,11 +34,12 @@ Windows与Android版下载安装即可食用，
 1. 熟读Saki
 2. 掌握日麻基础
 3. 吃掉[食用指南](/docs/)
-4. 加入企鹅群 253708512
-5. 从[更新公告]({{ site.data.link.releases }}){:target="_blank"}中下载最新客户端
-6. 打麻将，掉节操
-7. 参照[反馈规范](/feedback/)，把吐槽、建议、bug发到[发布贴]({{ site.data.link.tie }})
-8. 返回第6步
+4. [注册](/signup/)松饼社区ID
+5. 加入企鹅群 253708512
+6. 从[更新公告]({{ site.data.link.releases }}){:target="_blank"}中下载最新客户端
+7. 打麻将，掉节操
+8. 参照[反馈规范](/feedback/)，把吐槽、建议、bug发到[发布贴]({{ site.data.link.tie }})
+9. 返回第7步
 
 
 
