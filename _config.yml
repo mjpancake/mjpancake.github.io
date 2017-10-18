@@ -10,7 +10,6 @@ header_pages:
   - docs.md
   - feedback.md
   - contribute.md
-  - about.md
 webrick:
   headers:
     Access-Control-Allow-Origin: "*"

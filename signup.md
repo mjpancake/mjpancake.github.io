@@ -118,6 +118,8 @@ table td, table td * {
   </table>
 </form>
 
+已有帐号？[蹬鹿](/login/)
+
 ---
 
 ## <a name="license"></a>松饼在线功能使用协议

@@ -50,9 +50,137 @@ function onSubmitCPoint() {
     });
 }
 
+function onSubmitTask() {
+    var form = document.getElementById("form-task");
+
+    var token = form["token"].value;
+    if (!token) {
+        hint("missing token");
+        return;
+    }
+
+    var taskId = parseInt(form["task-id"].value);
+    if (!taskId) {
+        hint("Task ID not a number");
+        return;
+    }
+
+    function upsertTask() {
+		var title = form["title"].value;
+		if (!title) {
+			hint("missing title");
+			return;
+		}
+
+		var content = form["content"].value;
+		if (!content) {
+			hint("missing content");
+			return;
+		}
+
+		var cPoint = parseInt(form["c-point"].value);
+		if (!cPoint) {
+			hint("C Point not a number");
+			return;
+		}
+
+		var cs = JSON.stringify({
+			Token: token,
+			Task: {
+				Id: taskId,
+				Title: title,
+				Content: content,
+				CPoint: cPoint,
+			}
+		});
+
+		form.submit.disabled = true;
+		hint("正在提交...");
+
+		teru.send("POST", "/admin/upsert-task", cs, function(sc) {
+			if (sc.Error) {
+				hint("Error: " + sc.Error);
+			} else {
+				hint("OK: Task Upserted");
+			}
+
+			form.submit.disabled = false;
+		});
+    }
+
+    var op = form["op"].value;
+    switch (op) {
+    case "upsert":
+        upsertTask();
+        return;
+    case "retrieve":
+		form.submit.disabled = true;
+		teru.send("GET", "/task/" + taskId, "", function(sc) {
+			if (sc.Error) {
+				hint("Error: " + sc.Error);
+            } else {
+                // render
+            }
+
+			form.submit.disabled = false;
+		});
+        return;
+    case "delete":
+		form.submit.disabled = true;
+		teru.send("POST", "/admin/delete-task", "", function(sc) {
+			if (sc.Error) {
+				hint("Error: " + sc.Error);
+            } else {
+                hint("Successfully Deleted");
+            }
+
+			form.submit.disabled = false;
+		});
+        return;
+    default:
+        return;
+    }
+}
+
+function onSubmitTaskCheck() {
+    var form = document.getElementById("form-task-check");
+
+    var token = form["token"].value;
+    if (!token) {
+        hint("missing token");
+        return;
+    }
+
+    var taskId = parseInt(form["task-id"].value);
+    if (!taskId) {
+        hint("Task ID not a number");
+        return;
+    }
+
+	var cs = JSON.stringify({
+		Token: token,
+		TaskId: taskId,
+		Op: form["op"].value, 
+	});
+
+	form.submit.disabled = true;
+	hint("正在提交...");
+
+	teru.send("POST", "/admin/check-task", cs, function(sc) {
+		if (sc.Error) {
+			hint("Error: " + sc.Error);
+		} else {
+			hint("OK: Task Checked");
+		}
+
+		form.submit.disabled = false;
+	});
+}
+
 function hint(str) {
     var hint = document.getElementById("hint");
     hint.innerHTML = str;
+    hint.scrollIntoView(false);
 }
 </script>
 
@@ -63,6 +191,8 @@ table td, table td * {
 </style>
 
 <h3 id="hint"></h3>
+
+## C Point
 
 <form id="form-c-point" action="javascript:onSubmitCPoint()">
   <table>
@@ -85,27 +215,72 @@ table td, table td * {
   </table>
 </form>
 
-<form id="form" action="javascript:onSubmit()">
+---
+
+## Task
+
+<form id="form-task" action="javascript:onSubmitTask()">
   <table>
+    <tr>
+      <td>Token: </td>
+      <td><input type="text" name="token" value="" /></td>
+    </tr>
     <tr>
       <td>Task ID: </td>
       <td><input type="text" name="task-id" value="" /></td>
     </tr>
     <tr>
-      <td>State: </td>
-      <td><input type="text" name="task-state" value="" /></td>
+      <td>Title: </td>
+      <td><input type="text" name="title" value="" /></td>
+    </tr>
+    <tr>
+      <td>Content: </td>
+      <td><textarea name="content" rows="20" cols="80"></textarea></td>
+    </tr>
+    <tr>
+      <td>C Point: </td>
+      <td><input type="text" name="c-point" value="" /></td>
+    </tr>
+    <tr>
+      <td>Op: </td>
+      <td>
+        <label><input type="radio" name="op" value="upsert" checked />Upsert</label>
+        <label><input type="radio" name="op" value="retrieve" />Retrieve</label>
+        <label><input type="radio" name="op" value="delete" />Delete</label>
+      </td>
     </tr>
     <tr>
       <td></td>
-      <td><input type="submit" id="submit-task" value="Task" /></td>
+      <td><input type="submit" id="submit-task" value="--- Submit ---" /></td>
+    </tr>
+  </table>
+</form>
+
+---
+
+## Check Task
+
+<form id="form-task-check" action="javascript:onSubmitTaskCheck()">
+  <table>
+    <tr>
+      <td>Token: </td>
+      <td><input type="text" name="token" value="" /></td>
     </tr>
     <tr>
-      <td>Msg: </td>
-      <td><input type="text" name="msg" value="" /></td>
+      <td>Task ID: </td>
+      <td><input type="text" name="task-id" value="" /></td>
+    </tr>
+    <tr>
+      <td>Op: </td>
+      <td>
+        <label><input type="radio" name="op" value="accept" checked />Accept</label>
+        <label><input type="radio" name="op" value="expect" />Expect</label>
+        <label><input type="radio" name="op" value="fire" />Fire</label>
+      </td>
     </tr>
     <tr>
       <td></td>
-      <td><input type="submit" id="submit-append" value="Append" /></td>
+      <td><input type="submit" id="submit-task" value="--- Judge ---" /></td>
     </tr>
   </table>
 </form>
