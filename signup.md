@@ -53,7 +53,7 @@ function onSubmit() {
 
     var submit = document.getElementById("submit");
     submit.disabled = true;
-    hint("正在提交...");
+    hint("正在提交...<br />若等待过长，请尝试梯子");
 
     teru.send("POST", "/account/create", cs, function(sc) {
         if (sc.Error) {

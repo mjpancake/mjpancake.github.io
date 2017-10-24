@@ -41,7 +41,7 @@ function onSubmit() {
 
     var submit = document.getElementById("submit");
     submit.disabled = true;
-    hint("正在蹬鹿...");
+    hint("正在蹬鹿...<br />若等待过长，请尝试梯子");
 
     teru.send("POST", "/account/auth", cs, function(sc) {
         if (sc.Error) {
