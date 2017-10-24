@@ -119,7 +119,9 @@ function onSubmitTask() {
 			if (sc.Error) {
 				hint("Error: " + sc.Error);
             } else {
-                // render
+                form["title"].value = sc.Task.Title;
+                form["content"].value = sc.Task.Content;
+                form["c-point"].value = sc.Task.CPoint;
             }
 
 			form.submit.disabled = false;
@@ -276,6 +278,7 @@ table td, table td * {
         <label><input type="radio" name="op" value="accept" checked />Accept</label>
         <label><input type="radio" name="op" value="expect" />Expect</label>
         <label><input type="radio" name="op" value="fire" />Fire</label>
+        <label><input type="radio" name="op" value="fire-doing" />Fire-Doing</label>
       </td>
     </tr>
     <tr>
