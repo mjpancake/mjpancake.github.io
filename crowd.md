@@ -243,6 +243,7 @@ teru.makeSureLoggedIn(function() {
     user = teru.getUser();
 	var curr = document.getElementById("curr-user");
 	curr.innerHTML = "当前登录ID: " + user.Username + 
+        ' <a href="/crowd-help/">众包平台使用教程</a>' + 
         ' <a href="/login/">切换帐号</a>';
     reloadForms();
 });
