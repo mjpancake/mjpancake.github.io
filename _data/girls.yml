@@ -364,7 +364,7 @@
       name: 鬼门
       descs:
         - 
-          content: 做北家时将鬼门牌置于鬼门方位，手牌将向里鬼门进展。
+          content: 做北家时将鬼门牌置于鬼门方位，手牌将向里鬼门进展
   costs:
     - 每局消耗 时髦-2
   gains:
@@ -378,7 +378,7 @@
       name: Defensiveな Style
       descs:
         - 
-          content: （*）常态下全守打法的顺位期望优于普通打法
+          content: （*）常态下很适合防守
     - 
       name: 形代
       descs:
@@ -651,6 +651,19 @@
         - 
           content: 可大致察觉他家手牌进展与打点预期
 -
+  id: 713814
+  name: 愛宕絹恵
+  skills:
+    - 
+      name: （*）足球妹
+      descs:
+        - 
+          content: 因为踢过足球，所以和圆形的东西有缘
+        - 
+          content: 容易以筒子和好牌
+        - 
+          content: 踢飞可疑的圆形物体，能缓解压♀力
+-
   id: 713815
   name: 末原恭子
   skills:
@@ -666,14 +679,12 @@
   name: 真屋由暉子
   skills:
     - 
-      name: （*）每日一次
+      name: （*）一天一次
       descs:
         - 
-          content: 每天可向对手申请一次使用左手立直
-          subdescs:
-            - 你问支持不支持，她们能说不支持吗？
+          content: 每天可向对手申请一次使用左手打牌
         - 
-          content: 然后就是一次闪耀的自摸
+          content: 虽然样本很少，不过貌似有连携级别的强度
 - 
   id: 714915
   name: 獅子原爽
@@ -754,20 +765,16 @@
       name: 自古南三出奇迹
       descs:
         - 
-          content: 容易在终前局与最终局逆转
-          subdescs:
-            - 凹大牌/速攻连庄自选
+          content: 容易在终前局或最终局逆转
     - 
       name: 牌风
       descs:
         - 
+          content: （*）无论如何都会以1s和牌
+        - 
           content: 容易做成平和、一杯、三色、全带
         - 
           content: 与此同时手牌不失灵活性，可随机应变而不拘泥于以上役种
-        - 
-          content: （*）容易听1s
-        - 
-          content: 听牌为1s时容易自摸
         - 
           content: 见逃低目振听状态下容易高目和牌
     - 
