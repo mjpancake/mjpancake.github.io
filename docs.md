@@ -13,7 +13,7 @@ permalink: /docs/
 ## 开发者文档
 
 - [设计哲♂学](/docs/phil/)
-- [项目介绍与工作流程](/docs/workflow/)
+- [改代码前必读](/docs/workflow/)
 - [Libsaki Tutorial](/docs/libsaki/)
 - [Client Tutorial](/docs/client/)
 - [Server Tutorial](/docs/server/)

@@ -90,9 +90,9 @@ Since there are only 34 kinds of tiles,
 using more complex data structures, such as a tree, can be considered an over-design
 which costs too many unnecessary pointers.
 The continuous integer representation makes it possible to access elements
-in a tile container with constant time
+in a tile container with constant time,
 and also allows iterating across such a container. 
-Within this project, we frequently use the name `ti` the denote such a tile index. 
+Within this project, we frequently use the name `ti` to denote such a tile index. 
 
 Most methods of `T34` are trivial and have short definitions, so reading the code directly can be the fastest way to understand what they do. Here let's highlight some "weird" ones:
 
