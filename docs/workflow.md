@@ -53,15 +53,24 @@ permalink: /docs/workflow/
 开发环境搭建：
 
 - 下载并安装Git客户端
-    - 如果不熟悉Git，为基于复制粘贴交流，强烈建议选择命令行客户端
+    - 如果不熟悉Git，为便于基于文字交流，强烈建议选择命令行客户端
 - 下载并安装Qt 5.9.2
-    - Windows和macOS用户到[官网](www.qt.io)下载
+    - Windows和macOS用户到[官网](www.qt.io){:target="_blank"}下载
     - Windows上建议选择不依赖VS的MinGW版Qt
     - Linux用户直接通过包管理安装
-- 将客户端项目`mjpancake`下载到本地
-    - `git clone --recursive https:/github.com/rolevax/mjpancake.git`
-    - 注意不是`libsaki`项目。`libsaki`项目本身不带测试，编译不出可执行文件
-    - `mjpancake`带有作为submodule的`libsaki`，因此通过`--resursive`包含之
+- 从`mjpancake`和`libsaki`创建fork （为将来方便，两个都fork）
+    - 进入[`mjpancake`][mjpancake]{:target="_blank"}页面，点右上角的fork
+    - 进入[`libsaki`][libsaki]{:target="_blank"}页面，点右上角的fork
+    - `libsaki`是`mjpancake`的一个submodule，而`libsaki`本身不带程序入口。
+      为方便测试，即使只修改`libsaki`，也需要连同`mjpancake`一起下载
+- 将客户端项目`mjpancake`下载到本地，并配置远端地址
+    - 打开终端，输入以下命令（替换掉`your-username`）
+    - `git clone --recursive https://github.com/your-username/mjpancake.git`
+    - `cd mjpancake`
+    - `git remote add upstream https://github.com/rolevax/mjpancake.git`
+    - `cd libsaki`
+    - `git remote rename origin upstream`
+    - `git remote add origin https://github.com/your-username/libsaki.git`
 
 环境搭建好以后，
 用Qt Creator打开代码目录下的`mjpancake.pro`项目，
