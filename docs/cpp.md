@@ -15,53 +15,53 @@ whenever you find a rule hard to understand.
 
 ## Meta
 
-- This guide is basically a strict constraint. 
+- [MT-1] This guide is basically a strict constraint. 
   However, in rare cases,
   the rules can be partially broken when styling become weird under such rules. 
-- This guide only regulates newly added code.
+- [MT-2] This guide only regulates newly added code.
   Old code can be re-formatted when convenient.
-- This guide may be updated with a notification in the Gitter room. 
+- [MT-3] This guide may be updated with a notification in the Gitter room. 
   All the new rules take effect immediately as the page is uploaded. 
-- Fallback to [Google's version](https://google.github.io/styleguide/cppguide.html)
+- [MT-4] Fallback to [Google's version](https://google.github.io/styleguide/cppguide.html)
   whenever this guide does not give an explicit constraint.
 
 ## General
 
-- Zero-warning is required under debug build.
+- [GN-1] Zero-warning is required under debug build.
   - Unused variable warnings are allowed under release build
   - Warnings caused by compiler's bugs are allowed under any build mode
     (such as [this one](http://stackoverflow.com/a/33306000))
-- Basically high level readability and development efficiency
+- [GN-2] Basically high level readability and development efficiency
   is considered more important, 
   and low level optimizations should only be taken to critical performance problems. 
 
 ## Comments
 
-- Avoid commenting, by making the code self-explainatory.
-- Always mark ends of include guards and namespaces with comments.
-- Use only `//` comments in committed code. `/* */` is reserved for debugging. 
+- {CM-1] Avoid commenting, by making the code self-explainatory.
+- [CM-2] Always mark ends of include guards and namespaces with comments.
+- [CM-3] Use only `//` comments in committed code. `/* */` is reserved for debugging. 
 
 ## Naming
 
-- Naming should basically base on English. 
+- [NM-1] Naming should basically base on English. 
   Mahjong terminologies, character names, and school names
   can be represented by Japanese Romaji. 
   Terminologies related to the Chinese GB Mahjong can be represented by Pinyin. 
-- Use `UpperCamelCase` for class, struct, union, and enum type names. 
-- Use `lowerCamelCase` for function and variable names. 
-- Start non-public class member variables with `m`.
-- Treat all-capital words as ordinary words in camel cases. 
+- [NM-2] Use `UpperCamelCase` for class, struct, union, and enum type names. 
+- [NM-3] Use `lowerCamelCase` for function and variable names. 
+- [NM-4] Start non-public class member variables with `m`.
+- [NM-5] Treat all-capital words as ordinary words in camel cases. 
   - Bad: `HTTP`
   - Good: `Http` (upper camel), `http` (lower camel)
-- Use lower cases and digits within 7 characters for namespace names.
-- Use capitals and underscores for enum values and constants.
-- Shorter names and common abbreviations are approved. 
-- Callback function naming:
+- [NM-6] Use lower cases and digits within 7 characters for namespace names.
+- [NM-7] Use capitals and underscores for enum values and constants.
+- [NM-8] Shorter names and common abbreviations are approved. 
+- [NM-9] Callback function naming:
   - Before something happen: `onDoSomething`;
   - After something happen: `onSomethingDone`
-- Use only lower cases, `_`, and `.` for filenames. 
-- File extension: header: `.h`, source: `.cpp`
-- Nature of English can be sacrificed to beautify the alignment
+- [NM-10] Use only lower cases, `_`, and `.` for filenames. 
+- [NM-11] File extension: header: `.h`, source: `.cpp`
+- [NM-12] Nature of English can be sacrificed to beautify the alignment
 
 ```
 // bad
@@ -75,111 +75,117 @@ fox_slow_white.h
 
 ## Spacing, Indentation, and Line Break
 
-- Use 4 spaces for indentation, no tabs. 
-- Keep a space between a keyword and a `(`.
-- Keep no space between a function identifier and a `(`.
-- Keep a space between a token and a `{`.
-- Surround most binary operators with spaces
+- [SP-1] Use 4 spaces for indentation, no tabs. 
+- [SP-2] Keep a space between a keyword and a `(`.
+- [SP-3] Keep no space between a function identifier and a `(`.
+- [SP-4] Keep a space between a token and a `{`.
+- [SP-5] Surround most binary operators with spaces
   - Except `::`, `.`, `->`, `.*`, `->*`, `()`, `[]`, `(cast)`
-- Stick Unary operators to their operands without spaces
+- [SP-6] Stick Unary operators to their operands without spaces
   - Unless in some idioms like `while (i --> 0)`
-- Stick Semicolons to the end of statement without spaces. 
-- Keep space-paddings inside a pair of `{` and `}` that are in the same line.
-- Append either a space or a line break after commas.
-- Break, if necessary, a binary expression into two lines before the operator.
-- Keep the `{` at the same line of `if`, `while`, `for`, `do while`,
+- [SP-7] Stick Semicolons to the end of statement without spaces. 
+- [SP-8] Keep space-paddings inside a pair of `{` and `}` that are in the same line.
+- [SP-9] Append either a space or a line break after commas.
+- [SP-10] Break, if necessary, a binary expression into two lines before the operator.
+- [SP-11] Keep the `{` at the same line of `if`, `while`, `for`, `do while`,
   or lambda's capture and parameters.
-- To break or not to break:
+- [SP-12] To break or not to break:
   - Break:`class\n{`, `struct\n{`, `union\n{`, `enum\n{`, `namespace\n{`, `void f()\n{`
   - No break: `if {`, `while {`, `for {`, `do {`, `[]() {`
-- Append to the `#include` preamble with three empty lines. 
-- Append the last non-empty line of the file with three empty lines.
-- Keep all things three empty lines away from the beginning and ending of a namespace.
+- [SP-13] Append to the `#include` preamble with three empty lines. 
+- [SP-14] Append the last non-empty line of the file with three empty lines.
+- [SP-15] Keep all things three empty lines away from the beginning and ending of a namespace.
 
 ## Memory Management
 
-- Memory management should be generally based on RAII. 
-- Use a pointer only if a reference cannot be used instead.
-- Always use a `std::unique_ptr` when a pointer takes the ownership.
-- Re-design the code such that bare `delete` or `delete[]` is never needed. 
-- Do not use non-const static class members.
-- Do not use non-const static variable storage.
+- [MM-1] Memory management should be generally based on RAII. 
+- [MM-2] Use a pointer only if a reference cannot be used instead.
+- [MM-3] Always use a `std::unique_ptr` when a pointer takes the ownership.
+- [MM-4] Re-design the code such that bare `delete` or `delete[]` is never needed. 
+- [MM-5] Do not use non-const static class members.
+- [MM-6] Do not use non-const static variable storage.
 
 ## Abandoned C++ features
 
-- No RTTI
-- No user defined exception
-- No `goto`
-- No `std::shared_ptr`
-- No C++14 or C++17 (for portability)
+- [AB-1] No RTTI
+- [AB-2] No user defined exception
+- [AB-3] No `goto`
+- [AB-4] No `std::shared_ptr`
+- [AB-5] No C++14 or C++17 (for portability)
 
 ## Container Preferences
 
-- Use arrays and array-likes for small data regardless of big-O
-  - Less than 1KiB is considered small
-  - Use `std::array` for fix length arrays
-  - Use `saki::util::Stactor` for variable length arrays
-  - Raw C-style arrays are not used
-- Linear search is preferred over binary search on small arrays
-- Functional map/fold style is preferred over `for` loops
+- [CP-1] Use arrays and array-likes for small data regardless of big-O.
+  - Less than 1KiB is considered small.
+  - Use `std::array` for fix length arrays.
+  - Use `saki::util::Stactor` for variable length arrays.
+  - Do not use Raw C-style arrays.
+- [CP-2] Linear search is preferred over binary search on small arrays.
+- [CP-3] Functional map/fold style is preferred over `for` loops.
 
 ## Class Definition Formatting
 
-- Mark overloading functions with the `overload` keyword.
-- Omit `virtual` in overloading functions.
-- Constructors taking one or more arguments should be prefixed by `explicit`
-  unless they are meant to be non-explicit
-- Prefer `= delete` over hiding by making `private`.
+- [CL-1] Mark overloading functions with the `overload` keyword.
+- [CL-2] Omit `virtual` in overloading functions.
+- [CL-3] Constructors taking one or more arguments should be prefixed by `explicit`
+  unless they are meant to be non-explicit.
+- [CL-4] Prefer `= delete` over hiding by making `private`.
+- [CL-5] Place all member functions above all non-static member fields.
+- [CL-6] Order member functions by `public`->`protected`->`private` order.
+- [CL-7] Order non-static member fields by `public`->`protected`->`private` order.
 
 ## Statement Formatting
 
-- Do not squash multiple statements into one line.
-- Declare one variable with one declaration statement.
+- [SM-1] Do not squash multiple statements into one line.
+- [SM-2] Declare one variable with one declaration statement.
   - Unless in some common idioms like `int i, j, k`
-- Stick `*` and `&` to variables but not types.
+- [SM-3] Stick `*` and `&` to variables but not types.
   - Bad: `int* p`
   - Good: `int *p`
-- Use brackets in the body of `if`, `for`, and `while`
-  unless and only unless the two conditions are satisfied:
-  1. The condition expression fits in one line;
-  2. The statement body is either a single one-line statement,
-	 or an `if`, `for`, or `while` statement without a bracketed body.
-- Use brackets for all bodies in an `if...else if...else` block 
-  as long as one of its body is bracketed. 
-- When there is a `break`, `continue`, or `return` in the end of an `if` body, 
+- [SM-4] Use brackets in the body of `if`, `for`, and `while`
+  if (but not only if) at least one of the following conditions are satisfied:
+  1. The condition expression takes more than one line;
+  2. The statement body has more than one statement;
+  3. The statement body is one `if`, `for`, or `while` block with
+     a bracketed body.
+- [SM-5] Use brackets for all bodies in an `if...else if...else` block 
+  as long as one of its body should be bracketed according to SM-4. 
+- [SM-6] Do not use brackets in the body of `if`, `for`, and `while`
+  if no bracket is required according to SM-4 and SM-5.
+- [SM-7] When there is a `break`, `continue`, or `return` in the end of an `if` body, 
   the else-case is usually typed outside without being in an `else` block, 
   unless adding an `else` can make the whole block more aligned. 
-- A fall-through in a `switch` statement
+- [SM-8] A fall-through in a `switch` statement
   should be commented by an `// fall through` exactly.
   - a group of adjacent labels in a `switch` statement is not addressed as a fall-through.
-- A typical integer `for` condition should look like
+- [SM-9] A typical integer `for` condition should look like
   `(int i = 0; i < N; i++)`  (use `<` and postfix `++`)
-- A typical iterator `for` condition should look like
+- [SM-10] A typical iterator `for` condition should look like
   `(auto it = v.begin(); it != v.end(); ++it)`
   (use `auto`, `!=`, and prefix `++`)
-- Avoid long function definition and/or deep indentation level.
+- [SM-11] Avoid long function definition and/or deep indentation level.
   Break them into multiple short functions.
-- Prefer `using` over `typedef`.
+- [SM-12] Prefer `using` over `typedef`.
 
 ## Expression Formatting
 
-- Always use `nullptr` for null pointers. Do not use `NULL` or `0`.
-- Use `ptr != nullptr` or `ptr == nullptr` to check pointers' nullity.
+- [EX-1] Always use `nullptr` for null pointers. Do not use `NULL` or `0`.
+- [EX-2] Use `ptr != nullptr` or `ptr == nullptr` to check pointers' nullity.
   Do not use `ptr` or `!ptr`.
-- Use `i != 0` or `i == 0` to check zero integers. Do not use `i` or `!i`.
-- Directly use `b` or `!b` to check boolean conditions.
+- [EX-3] Use `i != 0` or `i == 0` to check zero integers. Do not use `i` or `!i`.
+- [EX-4] Directly use `b` or `!b` to check boolean conditions.
   Do not use `b == true` or `b == false`.
-- Do not use Yoda conditions. 
-- Do not rely on the precedence between `&&` and `||`
+- [EX-5] Do not use Yoda conditions. 
+- [EX-6] Do not rely on the precedence between `&&` and `||`
   - Bad: `a && b || c`
   - Good: `(a && b) || c`
-- Do not rely on the precedence between bitwise operators and always use parenthesises.
+- [EX-7] Do not rely on the precedence between bitwise operators and always use parenthesises.
 
 
 ## Other
 
-- No non-ASCII character, even in string literals and comments.
-- Wrap lines to 110 characters. Less than 80 is better.
+- [OT-1] Do not use any non-ASCII character, even in string literals and comments.
+- [OT-2] Wrap lines to 110 characters. Less than 80 is better.
 
 
 
