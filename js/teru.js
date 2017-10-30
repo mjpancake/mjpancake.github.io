@@ -6,9 +6,9 @@
 var teru = {};
 
 teru.send = function(method, api, msg, onSuccess) {
-	var domain = "rolevax.xyz";
+	var domain = "cn.rolevax.xyz";
 	//var domain = "127.0.0.1";
-    var url = "https://" + domain + ":8080" + api;
+    var url = "https://" + domain + api;
 
     xmlhttp = new XMLHttpRequest();
     xmlhttp.open(method, url, true);
