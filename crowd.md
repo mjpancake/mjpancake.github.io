@@ -238,7 +238,7 @@ function reloadForms() {
     teru.send("GET", "/task/", "", renderTable);
 }
 
-hint("正在登录…<br />若登录时间过长，请尝试梯子", true, true);
+hint("正在登录…", true, true);
 teru.makeSureLoggedIn(function() {
     user = teru.getUser();
 	var curr = document.getElementById("curr-user");
