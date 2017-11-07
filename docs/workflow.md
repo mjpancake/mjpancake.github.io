@@ -36,7 +36,7 @@ permalink: /docs/workflow/
 1. 拥有GitHub账号，掌握基本Git操作
 1. 一定的编程基础
   - 参考[项目介绍](#intro)确认需要学习的语言
-1. 喜欢提问题
+1. 会提问题
   - 有问题基本靠吼，遇到疑点时不要犹豫，
     尽管在[Gitter]({{ site.data.link.gitter }}){:target="_blank"}提问
 1. 不穿胖次
