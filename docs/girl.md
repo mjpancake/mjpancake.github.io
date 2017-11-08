@@ -9,17 +9,17 @@ permalink: /docs/girl/
 那就说明程序有问题， 可作为bug发馈到贴吧。
 如果程序中出现有关本文档中未提及的细节的问题，
 或文档本身出现与原作不符的描述， 可作为能力提案反馈。
-反馈时参考[规范](/feedback/)，可提高被采纳率。
+反馈时参考[规范](/feedback/)，可增加贡献度。
 
 以下正文中带（\*）的能力尚未实现，旨在提前放出制作计划以供讨论。
 
-## 目录
+## 索引
 
-<ul>
+<p>
 {% for girl in site.data.girls %}
-  <li><a href="#{{ girl.id }}">{{ girl.name }}</a></li>
+<a style="white-space:nowrap" href="#{{ girl.id }}">{{ girl.name }}</a>
 {% endfor %}
-</ul>
+</p>
 
 <br />
 

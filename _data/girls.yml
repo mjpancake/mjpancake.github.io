@@ -32,7 +32,7 @@
         -
           content: 和牌被打断后火力需重新从低点涨起
         -
-          content: 和牌速度与点数无关，任何情况下都容易在早巡和牌
+          content: 和牌速度与点数无关
     -
       name: （*）王者的余裕
       descs:
@@ -809,6 +809,15 @@
         - 
           content: 某些部位的确很早
 - 
+  id: 990005
+  name: 石飛閑無
+  skills:
+    - 
+      name: 基本无敌
+      descs:
+        - 
+          content: 麻将这种蛮不讲理的辣鸡游戏……
+- 
   id: 990008
   name: 小鍛治健夜
   skills:
@@ -822,7 +831,7 @@
   name: 三尋木咏
   skills:
     - 
-      name: （*）布吉岛
+      name: 布吉岛
       descs:
         - 
           content: 布吉岛，啥也布吉岛
@@ -862,3 +871,12 @@
       descs:
         - 
           content: 随便一句话就能让人获得能力
+- 
+  id: 990024
+  name: 楫野結衣
+  skills:
+    - 
+      name: 好想碾碎
+      descs:
+        - 
+          content: 偶尔会来很多对子
