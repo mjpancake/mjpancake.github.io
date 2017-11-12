@@ -25,7 +25,6 @@ th, td {
     <div style="width:45px;height:45px">
         <div id="spinner" style="position:relative"></div>
     </div>
-    <h4 id="hint-text"></h4>
 </div>
 
 <table id="c-points">
@@ -123,16 +122,16 @@ th, td {
 <script>
 var spinner = new Spinner();
 
-function hint(text, hideForm = true, spin = true) {
+function setSpin(value) {
     var loading = document.getElementById("loading");
-    loading.style.display = "block";
-    document.getElementById("hint-text").innerHTML = text;
 
-    if (spin) {
+	if (value) {
         spinner.spin();
 		document.getElementById("spinner").appendChild(spinner.el);
+		loading.style.display = "block";
     } else {
         spinner.stop();
+		loading.style.display = "none";
     }
 }
 
@@ -154,10 +153,11 @@ function renderTable(sc) {
             row1col3.innerHTML = sc.Entries[i].CPoint;
         }
     }
-	hint("", false, false);
+
+	setSpin(false);
 }
 
-hint("正在加载贡献度排行…", true, true);
+setSpin(true);
 teru.send("GET", "/account/c-points", "", renderTable);
 </script>
 
