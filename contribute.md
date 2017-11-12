@@ -22,9 +22,10 @@ th, td {
 </style>
 
 <div id="loading">
-    <p>
-        正在加载贡献度排行……
-    </p>
+    <div style="width:45px;height:45px">
+        <div id="spinner" style="position:relative"></div>
+    </div>
+    <h4 id="hint-text"></h4>
 </div>
 
 <table id="c-points">
@@ -117,8 +118,24 @@ th, td {
 - 前往[松饼众包平台](/crowd/)领取单次任务。
 
 <script src="/js/teru.js"></script>
+<script src="/js/spin.min.js"></script>
 
 <script>
+var spinner = new Spinner();
+
+function hint(text, hideForm = true, spin = true) {
+    var loading = document.getElementById("loading");
+    loading.style.display = "block";
+    document.getElementById("hint-text").innerHTML = text;
+
+    if (spin) {
+        spinner.spin();
+		document.getElementById("spinner").appendChild(spinner.el);
+    } else {
+        spinner.stop();
+    }
+}
+
 function renderTable(sc) {
     var table = document.getElementById('c-points');
 
@@ -137,11 +154,10 @@ function renderTable(sc) {
             row1col3.innerHTML = sc.Entries[i].CPoint;
         }
     }
-
-    var loading = document.getElementById('loading');
-    loading.style.display = "none";
+	hint("", false, false);
 }
 
+hint("正在加载贡献度排行…", true, true);
 teru.send("GET", "/account/c-points", "", renderTable);
 </script>
 
