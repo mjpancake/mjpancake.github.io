@@ -40,13 +40,15 @@ whenever you find a rule hard to understand.
 - {CM-1] Avoid commenting, by making the code self-explainatory.
 - [CM-2] Always mark ends of include guards and namespaces with comments.
 - [CM-3] Use only `//` comments in committed code. `/* */` is reserved for debugging. 
+- [CM-4] Do not delete code by commenting-out, and just erase them instead.
 
 ## Naming
 
-- [NM-1] Naming should basically base on English. 
-  Mahjong terminologies, character names, and school names
-  can be represented by Japanese Romaji. 
-  Terminologies related to the Chinese GB Mahjong can be represented by Pinyin. 
+- [NM-1] Base naming on English. 
+         Mahjong terminologies, character names, and school names
+         can be represented by Japanese Romaji. 
+         Terminologies related to the Chinese GB Mahjong
+         can be represented by Pinyin. 
 - [NM-2] Use `UpperCamelCase` for class, struct, union, and enum type names. 
 - [NM-3] Use `lowerCamelCase` for function and variable names. 
 - [NM-4] Start non-public class member variables with `m`.
@@ -92,9 +94,12 @@ fox_slow_white.h
 - [SP-12] To break or not to break:
   - Break:`class\n{`, `struct\n{`, `union\n{`, `enum\n{`, `namespace\n{`, `void f()\n{`
   - No break: `if {`, `while {`, `for {`, `do {`, `[]() {`
-- [SP-13] Append to the `#include` preamble with three empty lines. 
-- [SP-14] Append the last non-empty line of the file with three empty lines.
+- [SP-13] Append three empty lines after the `#include` preamble block. 
+- [SP-14] Append three empty lines to the last non-empty line of the file.
 - [SP-15] Keep all things three empty lines away from the beginning and ending of a namespace.
+- [SP-16] Eliminate empty lines before a closing `}` that does not belong to a namespace.
+- [SP-17] Append a space to a line whose only non-space character is a `}`
+          unless the line is the last line in a block.
 
 ## Memory Management
 
@@ -154,7 +159,7 @@ fox_slow_white.h
   if no bracket is required according to SM-4 and SM-5.
 - [SM-7] When there is a `break`, `continue`, or `return` in the end of an `if` body, 
   the else-case is usually typed outside without being in an `else` block, 
-  unless adding an `else` can make the whole block more aligned. 
+  unless adding an `else` can make the whole block align better. 
 - [SM-8] A fall-through in a `switch` statement
   should be commented by an `// fall through` exactly.
   - a group of adjacent labels in a `switch` statement is not addressed as a fall-through.
@@ -163,8 +168,8 @@ fox_slow_white.h
 - [SM-10] A typical iterator `for` condition should look like
   `(auto it = v.begin(); it != v.end(); ++it)`
   (use `auto`, `!=`, and prefix `++`)
-- [SM-11] Avoid long function definition and/or deep indentation level.
-  Break them into multiple short functions.
+- [SM-11] Avoid long (more than one page) function definition
+          and/or deep indentation level.
 - [SM-12] Prefer `using` over `typedef`.
 
 ## Expression Formatting
