@@ -17,7 +17,7 @@
   name: 宮永照
   skills:
     -
-      name: （*）照魔镜
+      name: 照魔镜（*）
       descs:
         -
           content: 能看穿对手的本质
@@ -25,16 +25,14 @@
             - 启动前需要一定的时间观察对手
             - 发动后一定时间内无法再次观察同一对手
     -
-      name: （*）连续和了
+      name: 连续和了（*）
       descs:
         -
           content: 容易连续和牌且火力不断上升
         -
           content: 和牌被打断后火力需重新从低点涨起
-        -
-          content: 和牌速度与点数无关
     -
-      name: （*）王者的余裕
+      name: 王者的余裕（*）
       descs:
         - 
           content: 手牌素点不大于前一局和牌素点收入时无法宣告和牌
@@ -42,12 +40,12 @@
             - 被头跳抢和，致使无实际收入时天梯重置
             - 发生荒牌流局、各种途中流局、流局满贯时天梯重置
     - 
-      name: （*）唧唧唧
+      name: 唧唧唧（*）
       descs:
         - 
           content: ？
     -
-      name: （*）牌风
+      name: 牌风（*）
       descs:
         -
           content: 适合默听
@@ -56,12 +54,12 @@
         -
           content: 时常形成纠结的多面听牌并刚好避开低目自摸
     -
-      name: （*）感知
+      name: 感知（*）
       descs:
         -
           content: 能够分辨出手中的铳牌
     -
-      name: （*）教练
+      name: 教练（*）
       descs:
         -
           content: 可发掘队友的潜能，提升其战斗力
@@ -70,10 +68,10 @@
   name: 弘世菫
   skills:
     -
-      name: （*）农家乐之打猎的
+      name: 农家乐之打猎的（*）
       descs:
         -
-          content: 门前默听后可开始对一名对手进行瞄准
+          content: 一定条件下可对一名对手进行瞄准
         -
           content: 瞄准完成后固定牌型并保持默听，即可发起任意次数射击
         -
@@ -149,12 +147,12 @@
   name: 花田煌
   skills:
     - 
-      name: （*）好棒
+      name: 好棒（*）
       descs:
         -
           content: 牌感简直不能太棒，无挂胜有挂
     - 
-      name: （*）不飞
+      name: 不飞（*）
       descs:
         -
           content: 无法被击飞
@@ -163,12 +161,12 @@
   name: 白水哩
   skills:
     - 
-      name: （*）三年ACE担当
+      name: 三年ACE担当（*）
       descs:
         -
           content: 分数刷不够，根本停不下来
     - 
-      name: （*）束缚
+      name: 束缚（*）
       descs:
         -
           content: 配牌后可选择加上N番缚
@@ -181,7 +179,7 @@
   name: 鶴田姫子
   skills:
     - 
-      name: （*）连携
+      name: 连携（*）
       descs:
         -
           content: 拿到钥匙的局目必然以对应番数和牌
@@ -246,7 +244,7 @@
   name: 高鴨穏乃
   skills:
     - 
-      name: （*）深山之主
+      name: 深山之主（*）
       descs:
         -
           content: ——踏过现实中修行的山路
@@ -328,12 +326,12 @@
   name: 清水谷竜華
   skills:
     - 
-      name: （*）从小R量不科学
+      name: 从小R量不科学（*）
       descs:
         - 
           content: 平均获得素点关西首屈一指
     - 
-      name: （*）枕神
+      name: 枕神（*）
       descs:
         - 
           content: 配牌开始前可以召唤怜
@@ -352,7 +350,7 @@
   name: 滝見春
   skills:
     - 
-      name: （*）武功再高
+      name: 武功再高（*）
       descs:
         - 
           content: 一番撂倒
@@ -486,9 +484,9 @@
         - 
           content: 容易做成七对子
         - 
-          content: （*）对运势流能力免疫
+          content: 对运势流能力免疫（*）
         - 
-          content: （*）对隐身能力免疫
+          content: 对隐身能力免疫（*）
     - 
       name: 信念
       descs:
@@ -504,25 +502,21 @@
   name: 宮永咲
   skills:
     - 
-      name: （*）正负零
+      name: 正负零（*）
       descs:
-        - 
-          content: 意识可以支配整个空间
         - 
           content: 容易调整出+4600到+5500之间的终局点数
     - 
-      name: （*）牌风
+      name: 牌风（*）
       descs:
         - 
           content: 普通的麻将，普通的岭上开花
         - 
           content: 不会通过开杠为自己增加宝牌
         - 
-          content: 不容易中里宝牌
-        - 
           content: 容易摸到西风
     - 
-      name: （*）大魔王
+      name: 大魔王（*）
       descs:
         - 
           content: 自带灵压雷达
@@ -540,30 +534,28 @@
   name: 天江衣
   skills:
     - 
-      name: （*）魑魅魍魉
+      name: 魑魅魍魉（*）
       descs:
         - 
           content: 保有全国大会史上最高火力纪录
         - 
           content: 节奏变化快，从早巡到海底都很擅长
         - 
-          content: 控场之严犹如无法摆脱的命运
-        - 
           content: 时间越接近满月的夜晚支配力越强
     - 
-      name: （*）恶趣味
+      name: 恶趣味（*）
       descs:
         - 
           content: 无法宣告只击飞一家的和牌
         - 
           content: 有一定几率因弄坏闹钟导致骑马
     - 
-      name: （*）牌风
+      name: 牌风（*）
       descs:
         - 
           content: 容易做出古役满
     - 
-      name: （*）感知
+      name: 感知（*）
       descs:
         - 
           content: 可察觉对手是否听牌，并大致知晓打点预期
@@ -582,7 +574,7 @@
         - 
           content: 南入后牌运变好
         - 
-          content: （*）今年的规则没有不利
+          content: 今年的规则没有不利（*）
   costs:
     - 每局消耗 时髦-3
   gains:
@@ -593,7 +585,7 @@
   name: 夢乃マホ
   skills:
     - 
-      name: （*）小魔王
+      name: 小魔王（*）
       descs:
         - 
           content: 每局可复制一次周围在场者的能力，持续一局
@@ -644,7 +636,7 @@
   name: 愛宕洋榎
   skills:
     - 
-      name: （*）宙斯盾
+      name: 宙斯盾（*）
       descs:
         - 
           content: 除非故意，永不放铳
@@ -655,7 +647,7 @@
   name: 愛宕絹恵
   skills:
     - 
-      name: （*）足球妹
+      name: 足球（*）
       descs:
         - 
           content: 因为踢过足球，所以和圆形的东西有缘
@@ -679,7 +671,7 @@
   name: 真屋由暉子
   skills:
     - 
-      name: （*）一天一次
+      name: 一天一次（*）
       descs:
         - 
           content: 每天可向对手申请一次使用左手打牌
@@ -724,7 +716,7 @@
   name: 辻垣内智葉
   skills:
     - 
-      name: （*）黑社会拔刀爷
+      name: 黑社会拔刀爷（*）
       descs:
         - 
           content: 可以砍了对手
@@ -745,7 +737,7 @@
         - 
           content: 无法立直
         - 
-          content: （*）对记忆类能力有干涉作用
+          content: 对记忆类能力有干涉作用（*）
 - 
   id: 990001
   name: 稲村杏果
@@ -756,7 +748,7 @@
         - 
           content: 容易摸到对子和暗刻
         - 
-          content: （*）对读牌类能力有一定的免疫作用
+          content: 对读牌类能力有一定的免疫作用（*）
 -
   id: 990002
   name: 白築慕
@@ -770,13 +762,16 @@
       name: 牌风
       descs:
         - 
-          content: （*）无论如何都会以1s和牌
+          content: 无论如何都会以1s和牌（*）
         - 
-          content: 容易做成平和、一杯、三色、全带
-        - 
-          content: 与此同时手牌不失灵活性，可随机应变而不拘泥于以上役种
+          content: 手牌容易横向发展，同时也变化丰富不失灵活性
         - 
           content: 见逃低目振听状态下容易高目和牌
+    - 
+      name: 鸟瞰（*）
+      descs:
+        - 
+          content: 咋不上天呢
     - 
       name: 感知
       descs:
@@ -804,7 +799,7 @@
   name: 瑞原はやり
   skills:
     - 
-      name: （*）好早
+      name: 好早（*）
       descs:
         - 
           content: 某些部位的确很早
@@ -813,7 +808,7 @@
   name: 石飛閑無
   skills:
     - 
-      name: 基本无敌
+      name: 基本无敌（*）
       descs:
         - 
           content: 麻将这种蛮不讲理的辣鸡游戏……
@@ -822,7 +817,7 @@
   name: 小鍛治健夜
   skills:
     - 
-      name: （*）不明植物
+      name: 不明植物（*）
       descs:
         - 
           content: 虽然不是很明白，但是会爆出一堆植物
@@ -836,18 +831,27 @@
         - 
           content: 布吉岛，啥也布吉岛
         - 
-          content: 带上可以弯曲的条形猫，胜率会提高
+          content: 带上可以弯曲的条形猫，胜率会提高（*）
+- 
+  id: 990014
+  name: 多久和李緒
+  skills:
+    - 
+      name: 早起
+      descs:
+        - 
+          content: 早起有爆米花吃
 - 
   id: 990017
   name: 椋千尋
   skills:
     - 
-      name: （*）魔物同学
+      name: 魔物同学（*）
       descs:
         - 
           content: 魔物同学，你的思想很危险啊
     - 
-      name: （*）不是宠物
+      name: 不是宠物（*）
       descs:
         - 
           content: 有一定机率临场骑马
@@ -856,7 +860,7 @@
   name: Lotta Niemann
   skills:
     - 
-      name: （*）Schadenzauber
+      name: Schadenzauber（*）
       descs:
         - 
           content: 输了也没关系，这个时候把对手监禁play就行了
@@ -867,7 +871,7 @@
   name: 松実露子
   skills:
     - 
-      name: （*）……
+      name: ……（*）
       descs:
         - 
           content: 随便一句话就能让人获得能力

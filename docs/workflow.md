@@ -6,9 +6,7 @@ permalink: /docs/workflow/
 
 ## <a name="intro"></a>项目介绍
 
-松饼麻雀为开源项目，以开放、分享为原则。
-
-松饼的多数组件采用MIT协议发布，Qt客户端采用LGPLv3协议发布。
+松饼麻雀为开源项目，多数组件采用MIT协议发布，Qt客户端采用LGPLv3协议发布。
 改造定制，发布MOD，搭建私服都是没有问题的。
 若基于松饼进行二次开发，建议（非强制）注明“基于松饼麻雀”字样并附以主站链接。
 
@@ -131,25 +129,75 @@ permalink: /docs/workflow/
     - 第四步：将修改push到远端，并创建pull request
 - 采用单线提交历史，全程只允许fast-forward合并
     - 参考[Git Branching - Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing){:target="_blank"}
-- 有问题可在[Gitter聊天室]({{ site.data.link.gitter }}){:target="_blank"}提问
-    - 为方便后人乘凉，建议公开提问，不建议私信
 
 ### Git提交消息规范
-- 英语
-- 适当省略冠词
-- 首字母小写
-- 句尾无句号
-- 祈使句
+
+提交消息不符合规范的提交无法被合并。
+
+- [第1条] 英语
+- [第2条] 适当省略冠词
+- [第3条] 首字母小写
+- [第4条] 句尾无句号
+- [第5条] 动词原形开头，命令式句型
   - 正面例子：add sm combo skill
   - 反面例子1：sm combo skill
   - 反面例子2：added sm combo skill
   - 反面例子3：adds sm combo skill
-- 不要绕弯
+- [第6条] 不要绕弯
   - 正面例子：solve xxxx
   - 反面例子1：make the problem of xxxx solved
   - 反面例子2：provide a solution to xxxx
-- 消息用来描述人改了什么，而不是程序干了什么
+- [第7条] 消息用来描述人改了什么，而不是程序干了什么
   - 正面例子：add user input validation
   - 反面例子：validate user input
+- [第8条] 记录内容变化，而不是文件变化
+  - 正面例子：add +-0 skill to saki
+  - 反面例子：update girls_kiyosumi.cpp
+- [第9条] 消息应独立自足，不完全依赖于外部引用
+  - 正面例子：add +-0 skill to saki
+  - 反面例子：complete task 8123
 
+已上传的提交消息可通过`git rebase -i upstream/develop`和`git push -f`修改
+
+## 提问的重要性
+
+遇到任何问题，应及时在[Gitter]({{ site.data.link.gitter }}){:target="_blank"}提问。
+
+遇到任何问题，应及时在[Gitter]({{ site.data.link.gitter }}){:target="_blank"}提问。
+
+遇到任何问题，应及时在[Gitter]({{ site.data.link.gitter }}){:target="_blank"}提问。
+
+在众包平台上做一个任务，通常需要提出5个以上的问题。
+
+所谓的“问题”，主要指以下这些：
+
+1. 代码需要解释
+    - 现在的代码，看不懂是正常的，能看懂才不正常
+    - 提问范例1：“xxx文件里的yyy函数是干什么的？如何使用？”
+    - 提问范例2：“xxx里的yyy为什么要这么写？用zzz不是更好吗？”
+    - 提问范例3：“xxx里的yyy是什么意思？”
+    - 提问范例4：“xxx和yyy是什么关系？”
+    - 提问范例5：“xxx由什么组成？内部结构是什么样的？”
+    - 提问范例5：“xxx为什么要搞成这样？好处是什么？”
+2. 想改某个功能，却不知道/不确信相关的代码在哪儿
+    - 提问范例1：“想添加xxx功能，应该改哪里？”
+    - 提问范例2：“想做xxx，是不是改yyy就行了？”
+    - 提问范例3：“想做xxx，是不是yyy和zzz都得改？”
+3. 修改任务说明中没有提及的文件/类/函数
+    - 提问范例1：“任务8123里说要修改xxx.cpp，但如果要yyy，是不是zzz.cpp也需要改？”
+    - 提问范例2：“任务8123里说要修改xxx函数，但为了yyy，是不是zzz也需要改？”
+    - 提问范例3：“为了任务8123，因为xxx，重构yyy如何？”
+4. 明确需求
+    - 提问范例1：“任务8123里说的xxx指的是什么？”
+    - 提问范例2：“任务8123里说的xxx通过什么标准衡量？”
+    - 提问范例3：“任务8123里说要xxx，但这么做的话岂不是yyy了吗？”
+5. 没思路
+    - 提问范例1：“想做xxx，应该从何处入手？”
+    - 提问范例2：“xxx应该通过什么来实现？”
+5. 其它问题
+    - 不存在不能问的问题
+    - 提问范例：“京狗和管家掉进河里了，先救哪个？”
+
+Gitter里的问题通常都会在24小时内回复。
+回复通常都是精简化的，如果觉得不够详尽，应继续追问。
 
