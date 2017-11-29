@@ -40,10 +40,6 @@ permalink: /docs/workflow/
 1. 不穿胖次
   - 不穿胖次有助于减少bug
 
-想参与，却发现自己尚需学习进步的，
-可在[Gitter]({{ site.data.link.gitter }}){:target="_blank"}寻求帮助。
-我们会给出不太离谱的资料或学习路线图。
-
 <br />
 
 ## 核心库“Libsaki”改前必读
@@ -54,7 +50,7 @@ permalink: /docs/workflow/
     - Widnows: 安装[Git for Windows](https://git-for-windows.github.io/){:target="_blank"}
     - macOS: 从App Store安装Xcode，Xcode里面自带Git
     - Linux: 包管理大法
-- 下载并安装Qt 5.9.2 Community
+- 下载并安装Qt 5.9.3 Community
     - Windows, macOS: 到[官网](www.qt.io){:target="_blank"}下载
         - Windows上建议选择不依赖VS的MinGW版Qt
     - Linux: 包管理大法
@@ -62,12 +58,10 @@ permalink: /docs/workflow/
 - 从`mjpancake`和`libsaki`创建fork （为将来方便，两个都fork）
     - 进入[`mjpancake`][mjpancake]{:target="_blank"}页面，点右上角的fork
     - 进入[`libsaki`][libsaki]{:target="_blank"}页面，点右上角的fork
-    - `libsaki`是`mjpancake`的一个submodule，而`libsaki`本身不带程序入口。
-      为方便测试，即使只修改`libsaki`，也需要连同`mjpancake`一起下载
 - 打开一个终端窗口
     - Windows: 浏览工作目录，右键菜单中点“Git Bash Here”
     - macOS: Command+空格，输入terminal回车
-- 在终端中输入以下命令：（替换掉`your-username`）
+- 在终端中输入以下命令以下载代码：（替换掉`your-username`）
     - `git clone --recursive https://github.com/your-username/mjpancake.git`
     - `cd mjpancake`
     - `git remote add upstream https://github.com/rolevax/mjpancake.git`
@@ -116,6 +110,12 @@ permalink: /docs/workflow/
 
 `ih`启动方式见[`rolevax/ih`][ih]{:target="_blank"}项目。
 修改`js/teru.js`中的地址可开启自攻自受，访问本地后端。
+
+<br />
+
+## 服务端“ih”改前必读
+
+还没有文档，有问题全部靠吼。
 
 <br />
 
