@@ -32,6 +32,9 @@ permalink: /docs/workflow/
 
 1. 够用的英文读写能力
 1. 拥有GitHub账号，掌握基本Git操作
+  - 几个不错的Git教程：
+        [廖雪峰](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000){:target="_blank"}
+        ，[Pro Git](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6){:target="_blank"}
 1. 一定的编程基础
   - 参考[项目介绍](#intro)确认需要学习的语言
 1. 会提问题
@@ -50,9 +53,11 @@ permalink: /docs/workflow/
     - Widnows: 安装[Git for Windows](https://git-for-windows.github.io/){:target="_blank"}
     - macOS: 从App Store安装Xcode，Xcode里面自带Git
     - Linux: 包管理大法
-- 下载并安装Qt 5.9.3 Community
+- 下载并安装Qt 5.9.3 开源版
     - Windows, macOS: 到[官网](www.qt.io){:target="_blank"}下载
-        - Windows上建议选择不依赖VS的MinGW版Qt
+        - 大陆网络环境下Qt官网可能奇慢无比，
+          可使用[科大镜像](http://mirrors.ustc.edu.cn/qtproject/archive/qt/5.9/5.9.3/){:target="_blank"}代替
+        - Windows安装时记得要勾选MinGW组件
     - Linux: 包管理大法
         - 官方源Qt不到5.9的发行版自行折腾
 - 从`mjpancake`和`libsaki`创建fork （为将来方便，两个都fork）
