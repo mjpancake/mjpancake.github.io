@@ -57,7 +57,7 @@ permalink: /docs/workflow/
     - Windows, macOS: 到[官网](www.qt.io){:target="_blank"}下载
         - 大陆网络环境下Qt官网可能奇慢无比，
           可使用[科大镜像](http://mirrors.ustc.edu.cn/qtproject/archive/qt/5.9/5.9.3/){:target="_blank"}代替
-        - Windows安装时记得要勾选MinGW组件
+        - Windows安装时要记得勾选MinGW组件
     - Linux: 包管理大法
         - 官方源Qt不到5.9的发行版自行折腾
 - 从`mjpancake`和`libsaki`创建fork （为将来方便，两个都fork）
