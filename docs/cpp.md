@@ -86,26 +86,30 @@ fox_slow_white.h
 - [SP-6] Stick Unary operators to their operands without spaces
   - Unless in some idioms like `while (i --> 0)`
 - [SP-7] Stick Semicolons to the end of statement without spaces. 
-- [SP-8] Keep space-paddings inside a pair of `{` and `}` that are in the same line.
-- [SP-9] Append either a space or a line break after commas.
-- [SP-10] Break, if necessary, a binary expression into two lines before the operator.
-- [SP-11] Keep the `{` at the same line of `if`, `while`, `for`, `do while`,
+- [SP-8] Keep space-paddings inside a pair of `{ }`'s that are in the same line.
+- [SP-9] Keep no space-padding inside a pair of `[]` or `()`.
+- [SP-10] Append either a space or a line break after a `,` or `;`.
+- [SP-11] Break, if necessary, a binary expression into two lines before the operator.
+- [SP-12] Keep the `{` at the same line of `if`, `while`, `for`, `do while`,
   or lambda's capture and parameters.
-- [SP-12] To break or not to break:
+- [SP-13] To break or not to break before a `{`:
   - Break:`class\n{`, `struct\n{`, `union\n{`, `enum\n{`, `namespace\n{`, `void f()\n{`
   - No break: `if {`, `while {`, `for {`, `do {`, `[]() {`
-- [SP-13] Append three empty lines after the `#include` preamble block. 
-- [SP-14] Append three empty lines to the last non-empty line of the file.
-- [SP-15] Keep all things three empty lines away from the beginning and ending of a namespace.
-- [SP-16] Eliminate empty lines before a closing `}` that does not belong to a namespace.
-- [SP-17] Append a space to a line whose only non-space character is a `}`
-          unless the line is the last line in a block.
+- [SP-14] To break or not to break after a `}` of a block of statements:
+  - No break: `} else`, `} catch`
+  - Break: any other cases
+- [SP-15] Do not separate `else` keywords from their `if` blocks
+          by empty lines.
+- [SP-16] Keep all things three empty lines away from the beginning and ending of a namespace.
+- [SP-17] Eliminate empty lines before a closing `}` that does not belong to a namespace.
+- [SP-18] Append an empty line to a line whose only non-space character
+          is a `}` unless it is the last line in a block.
 
 ## Memory Management
 
-- [MM-1] Memory management should be generally based on RAII. 
+- [MM-1] Base memory management generally on RAII. 
 - [MM-2] Use a pointer only if a reference cannot be used instead.
-- [MM-3] Always use a `std::unique_ptr` when a pointer takes the ownership.
+- [MM-3] Use a `std::unique_ptr` whenever a pointer takes the ownership.
 - [MM-4] Re-design the code such that bare `delete` or `delete[]` is never needed. 
 - [MM-5] Do not use non-const static class members.
 - [MM-6] Do not use non-const static variable storage.
@@ -152,25 +156,37 @@ fox_slow_white.h
   1. The condition expression takes more than one line;
   2. The statement body has more than one statement;
   3. The statement body is one `if`, `for`, or `while` block with
-     a bracketed body.
+     a bracketed body;
+  4. The statement body is one assignment or function call that
+     takes more than one line;
+  5. The statement body is one `if` statement that has an `else` block.
 - [SM-5] Use brackets for all bodies in an `if...else if...else` block 
   as long as one of its body should be bracketed according to SM-4. 
 - [SM-6] Do not use brackets in the body of `if`, `for`, and `while`
-  if no bracket is required according to SM-4 and SM-5.
-- [SM-7] When there is a `break`, `continue`, or `return` in the end of an `if` body, 
-  the else-case is usually typed outside without being in an `else` block, 
-  unless adding an `else` can make the whole block align better. 
-- [SM-8] A fall-through in a `switch` statement
-  should be commented by an `// fall through` exactly.
+         if no bracket is required according to SM-4 and SM-5.
+- [SM-7] Write an `else` block whose body is exactly one `if` statement
+         in the `else if (...)` form.
+         (place `else` and `if` in the same line)
+- [SM-8] Place conditions and their `if`, `while`, or `for`
+         in the same line.
+- [SM-9] Do not place body statements and their `if`, `else`, `while`,
+         or `for` in the same line.
+- [SM-10] With a `break`, `continue`, or `return`
+          that will be certainly reached in the end of an `if` body,
+          type the else-case outside rather than adding an `else` block, 
+          unless an `else` can make the whole block align better. 
+- [SM-11] A fall-through in a `switch` statement
+          should be commented by an `// fall through` exactly.
   - a group of adjacent labels in a `switch` statement is not addressed as a fall-through.
-- [SM-9] A typical integer `for` condition should look like
+- [SM-12] A typical integer `for` condition should look like
   `(int i = 0; i < N; i++)`  (use `<` and postfix `++`)
-- [SM-10] A typical iterator `for` condition should look like
+- [SM-13] A typical iterator `for` condition should look like
   `(auto it = v.begin(); it != v.end(); ++it)`
   (use `auto`, `!=`, and prefix `++`)
-- [SM-11] Avoid long (more than one page) function definition
+- [SM-14] Avoid long (more than one page) function definition
           and/or deep indentation level.
-- [SM-12] Prefer `using` over `typedef`.
+- [SM-15] Prefer `using` over `typedef`.
+- [SM-16] Prefer `const int *p` over `int const *p`.
 
 ## Expression Formatting
 
@@ -180,17 +196,24 @@ fox_slow_white.h
 - [EX-3] Use `i != 0` or `i == 0` to check zero integers. Do not use `i` or `!i`.
 - [EX-4] Directly use `b` or `!b` to check boolean conditions.
   Do not use `b == true` or `b == false`.
-- [EX-5] Do not use Yoda conditions. 
+- [EX-5] Do not use Yoda conditions (like `3 == b`). 
 - [EX-6] Do not rely on the precedence between `&&` and `||`
   - Bad: `a && b || c`
   - Good: `(a && b) || c`
-- [EX-7] Do not rely on the precedence between bitwise operators and always use parenthesises.
+- [EX-7] Do not rely on the precedence between bitwise operators
+         and always use parenthesises.
+- [EX-8] If a `?:` expression is broken to multiple lines,
+         keep the `?` and the `:` aligned at the same column index.
+- [EX-9] If a function call is broken to multiple lines,
+         keep all arguments' column indices less than or equal to
+         the first argument's column index.
 
 
 ## Other
 
 - [OT-1] Do not use any non-ASCII character, even in string literals and comments.
 - [OT-2] Wrap lines to 110 characters. Less than 80 is better.
+- [OT-3] Use Unix line terminators.
 
 
 
