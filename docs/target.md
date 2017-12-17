@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 松饼制作计划
+title: 松饼麻雀的定位
 permalink: /docs/target/
 ---
 
