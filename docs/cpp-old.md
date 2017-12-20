@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Pancake C++ Style Guide
-permalink: /docs/cpp/
+title: Pancake C++ Style Guide (Old)
+permalink: /docs/cpp-old/
 ---
 
 © 2017 Rolevax, All Rights Reserved.
@@ -22,6 +22,8 @@ whenever you find a rule hard to understand.
   Old code can be re-formatted when convenient.
 - [MT-3] This guide may be updated with a notification in the Gitter room. 
   All the new rules take effect immediately as the page is uploaded. 
+- [MT-4] Fallback to [Google's version](https://google.github.io/styleguide/cppguide.html)
+  whenever this guide does not give an explicit constraint.
 
 ## General
 
@@ -32,10 +34,6 @@ whenever you find a rule hard to understand.
 - [GN-2] Basically high level readability and development efficiency
   is considered more important, 
   and low level optimizations should only be taken to critical performance problems. 
-- [GN-3] Format the code before committing by Uncrustify, using
-         `mjpancake/uncrusitify.cfg`.
-    - This is already automatically done by the pre-build
-      hook in `mjpancake.pro`. Just do not bypass it.
 
 ## Comments
 
@@ -77,6 +75,36 @@ fox_quick_brown.h
 fox_slow_white.h
 ```
 
+## Spacing, Indentation, and Line Break
+
+- [SP-1] Use 4 spaces for indentation, no tabs. 
+- [SP-2] Keep a space between a keyword and a `(`.
+- [SP-3] Keep no space between a function identifier and a `(`.
+- [SP-4] Keep a space between a token and a `{`.
+- [SP-5] Surround most binary operators with spaces
+  - Except `::`, `.`, `->`, `.*`, `->*`, `()`, `[]`, `(cast)`
+- [SP-6] Stick Unary operators to their operands without spaces
+  - Unless in some idioms like `while (i --> 0)`
+- [SP-7] Stick Semicolons to the end of statement without spaces. 
+- [SP-8] Keep space-paddings inside a pair of `{ }`'s that are in the same line.
+- [SP-9] Keep no space-padding inside a pair of `[]` or `()`.
+- [SP-10] Append either a space or a line break after a `,` or `;`.
+- [SP-11] Break, if necessary, a binary expression into two lines before the operator.
+- [SP-12] Keep the `{` at the same line of `if`, `while`, `for`, `do while`,
+  or lambda's capture and parameters.
+- [SP-13] To break or not to break before a `{`:
+  - Break:`class\n{`, `struct\n{`, `union\n{`, `enum\n{`, `namespace\n{`, `void f()\n{`
+  - No break: `if {`, `while {`, `for {`, `do {`, `[]() {`
+- [SP-14] To break or not to break after a `}` of a block of statements:
+  - No break: `} else`, `} catch`
+  - Break: any other cases
+- [SP-15] Do not separate `else` keywords from their `if` blocks
+          by empty lines.
+- [SP-16] Keep all things three empty lines away from the beginning and ending of a namespace.
+- [SP-17] Eliminate empty lines before a closing `}` that does not belong to a namespace.
+- [SP-18] Append an empty line to a line whose only non-space character
+          is a `}` unless it is the last line in a block.
+
 ## Memory Management
 
 - [MM-1] Base memory management generally on RAII. 
@@ -97,11 +125,12 @@ fox_slow_white.h
 ## Container Preferences
 
 - [CP-1] Use arrays and array-likes for small data regardless of big-O.
-  - "Small" = "Less than a dozen of elements with primitive types".
+  - Less than 1KiB is considered small.
   - Use `std::array` for fix length arrays.
   - Use `saki::util::Stactor` for variable length arrays.
   - Do not use Raw C-style arrays.
-- [CP-2] Functional map/fold style is preferred over `for` loops.
+- [CP-2] Linear search is preferred over binary search on small arrays.
+- [CP-3] Functional map/fold style is preferred over `for` loops.
 
 ## Class Definition Formatting
 
@@ -114,12 +143,15 @@ fox_slow_white.h
 - [CL-6] Order member functions by `public`->`protected`->`private` order.
 - [CL-7] Order non-static member fields by `public`->`protected`->`private` order.
 
-## Statement Styling
+## Statement Formatting
 
 - [SM-1] Do not squash multiple statements into one line.
 - [SM-2] Declare one variable with one declaration statement.
   - Unless in some common idioms like `int i, j, k`
-- [SM-3] Use brackets in the body of `if`, `for`, and `while`
+- [SM-3] Stick `*` and `&` to variables but not types.
+  - Bad: `int* p`
+  - Good: `int *p`
+- [SM-4] Use brackets in the body of `if`, `for`, and `while`
   if (but not only if) at least one of the following conditions are satisfied:
   1. The condition expression takes more than one line;
   2. The statement body has more than one statement;
@@ -128,27 +160,33 @@ fox_slow_white.h
   4. The statement body is one assignment or function call that
      takes more than one line;
   5. The statement body is one `if` statement that has an `else` block.
-- [SM-4] Use brackets for all bodies in an `if...else if...else` block 
-  as long as one of its body should be bracketed according to SM-3. 
-- [SM-5] Do not use brackets in the body of `if`, `for`, and `while`
-         if no bracket is required according to SM-5 and SM-6.
-- [SM-6] Write an `else` block whose body is exactly one `if` statement
+- [SM-5] Use brackets for all bodies in an `if...else if...else` block 
+  as long as one of its body should be bracketed according to SM-4. 
+- [SM-6] Do not use brackets in the body of `if`, `for`, and `while`
+         if no bracket is required according to SM-4 and SM-5.
+- [SM-7] Write an `else` block whose body is exactly one `if` statement
          in the `else if (...)` form.
-- [SM-7] With a `break`, `continue`, or `return`
-         that will be certainly reached in the end of an `if` body,
-         type the else-case outside rather than adding an `else` block, 
-         unless an `else` can make the whole block align better. 
-- [SM-8] Mark a fall-through in a `switch` statement
-         with a `[[fallthrough]];` attribute.
-- [SM-9] A typical integer `for` condition should look like
+         (place `else` and `if` in the same line)
+- [SM-8] Place conditions and their `if`, `while`, or `for`
+         in the same line.
+- [SM-9] Do not place body statements and their `if`, `else`, `while`,
+         or `for` in the same line.
+- [SM-10] With a `break`, `continue`, or `return`
+          that will be certainly reached in the end of an `if` body,
+          type the else-case outside rather than adding an `else` block, 
+          unless an `else` can make the whole block align better. 
+- [SM-11] A fall-through in a `switch` statement
+          should be commented by an `// fall through` exactly.
+  - a group of adjacent labels in a `switch` statement is not addressed as a fall-through.
+- [SM-12] A typical integer `for` condition should look like
   `(int i = 0; i < N; i++)`  (use `<` and postfix `++`)
-- [SM-10] A typical iterator `for` condition should look like
+- [SM-13] A typical iterator `for` condition should look like
   `(auto it = v.begin(); it != v.end(); ++it)`
   (use `auto`, `!=`, and prefix `++`)
-- [SM-11] Avoid long (more than one page) function definition
+- [SM-14] Avoid long (more than one page) function definition
           and/or deep indentation level.
-- [SM-12] Prefer `using` over `typedef`.
-- [SM-13] Prefer `const int *p` over `int const *p`.
+- [SM-15] Prefer `using` over `typedef`.
+- [SM-16] Prefer `const int *p` over `int const *p`.
 
 ## Expression Formatting
 
@@ -164,6 +202,12 @@ fox_slow_white.h
   - Good: `(a && b) || c`
 - [EX-7] Do not rely on the precedence between bitwise operators
          and always use parenthesises.
+- [EX-8] If a `?:` expression is broken to multiple lines,
+         keep the `?` and the `:` aligned at the same column index.
+- [EX-9] If a function call is broken to multiple lines,
+         keep all arguments' column indices less than or equal to
+         the first argument's column index.
+
 
 ## Other
 

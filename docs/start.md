@@ -109,7 +109,21 @@ GitHub仓库地址：[`mjpancake/mjpancake.github.io`][pages]
 
 ### 3.2. 服务器开发环境搭建
 
-(TODO)
+`ih`的开发环境和运行环境都被做成了 Docker 镜像，
+因此需要安装的东西只有 Docker 和 Docker Compose。
+
+- 第一步：安装 [Docker][docker]{:target="_blank"}
+          和 [Docker Compose][docker-compose]{:target="_blank"}
+- 第二步：从`ih`创建fork
+    - 进入[`ih`][ih]{:target="_blank"}页面，点右上角的fork
+- 第三步：克隆仓库并配置`upstream`远端：（替换掉`your-username`）
+    - `git clone https://github.com/your-username/ih.git`
+    - `cd ih`
+    - `git remote add upstream https://github.com/rolevax/ih.git`
+
+在以后的交流中，我们会假定`origin`与`upstream`都是用上述命令配出来的。
+
+编译和运行都只需要一行命令，见[`ih`][ih]里的`README.md`。
 
 <br />
 
@@ -168,4 +182,8 @@ GitHub仓库地址：[`mjpancake/mjpancake.github.io`][pages]
 [git-win]: https://git-for-windows.github.io/
 [qt]: www.qt.io
 [qt-mirror]: http://mirrors.ustc.edu.cn/qtproject/archive/qt/5.9/5.9.3/
+
+[docker]: https://docs.docker.com/engine/installation/
+[docker-compose]: https://docs.docker.com/compose/install/
+
 

@@ -1,58 +1,31 @@
 ---
 layout: page
-title: Libsaki Tutorial
+title: Libsaki代码导读
 permalink: /docs/libsaki/
 ---
 
 ## General
 
-These pages introduce the code details
-of the Pancake Mahjong core library, *Libsaki*.
+本系列页面介绍松饼麻雀核心库——Libsaki的代码细节。
 
-*Please carefully check through the [Pancake C++ Style Guide](/docs/cpp/)
-before taking any change to the code.* 
+*秀爱代码前必看[松饼C++代码规范](/docs/cpp/)。* 
 
-This library is written in plain C++ without any third party library. 
+Libsaki由C++写成，不依赖第三方库。
 
-## Layering
+## 分层结构
 
-The architecture of Libsaki is based on a layered approach.
+Libsaki的架构分为7层：
 
-| Level | Layer Name                      | Related Directory |
-| :---: | :-----------------------------: | :---------------: |
-| 6     | Application Layer               | `/app`            |
-| 5     | Operation and Observation Layer | `/table`          |
-| 4     | Skill Interfering Layer         | `/girl`           |
-| 3     | Standard Mahjong Layer          | `/table`          |
-| 2     | Hand/Form Layer                 | `/form`           |
-| 1     | Base Unit Layer                 | `/unit`           |
+| 层级 | 层名         | 相关目录 |
+| :--: | :----------: | :------: |
+| 6    | 应用层       | `/app`   |
+| 5    | 操作与观察层 | `/table` |
+| 4    | 能力干涉层   | `/girl`  |
+| 3    | 标准麻将层   | `/table` |
+| 2    | 手牌/役种层  | `/form`  |
+| 1    | 基本单位层   | `/unit`  |
 
 <br />
 
-It is recommended to read the following detailed documents
-**together with their correspending source code**.
-(We don't use doxygen since it is painful
- to rebuild a C++ project due to every comment change)
-
-1. Base Unit Layer
-  - [Mahjong Tiles `T34` and `T37`](/docs/libsaki/tile/)
-  - [Player Identities `Who`](/docs/libsaki/who/)
-
-2. Hand/Form Layer
-  - [Multiset for Tiles `TileCount`](/docs/libsaki/tilecount/)
-  - [Status of One's Hand `Hand`](/docs/libsaki/hand/)
-  - [The Mountain System `Mount`](/docs/libsaki/mount/)
-
-3. Standard Mahjong Layer
-  - [Main Mahjong Logic `Table`](/docs/libsaki/table/)
-
-4. Skill Interfering Layer
-  - [Character Skills `Girl`](/docs/libsaki/girl/)
-  - [Tile Dealing System `Princess`](/docs/libsaki/princess/)
-
-5. Operation and Observation Layer
-  - (TODO)
-
-6. Application Layer
-  - (TODO)
+(TODO)
 
