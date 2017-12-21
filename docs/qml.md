@@ -1,109 +1,61 @@
 ---
 layout: page
-title: Pancake QML Style Guide
+title: 松饼 QML 代码规范
 permalink: /docs/qml/
 ---
 
-© 2017 Rolevax, All Rights Reserved.
+© 2017 - 2018 Rolevax，保留所有权利。
 
-All participants of `mjpancake`
-are expected to check through all the rules in this guide carefully.
-Some of these rules are uncommon.
+## 元规范
 
-## Meta
+- [MT-1] 严格遵守本规范。极少数情况下，如果规范导致问题，可暂时打破规范。
+- [MT-2] 本规范仅约束新增的代码。
+- [MT-3] 本规范可能随时更新，更新随 Gitter 群聊内通知生效。
 
-- [MT-1] This guide is basically a strict constraint. 
-  However, in rare cases,
-  the rules can be partially broken when styling become weird under such rules. 
-- [MT-2] This guide only regulates newly added code.
-  Old code can be re-formatted when convenient.
-- [MT-3] This guide may be updated with a notification in the Gitter room. 
-  All the new rules take effect immediately as the page is uploaded. 
-  whenever this guide does not give an explicit constraint.
+## 通用
 
-## General
+- [GN-1] 代码可维护性比性能重要，除非性能影响实际体验。
+- [GN-2] 空格、换行、大括号的使用方式与现有代码保持一致。
 
-- [GN-1] Zero-warning is required.
-- [GN-2] Basically high level readability and development efficiency
-  is considered more important, 
-  and low level optimizations should only be taken to critical performance problems. 
+## 注释
 
-## Comments
+- [CM-1] 通过自解释性代码避免注释。
+- [CM-2] 仅使用 `//` 注释，禁用`/* */`注释。
+- [CM-3] 删除代码时直接删除，禁止通过注释屏蔽代码。
 
-- {CM-1] Avoid commenting, by making the code self-explainatory.
-- [CM-2] Use only `//` comments in committed code. `/* */` is reserved for debugging. 
-- [CM-3] Do not delete code by commenting-out, and just erase them instead.
+## 命名
 
-## Naming
+- [NM-1] 一般情况下，基于英文命名。
+         日麻术语基于日文罗马音，
+         国标术语基于拼音。
+         人名、校名基于本国语言拼写方式。
+- [NM-2] 大小写方式参照 Qt 官方范例。
+- [NM-3] 仅在单个 QML 文件内部使用的`function`与`property`以`_`开头。
+- [NM-4] 全大写的单词在驼峰记法中当作普通单词处理
+  - 不要：`HTTP`
+  - 要：`Http`（大驼峰），`http`（小驼峰）
+- [NM-5] 鼓励使用短命名与常见的缩写。
+- [NM-6] 命名需带有自解释性，禁止使用无意义命名。
 
-- [NM-1] Base naming on English. 
-         Mahjong terminologies, character names, and school names
-         can be represented by Japanese Romaji. 
-         Terminologies related to the Chinese GB Mahjong
-         can be represented by Pinyin. 
-- [NM-2] Use camel cases basically and follow the common QML practice.
-- [NM-3] Start "internal" function and property names with a `_`
-- [NM-4] Treat all-capital words as ordinary words in camel cases. 
-  - Bad: `HTTP`
-  - Good: `Http` (upper camel), `http` (lower camel)
-- [NM-5] Shorter names and common abbreviations are approved. 
-- [NM-6] Nature of English can be sacrificed to beautify the alignment
+## 语句风格
 
-```
-// bad
-QuickBrownFox.qml
-SlowWhiteFox.qml
+- [SM-1] 禁止将多条语句挤进一行。
+- [SM-2] `if`语句体结尾包含必经的`break`, `continue`, `return`时，
+         除非有利于对齐，否则不接`else`。
+- [SM-3] 用`// fallthrough`标注`switch`中的 fall-through
+- [SM-4] 避免超长函数定义和超深缩进结构。
 
-// good
-FoxQuickBrown.qml
-FoxSlowWhite.qml
-```
+## 表达式风格
 
-## Spacing, Indentation, and Line Break
+- [EX-1] 避免 Javascript 的各种 WTF 特性，例如魔性的真值表。
+- [EX-2] 禁用 Yoda 大法。（例如`3 === b`）
+- [EX-3] 禁止依赖`&&`与`||`之间的优先级。
+  - 不要：`a && b || c`
+  - 要：`(a && b) || c`
 
-- [SP-1] Use 4 spaces for indentation, no tabs. 
-- [SP-2] Keep a space between a keyword (except `function`) and a `(`.
-- [SP-3] Keep no space between a function identifier
-         (or the keyword `function`) and a `(`.
-- [SP-4] Keep a space between a token and a `{`.
-- [SP-5] Surround most binary operators with spaces
-  - Except `.`, `()`, `[]`
-- [SP-6] Stick Unary operators to their operands without spaces
-  - Unless in some idioms like `while (i --> 0)`
-- [SP-7] Add Semicolons to the end of single Javascript statements. 
-- [SP-8] Keep space-paddings inside a pair of `{` and `}` that are in the same line.
-- [SP-9] Append either a space or a line break after commas.
-- [SP-10] Break, if necessary, a binary expression into two lines after the operator.
-- [SP-11] Do not add linebreaks before `{`.
+## 其它
 
-## Item Definition Formatting
-
-- [CL-1] Put `id` (if any) at the first line inside a bracket.
-
-## Statement Formatting
-
-- [SM-1] Do not squash multiple statements into one line.
-- [SM-2] When there is a `break`, `continue`, or `return` in the end of an `if` body, 
-  the else-case is usually typed outside without being in an `else` block, 
-  unless adding an `else` can make the whole block align better. 
-- [SM-3] A fall-through in a `switch` statement
-  should be commented by an `// fall through` exactly.
-  - a group of adjacent labels in a `switch` statement is not addressed as a fall-through.
-- [SM-4] Avoid long (more than one page) function definition
-          and/or deep indentation level.
-
-## Expression Formatting
-
-- [EX-1] Avoid Javascript's WTF features.
-- [EX-2] Do not use Yoda conditions. 
-- [EX-3] Do not rely on the precedence between `&&` and `||`
-  - Bad: `a && b || c`
-  - Good: `(a && b) || c`
-
-
-## Other
-
-- [OT-1] Wrap lines to 110 characters. Less than 80 is better.
+- [OT-1] 单行字符上限110，鼓励截到80字符以内。
 
 
 

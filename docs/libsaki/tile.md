@@ -1,151 +1,142 @@
 ---
 layout: page
-title: Mahjong Tile
+title: 麻将牌
 permalink: /docs/libsaki/tile/
 ---
 
-## Notation
+## 记法
 
-A mahjong tile is always called a *tile*. 
-Terms like "card", "pai", or "hai" are not used here. 
+我们把牌统一称作 *tile*，
+不使用 "card", "pai", 或 "hai" 等叫法。
 
-The two properties of a tile are called *suit* and *value* separately. 
-Terms like "color", "set", or "number" are not used here. 
+牌的花色与数值分别称作 *suit* 和 *value*，
+不使用 "color", "set", 或 "number" 等叫法。
 
-We use the letter *M*, *P*, and *S* to denote the three *number* suits, 
-and use the letter *F* and *Y* to denote the wind and the dragon suits. 
-The honor suits can be summarized as a letter *Z*. 
-In details, all the 34 tiles are denoted as follow:
+万、饼、索、风牌、三元牌分别用 *M*, *P*, *S*, *F*, *Y* 表示。
+*F* 和*Y* 可以统称为 *Z*。
+具体来讲，34张牌表示如下：
 
-- 1m, 2m, 3m, 4m, 5m, 6m, 7m, 8m, 9m
-- 1p, 2p, 3p, 4p, 5p, 6p, 7p, 8p, 9p
-- 1s, 2s, 3s, 4s, 5s, 6s, 7s, 8s, 9s
-- 1f, 2f, 3f, 4f
-- 1y, 2y, 3y
+- `1m, 2m, 3m, 4m, 5m, 6m, 7m, 8m, 9m`
+- `1p, 2p, 3p, 4p, 5p, 6p, 7p, 8p, 9p`
+- `1s, 2s, 3s, 4s, 5s, 6s, 7s, 8s, 9s`
+- `1f, 2f, 3f, 4f`
+- `1y, 2y, 3y`
 
-The four F tiles are east, south, west, and north in order;
-and the three Y tiles are white, green, and red in order. 
-Both the F and Y notation are only used in the program code. 
-They should be converted into their corresponding characters when displayed to the UI. 
+1f ~ 4f 分别代表东南西北，1y ~ 3y 分别代表白发中。
+F 与 Y 的记法只用于代码内部，显示到UI上时要转换成汉字。
 
-Besides, we use *0m*, *0p*, and *0s* to denote *akadora*, 
-the red-5 bonus tiles. 
-To facilitate the expression, we call a number-5 tile which is not an akadora as a *black 5*.
-The term 5m, 5p, and 5s can mean either all the number 5 tiles or only the black 5's,
-and the meaning depends on its context. 
+我们用 *0m*, *0p*, *0s* 表示赤宝牌。
+为表达方便，我们把“不是赤5的数牌5”称作“黑5”。
+5m, 5p, 5s 可以指代黑5，也可以泛指所有的数牌5，具体含义由前后文决定。
 
+<br />
 
+## 麻将牌 C++ 类
 
-## C++ Classes for Tiles
+`libsaki/unit/tile.h` 定义了两个类，`T34` 和 `T37`。
 
-`tile.h` defines two classes，`T34` and `T37`。
+一般来讲，麻将牌一共有34种。
+如果我们把赤5和黑5严格区分，麻将牌就一共有37种——这也正是
+`T34`和`T37`的区别，后者严格区分赤宝牌。
 
-Generally, there are 34 kinds of tiles;
-and if we consider akadoras as distinct tiles, there are 37 kinds of tiles in total. 
-Such is the difference between `T34` and `T37`, the latter strictly distinguishes red and black 5's.
-
-The class `T34` is simply a wrapper of an `int`, with some helper member functions attached. 
-The class `T37` inherits `T34`, with an additional `bool mAkadora` field to denote whether it is an akadora. 
+`T34`是对一个`int`的简单包装，通过一系列成员函数确保运算有麻将意义。 
+`T37`从`T34`继承，多出一个`mAkadora`字段以区分赤黑。
 
 ### T34
 
-The only member field of `T34` is `mId34`,
-whose value varies between 0 and 33, corresponding to 1m, 2m, 3m, ..., 3y.
-To get the suit or the value of a tile,
-call `suit()` or `val()` on a `T34` object: 
+`T34`的唯一成员字段是`mId34`,
+其取值范围在 0 到 33 之间，对应 1m, 2m, 3m, ..., 3y。
+我们可以直接通过一个 0 到 33 之间的整数来构建`T34`对象，
+并通过调用`suit()`或`val()`方法可获得一只`T34`对象的花色与数值。
 
 ```
-T34 tile(0); // "0" represents 1m
-Suit s = tile.suit(); // now "s" equals to Suit::M
-int v = tile.val(); // now "v" equals to 1
+T34 tile(0);          // 整数0代表1m
+Suit s = tile.suit(); // 此时s的值为Suit::M
+int v = tile.val();   // 此时v的值为1
 ```
 
-Besides directly passing the integer, we can also construct a tile by telling its suit and value:
-```
-T34 ta(26);
-T34 tb(Suit::S, 9);
-assert(ta == tb); // both ta and tb are 9s
-```
-
-There are two constructors taking suit and value as parameters: the `T34(Suit s, val v)` and the `T34(val v, Suit s)`. The difference is that the latter is a `constexpr`, which also has an alternative syntax (implemented by C++11 user defined literals):
+除了使用 0 ~ 33 的整数，
+我们还可以直接通过花色和数值来构建`T34`对象：
 
 ```
-using namespace tiles34;
-T34 ta = 3_p; // same as T34(3, Suit::P)
-T34 tb = 2_y; // same as T34(2, Suit::Y)
+T34 ta(1);          // 0是1m, 所以1就是2m
+T34 tb(Suit::M, 2); // 也可以通过花色和数值直接构建2m
+assert(ta == tb);   // 此时ta和tb相等，都是2m
 ```
 
-For syntactical convenience, we can also use the no-parameter `T34()` to construct a tile containing uninitialized garbage value. Such an object only performs as a placeholder and any method invocation on a garbage tile object may trigger assertion failure. 
+我们还有一种通过 C++11 的用户自定义字面值实现的写法，
+可以很直观地创建`T34`对象：
 
-Now as we can construct tiles, let's look at how to use them. 
+```
+using namespace tiles34; // 解禁神奇写法
+T34 ta = 3_p;            // 等同于 T34(Suit::P, 3)
+T34 tb = 2_y;            // 等同于 T34(Suit::Y, 2)
+```
 
-The most frequently called method might be `T34::id34()`, which simply returns the wrapped `mId34`:
+现在我们知道怎么创建一张牌了。下面看如何使用一张牌。
+
+`T34`有一个常用方法`id34()`，返回值就是代表这张牌的 0 ~ 33 的整数。
+
 ```
 T34 t = 3_m;
-int ti = t.id34(); // now "ti" equals to 2
+int i = t.id34(); // 此时i为2
 ```
-The underlying idea of representing tiles by integers
-is to use those integers directly as array indices to facilitate container operations.
-Since there are only 34 kinds of tiles,
-using more complex data structures, such as a tree, can be considered an over-design
-which costs too many unnecessary pointers.
-The continuous integer representation makes it possible to access elements
-in a tile container with constant time,
-and also allows iterating across such a container. 
-Within this project, we frequently use the name `ti` to denote such a tile index. 
 
-Most methods of `T34` are trivial and have short definitions, so reading the code directly can be the fastest way to understand what they do. Here let's highlight some "weird" ones:
+我们之所以用 0 ~ 33 的连续整数代表麻将牌，
+是因为这些整数可以直接用作数组下标。
+牌只有 34 种，如果使用更复杂的数据结构，指针和缓存的代价未必收得回来。
+而使用一个长度为 34 的数组记录一组麻将牌，
+不但增删改查都是常数复杂度，而且还支持遍历。
 
-- The operator `%`:  
-  expression `t1 % t2` checks if `t2` is the dora indicated by `t1`. Here the `%` sign is used since the indicator-dora relation is circularly periodic, just like the mod operation. 
-- The operator `|`:  
-  expression `t1 | t2` checks if the operands are neighbors, in order. 8m and 9m are neighbors. 9m and 1m are not neighbors. 9m and 1p are not neighbors. 
-- The operator `||`:  
-  expression `t1 || t2` checks if the operands sandwich a common neighbor, in order, such as 7m and 9m
-- The operator `^`:  
-  expression `t1 ^ t2` check if the operands are *suji(筋)* tiles, in order, such as 1s and 4s. The exclusive-or sign is used since two tiles having suji-relation are kind of exclusive. 
+`T34`的多数方法都很直白，看代码就能知道是干什么的。
+下面重点解释一些不太直观的：
 
-BTW, we always use the term *indicator* to mean the dora-indicator(ドラ表示牌). Since the word is long, it is usually abbreviated as *indic*, or sometimes even *id*. 
+- 重载操作符 `%`:  
+  表达式 `t1 % t2` 判断`t2`是否为被`t1`所指示的宝牌。
+  我们使用`%`符号是因为宝牌指示关系存在周期性，这点与取余运算类似。
+- 重载操作符 `|`:  
+  表达式 `t1 | t2` 判断`t1`与`t2`是否依次构成边张或两面，
+  例如 8m 与 9m。
+  使用竖线符号是因为这条竖线可以看成两张牌之间的缝隙。
+- 重载操作符 `||`:  
+  表达式 `t1 || t2` 判断`t1`与`t2`是否依次构成嵌张，
+  例如 7m 与 9m。
+  使用双竖线符号是因为这两条竖线可以看成两张牌之间的缺口。
+- 重载操作符 `^`:  
+  表达式 `t1 ^ t2` 判断`t1`与`t2`是否依次互为筋牌，
+  例如 1s 与 4s。
+  之所以用异或符号，是因为筋牌之间存在互斥关系，与异或类似。
+
+`T34`对象是不可修改（immutable） 的，除了赋值以外都是`const`方法。
 
 ### T37 
 
-`T37` is the tile class strictly distinguishes red and black tiles. 
-`T37` publicly inherits `T34`, however, neither of them contains any virtual method,
-even the destructor. 
-The idea under this design is to encourage passing `T34` as values
-without considering the cost: actually it's just an `int`.
-We never use a pointer or a reference to a `T34`.
-A `T34` object is treated immutable,
-  as all of its member method (except assignment) is declared as `const`.
-The client code of `T34` should be aware of that `T34` is just an integer wrapper
-and contains no virtual table.
-Besides, although `T37` is-a `T34`, we don't expect any polymorphic behavior
-since polymorphism really causes a lot of logical troubles in our cases:
-`T34` and `T37` should always be carefully compared and chosen before being used. 
+`T37`严格区分赤牌与黑牌。
 
-The constructors of `T37` is similar to those `T34`'s,
-except that some of them may take an extra parameter
-to tell whether the tile should be an akadora. 
+`T37`从`T34`继承，但两者都不包含虚函数，这是出于以下几点考虑：
+- `T37`是一个`T34`，把`T37`传给`T34`总是安全且有意义的，所以继承；
+- 我们不需要多态语义。`T37`传给`T34`以后，只需要按`T34`对待；
+- 省略虚函数表以后，`T34`占用空间就与`int`无区别，可不计传值成本。
 
-Here we have one important point to note:
-we don't have a `T37` constructor which receives a `T34` as parameter.
-This design is deliberately made:
-we need `T34` -> `T37` conversion to be inconvenient
-as this is really a dangerous operation in many cases:
-it causes a lot of logic bugs since you are blindly assuming
-that there is no akadora.
-Whenever a `T34` needs to be downcasted to a `T37`,
-think again, be sure of what you are doing, and use the `T37(t34.id34())` form. 
+因为`T34`的析构函数不是虚的，我们不能用`T34`类型的指针取`T37`的所有权。
+（其实整个Libsaki里也没出现过`T34`的指针）
 
-On the contrary, `T37` -> `T34` conversion is relatively safe, and we can just do that by the C++ object slicing. 
+`T37`的构造函数与`T34`的类似，只是其中一些多出一个区分是否为赤牌的参数。
 
-There is another important point: the `==` operator is not overridden,
-thus `0_m == 5_m` returns `true`.
-To check equality with considering red/black difference, use `T37::looksSame()`
+从`T34`到`T37`的转换是向下转型，
+是一个增加信息量的过程（将一张数牌5细化为赤牌或黑牌），
+具有相当的危险性。
+因此，我们不提供把`T34`转换成`T37`的方便写法。
+如果想要把`T34`转换成`T37`，先想清楚自己是不是搞错了什么，
+如果确信自己应该这么做，再使用`T37(t34.id34())`的写法。
 
-Unlike `T34`, `T37`'s are typically passed by reference.
-This convention aims to distinguish `T34` and `T37` more explicitly
-and has nothing to do with the machine efficiency. 
-The underlying intuition is that `T34` usually represents a logical "concept", 
-while `T37` usually represents a visible, touchable, and uncopyable solid matter.
+与之相反，从`T37`到`T34`的转换是安全的，直接传值即可。
+
+有一点需注意，`==`操作符并没有重写，
+因此 `0_m == 5_m` 返回为`true`。
+如果想在比较时区分赤牌与黑牌，使用`looksSame()`方法。
+
+`T34`代表一个理论上的、计算上的概念，
+而`T37`则代表一张看得见、摸得着的麻将牌的实体。
+为了强调这点，代码中`T34`会优先考虑传值，而`T37`会优先考虑传引用。
 

@@ -1,151 +1,310 @@
 ---
 layout: page
-title: The Dual-Space Quantum Mountain System
+title: 双空间混合牌山系统
 permalink: /docs/libsaki/mount/
 ---
 
-The mountain system can be regarded as the core part of an unscientific mahjong game.
-Currently, in v0.8.3, we use the one called *Dual-Space Quantum Mountain System (DSQMS)*,
-whose key feature is a binarily divided tile source space where each space is polarized before generating a tile
-according to a distortable probability distribution. 
+牌山`Mount`定义在`libbsaki/table/mount.h`。
 
-The DSQMS consists of three parts: the existence mechanism, the dual-space mechanism, 
-and the early collapse mechanism. 
+## 设计原则
 
-## Terminologies
+能力之间的共生与交织是天麻的一大特征，
+四家的能力并非彼此独立存在，而是相互干涉，OOXX的。
+但从制作效率的角度来看，我们不能对每一种四家组合分别定义效果。
+最理想的情况下，每个能力都可以独立开发，
+不同能力同时作用的结果应该通过一套预先设计好的系统自动导出，而不需人为指定。
+这种将还原效果与工程效率有机结合的做法，是松饼牌山系统的设计原则。
 
-- Mountain: the walls of tiles on the table
-- Scientific: without characters' skills
-- Magical: with characters' skills
+### 关于优先级
 
-## The Existence Mechanism
+很多人对松饼的技能实现原理存在误解——认为能力的本质就是直接设定摸牌的概率，
+比如“下一张以80%概率自摸”等等。
+这种直接改概率的方式是最容易想到的，
+然而存在一个致命的问题，就是多个能力的叠加与兼容会变得复杂。
 
-In a scientific case, the probability of drawing a tile depends on its residual in the maintain. 
-The effect of a magical skill can be regarded as a distortion to the scientific probability distribution.
-We treat the mountain basically as a queue of objects of probability distributions, 
-thus each tile-drawing becomes a queue pop plus a random number generation. 
+例如，现在轮到A摸牌。A的技能规定：此时A有80%在概率自摸。
+而另一个人物B的技能规定：此时A有90%的概率摸到B的铳牌。
+那么结果A到底应该摸到什么呢？
 
-To facilitate the implementation, we use integer values to analogize the probability values. 
-Such integer numbers are called *existence* of tiles. 
-Basically, a bigger existence yields a bigger probability, 
-and a negative existence means that the tile cannot be drawn.
-Most of the skills are implemented by an addition or subtraction operation to the
-existence values such that the effects from different skills can be implied as
-a simple linear addition of those existence changes. 
+有人会觉得，设定一个优先级就行了。比如在上面的例子中，设定A比B优先，
+于是结果A还是会以80%的概率自摸。
+但这种想法是naive的，原因有三：
 
-Existence values have the following characteristics:
+1. 天麻世界里没有那么多优先级  
+A区半决赛的确充斥着大量的优先级现象，不是你破我的挂，就是我破你的挂。
+但整个天麻世界里的”破挂“现象也就那几个了——其它的多数能力之间，
+只有相对强弱，没有绝对优先。
+即使是使用”以70%的概率优先“这种相对优先替代绝对优先，
+由于能力间仍存在绝对互斥性，无法相互融合，原作中大量的有机联动现象将无法还原。
+2. 优先级会便能力间的共存机制变得复杂  
+比如上面的例子中，假如A听25p，B听58p，那么让A摸到5p是最理想的结果——A和B的挂都生效了。
+然而，一个以优先级主导的机制若想体现出这点，并不仅仅是取个交集而已，
+而是涉及概率大小的叠加规则等一系列问题，
+最终系统设计将变得繁杂混乱，难以维护。
+3. 优先级需要大量的手动维护  
+天麻中的优先级是不存在传递性的。”A > B“与”B > C“并不一定能推出”A > C“。
+因此，每添加一种技能，都需要手动指定新技能与所有的已有技能之间的优先级，
+这会使得制作与调整变得繁杂坑爹。
 
-- Existence values are bound to a kind of tile, which is independent from the picker of the tile;
-- Every kind of tile has 10 of existence in a scientific condition.
+因此松饼中不存在”直接设定概率“这种操作，也没有”优先级钦定表”这种东西。
+取而代之的，是“存在感机制”与“双空间机制”，后而会详细说明。
 
-In details, existence works as follow:
+### 关于量子牌山
 
-1. Divide all remaining tiles into *pos* and *neg* according to the sign of their existence;
-2. If pos is empty, pop the tile in neg having maximal existence；
-3. Otherwise, randomly pop in pos, with a probability distribution described by the existence distribution.
+天麻世界观里的牌山，有量子牌山的一面，也有实体牌山的一面。
+量子牌山的一面，主要体现在主动技能，以及随特定行动触发的技能上。
+实体牌山的一面，主要从“如果没鸣牌，谁就自摸了”，
+“谁的牌流到了谁的手里”等错位现象中得以体现。
+时而量子，时而实体，是天麻牌山的一大特征。
 
-Therefore, "relative" skills that collects some tiles mildly
-can be implemented by adding existence to those collection tile;
-and "absolute" skills that prevent other player from gaining some tiles
-can be implemented by subtracting existence from those protected tiles. 
+松饼麻雀中的“双空间混合牌山系统”正是围绕这种特征设定的——
+时而量子，时而实体——这点由“提前坍塌”机制确保。
 
-In both addition and subtraction, a greater change to the existence yields a greater effect,
-thus we define "power" of a skill as the magnitude of the change of the existence caused by that skill.
-We use *millikoromo (mk)* as the unit of skill power, and then the unit of existence is also mk. 
+### 小结
 
-### Example
+以上是松饼牌山的设计原则。下面开始详细介绍松饼的“双空间混合牌山系统”。
 
-Suppose we have this mountain status:
+<br />
 
-| Tile | Count | Existence |
+## 存在感机制
+
+牌山可以说是一个“概率分布”的队列，
+每一次摸牌，都分为以下两步进行：
+1. 从队列队首弹出一个概率分布；
+2. 通过这个概率分布生成一张牌。
+
+正常情况下，摸到一种牌的概率等于这种牌在山里的残枚占比。
+所谓能力，就是对这个正常概率进行扭曲。
+概率分布的横轴是牌的种类，纵轴是一个0到1之间的小数。
+众所周知，小数是很坑爹的——一方面，
+理论上，“比例”是个处理起来很周折的东西；
+另一方面，实现上，浮点数是个很坑的东西。
+因此我们采取一系列整数去模拟这个概率分布——每一种牌都有一个对应的整数，
+不同种牌的这个整数值之比即为被摸到的概率之比。
+这些整数，我们称之为*存在感*。
+一种牌的存在感越大，被摸到的概率也就越大。
+
+存在感也可以是负数。当一种牌的存在感为负数时，
+这种牌会从概率分布中被排除，基本上无法被摸到。
+假如牌山陷入了所有牌的存在感都是负数的窘境（这种情况应避免），
+存在感数值最大（绝对值最小）的牌将被 100% 摸到。
+
+绝大多数的能力，都是通过对特定的牌增加或减少存在感来实现的。
+多个能力的叠加效果，通过这些存在感变化量的简单相加来实现。
+
+能力导致的存在感变化量越大，能力就越强。
+因此，我们把能力导致的存在感的变化量称为*挂力*。
+于是挂力与存在感的单位是相同的。
+根据麻吧以兔子衡量挂力的优良传统，
+我们把存在感和挂力的单位定义为*兔（Koromo, k）*。
+1 兔为兔子在满月状态下每次摸牌时对每种有效牌增加的存在感大小。
+由于兔这个单位有些大，代码内部使用的挂力单位为*毫兔（Millikoromo, mk）*。
+1000 毫兔等于 1 兔。
+
+目前我们钦定，在没有任何能力干涉的情况下，
+一张牌的存在感等于“残枚 x 10mk“。
+因此在正常情况下，牌山中一种牌的存在感必为
+0, 10mk, 20mk, 30mk, 40mk 之一。
+因此，当一个能力对一种牌进行“-40mk“操作以后，
+除非这个作用被其它能力抵消，否则这种牌将绝对不可能被摸到。
+基于这个性质，我们通常用负数挂力值实现绝对型能力。
+
+### 举例
+
+假设牌山里只剩下1张7p，2张8p，3张9p。
+（只是做个假设。实际上因为王牌的存在山里至少也要有14张牌）
+
+这种情况下，山里各种牌的存在感如下：
+
+| 牌种类 | 残枚 | 存在感 |
 | --- | --- | --- |
-| 7p | 2 | 20mk |
-| 8p | 3 | 30mk |
-| 9p | 2 | 20mk |
+| 7p | 1 | 10mk |
+| 8p | 2 | 20mk |
+| 9p | 3 | 30mk |
 
+此时摸到7p的概率为：
+> 10mk / (10mk + 20mk + 30mk) = 1/6
 
-In a scientific case, the probability of drawing a 8p is 3/7,
-computed from "30mk / (20mk + 30mk + 20mk)".
+现在，一个能力对7p增加了100mk存在感：
 
-Now a skill adds 100mk to 8p, thus the mountain status becomes:
-
-| Tile | Count | Existence |
+| 牌种类 | 残枚 | 存在感 |
 | --- | --- | --- |
-| 7p | 2 | 20mk |
-| 8p | 3 | 130mk |
-| 9p | 2 | 20mk |
+| 7p | 1 | 110mk |
+| 8p | 2 | 20mk |
+| 9p | 3 | 30mk |
 
-Then the probability of drawing a 8p is 13/17,
-computed from "130mk / (20mk + 130mk + 20mk)".
+此时摸到7p的概率为：
+> 110mk / (110mk + 20mk + 30mk) = 11/16
 
-In another case, if a skill subtracted 100mk from 8p, the maintain will become:
+### 另一个例子
 
-| Tile | Count | Existence |
+假设能力干涉前牌山状态如下：
+
+| 牌种类 | 残枚 | 存在感 |
 | --- | --- | --- |
-| 7p | 2 | 20mk |
-| 8p | 3 | -70mk |
-| 9p | 2 | 20mk |
+| 7p | 1 | 10mk |
+| 8p | 2 | 20mk |
+| 9p | 3 | 30mk |
 
-And now the probability of drawing 8p is zero since its existence is negative;
-and both the probability of 7p and 9p become 1/2 as they have same existence.
+没有能力干涉时，摸到7p的概率本应该是1/6。
 
-See `mount.cpp:popPolar()` for more details. 
+现在一个能力把8p的存在感减少了100mk：
 
-## Dual-Space mechanism
+| 牌种类 | 残枚 | 存在感 |
+| --- | --- | --- |
+| 7p | 1 | 10mk |
+| 8p | 2 | -80mk |
+| 9p | 3 | 30mk |
 
-To facilitate the expression, we divide skills into two categories:
-*local skills* and *global skills*.
-Local skills are context independent, and immediately terminates
-after taking effect at one time point. 
-Global skills highly relies on the state of the mountain,
-and its possibility of success depends on whether some preparation
-is well-done before some critical time point. 
+此时8p的存在感为负数，被排除在了概率计算式之外，被摸到的概率为0。
+摸到7p的概率为：
+> 10mk / (10mk + 30mk) = 1/4
 
-The existence mechanism introduced above can handle all local skills,
-but as it is not considering residual of tiles in the mountain, 
-it cannot handle global skills.
-To implement global skills, we use the *dual-space* mechanism.
+<br />
 
-Under the dual-space mechanism, the mountain is divided into two spaces:
-the normal space (A space) and the protected space (B space).
+## 双空间机制
 
-When no skill affects the mountain, all the tiles are in the A space,
-and each kind of tile in the A space has an existence of "remaining number * 10mk",
-For example, if there are three 7p in the mountain, without any skill,
-all the three 7p are in the A space, and the existence of 7p in A space is 30mk.
+有了存在感机制，我们就可以控制任何一个人的进张：
+可以增大某个人摸到某种牌的概率，
+也可以减少某个人摸到某种牌的概率；
+通过负数存在感值，可以实现100%概率的绝对进张。
+但存在感机制是对“一种牌”操作的，而不是对“一张牌”操作的，
+这就导致了一个问题——如果想在山里保留一张牌，就会导致所有的这种牌都被保留。
 
-Global skills can *load* tiles from space A to space B.
-This is just like investing money into a fund, and those money is kind of unspendable.
-Without skills, nobody can draw tiles from the B space, 
-and whenever someone want to withdraw B space tiles,
-she can add existence value to that kind of tile in the B space.
+例如，角色 A 的能力是“三巡之后必定摸到一张4p”。
+于是这个能力在发动后，要保证三巡之后山里还剩4p。
+为了让山里还剩4p，这三巡期间就要阻止他家摸到4p。
+但仅过了一巡之后，另一个角色 B 发动了“现在就摸到一张4p”能力。
+那么问题来了：挖掘……啊呸，这时候 A 和 B 的能力是否冲突？
 
-Before every tile-drawing, the sum of existence of the two spaces
-are calculated separately, and one space is randomly chosen by the ratio of
-the two sums. Afterwards, the chosen space works under the existence mechanism
-and a tile will be randomly popped. 
+答案是“看情况”。如果山里只剩下最后一张4p，那么 A 和 B 只有一家能成功。
+但如果山里有两张或以上的4p，这两个能力就一点都不冲突，应该都能成功起作用。
+因此，角色 A 的能力无法通过“三巡之间降低4p的存在感”来实现，
+因为这样会导致本可能兼容的 B 的能力变得冲突。
 
-Two things are achieved by the dual-space mechanism:
-1. Some skills can preserve some tiles for future use ahead of time;
-2. Those tile-preserving skills can still compete in a same space
-thus no absolute precedence needs to be defined explicitly.
+有人会想到，既然如此，让 A 在发动能力时检测山里4p的残枚不就行了吗？
+如果只剩最后一张4p，就阻止别人拿走，否则就放着不管。
 
-See `mount.cpp:popDistro(Distro &distroA, Distro &distroB)` for more details.
+这种方法在上面的例子中是起作用的，但还是存在问题。
+假如又有个角色 C，能力是“在两巡之后摸4p”，
+那么冲突的临界点就从“山里剩一张4p”变成了“山里剩两张4p”。
+所以这个方法只是缓和了问题，并没有解决问题。
+根据松饼牌山的设计原则，A 和 C 不应该在发动时考虑对方的存在，
+而是独立发动，结果由系统自动导出。
+所以这种问题应该由牌山系统提供一种机制来解决——这个机制就是“双空间”。
 
-## Early Collapse Mechanism
+在双空间机制下，我们把整个牌山分成了两个区：
+A 区（也叫常态区）和 B 区（也叫预留区）。
 
-The early collapse mechanism implements the *law of mountain invariance*
-It simply fix a tile on a position in the maintain
-to make it escape from all the probability rules.
+在牌山未被能力干涉的情况下，每一张牌都位于 A 区，
+并且存在感等于“残枚数 x 10mk”。
+正常情况下 B 区里是没牌的。
+大多数的能力都只对 A 区里的牌发动——改变 A 区里的牌的存在感，
+影响其被摸到的概率。
 
-"Collapse" means the tile is never in a superpositional quantum state
-but collapsed into an unchangeable fact.
-In the code, we use the object *Erwin*
-to denote an uncertain tile since it is kind of like an Erwin Schrodinger's cat.
+B 区专为“预留型”能力准备。
+当一个能力需要“在现在决定将来会摸到某种牌”时，
+可以通过`loadB()`方法将这“张”（不是“种”）牌存入 B 区。
+B 区里的牌和 A 区性质不同，在没有能力干涉的情况下，存在感为 0，
+因此不会被人拿走。
+等到时机到来时，这个技能就可以通过增加 B 区里存着的这张牌的存在感来提取这张牌。
 
-See `mount.cpp:popFrom()` for more details.
+其实在上古版本松饼中是没有双空间机制的。
+作为代替，每个角色都有一座自己的“私房山”，
+这个山只能自己摸，别人摸不到。
+官方PSP游戏也疑似是这么做的。
+但这样做是不行的——不行，这不麻学。
+想要把还原度推向极致，
+就会发现“让一个角色占有一堆牌”是个完全行不通的想法，
+最后做出来也顶多就是官方游戏那样了。
+所以后来松饼的“私房山”就被不断地改造、融合，
+逐渐演化成了现在的 B 区，从而就有了双空间机制。
+与“私房山”不同，B 区仍是一个战场，
+各角色仍可以按照存在感机制在 B 区中争夺牌山资源，以挂力大小定胜负。
 
+<br />
 
+## 提前坍塌机制
+
+通过存在感机制和双空间机制，
+我们实现了一个基本上支持任意技能的牌山。
+但这个牌山是个量子牌山——本文开头提到，天麻的牌山也有实体牌山的一面。
+除此之外，实体的牌山还更有利于测试，这对开发效率是很有益的。
+于是我们通过引入“提前坍塌”机制，
+让松饼的牌山成为了一个量子与实体混合的系统。
+
+提前坍塌机制所提供的功能非常简单——就是把牌山某个位置上的一张牌定死。
+“坍塌”的意思就是一张牌不再处于量子叠加态，成为一个不可改变的事实，
+使任何修改存在感的操作都失去效果。
+
+提前坍塌机制应该被慎用。同样是实现“绝对性”，
+但通过负数挂力值操作存在感是个更好的选择——因为可以量化挂力大小。
+相反，提前坍塌机制则是纯粹的先下手为强。
+目前只有未来视能力用到了提前坍塌机制——通过锁山实现多个世界线之间的“牌山不变定律”。
+
+<br >
+
+## 出口
+
+一座山由四个部分组成：
+1. 普通自摸牌
+2. 岭上牌
+3. （杠）宝牌指示牌
+4. （杠）里宝牌指示牌
+
+每个部分都可以看成一个队列——只能从队首出牌，
+而不能从中间出牌（不然就是山崩了）。我们把这些队首称为“出口”。
+
+枚举类型`Exit`里的四个值分别代表以上四个部分的出口。
+
+存在感操作与提前坍塌操作不仅可以作用于出口前的牌，
+也可以作用于距离出口几张以后的牌。
+
+<br />
+
+## 常用方法
+
+对于实现技能来讲，最常用的是以下几种方法。
+
+|--------------------------|------------|
+|成员函数原型              |作用        |
+|--------------------------|------------|
+|`remainA(T34)`            |检测 A 区残枚，不区分赤牌|
+|`remainA(const T37 &)`    |检测 A 区残枚，赤宝牌敏感|
+|`getDrids()`              |读取所有已公开的表宝牌指示牌|
+|`getUrids()`              |读取所有已公开的里宝牌指示牌|
+|`lightA(T34, int)`        |增加 A 区中一种牌的存在感|
+|`lightA(const T37 &, int)`|同上，赤牌敏感|
+|`lightB(T34, int)`        |增加 B 区中一种牌的存在感|
+|`lightB(const T37 &, int)`|同上，赤牌敏感|
+|`power(...)`              |`light`系列的一般化，可干涉任意出口|
+|`pin(Exit, size_t, const T37 &)`|提前坍塌|
+|`loadB(const T37 &, int)` |将指定牌放入 B 区|
+
+<br />
+
+你会发现我们只有`remainA`，没有`remainB`。
+这是为了防止 B 区被滥用——没有人可以直接知道 B 区里的残枚状况。
+同样地，只有`loadB`，没有`loadA`——进入 B 区的路是一方通行。
+
+所有的牌山操作都不提供用于确认是否成功的返回值，
+而且能力实现中也不应该存在“确认成功”这种行为。 
+这是因为我们不允许哪个技能把逻辑建立在保证自己 100% 成功的基础上，
+不然又要涉及绝对优先级问题。
+所有的能力都只负责努力，不负责成功。
+
+函数起名为“light”是因为动画/漫画中开挂的时候通常会发光。
+
+<br />
+
+## 总结
+
+松饼的牌山系统处在不断的演变与进化之中——当然也存在各种缺陷。
+我们期待更多的人能参与到有关天麻牌山的研究之中，
+提供更还原、更简洁、更优美的牌山设计。
+
+牌山是个深坑。
+松饼换过10种以上牌山结构，容易想到的设计基本都已经被想到过了。
 
 
 

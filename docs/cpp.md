@@ -1,175 +1,146 @@
 ---
 layout: page
-title: Pancake C++ Style Guide
+title: 松饼 C++ 代码规范
 permalink: /docs/cpp/
 ---
 
-© 2017 Rolevax, All Rights Reserved.
+© 2017 - 2018 Rolevax，保留所有权利。
 
-All participants of `libsaki` and/or `mjpancake`
-are expected to check through all the rules in this guide carefully.
-Some of these rules are uncommon.
+## 元规范
 
-You can reference to `libsaki` for an example
-whenever you find a rule hard to understand.
+- [MT-1] 严格遵守本规范。极少数情况下，如果规范导致问题，可暂时打破规范。
+- [MT-2] 本规范仅约束新增的代码。
+- [MT-3] 本规范可能随时更新，更新随 Gitter 群聊内通知生效。
 
-## Meta
+## 通用
 
-- [MT-1] This guide is basically a strict constraint. 
-  However, in rare cases,
-  the rules can be partially broken when styling become weird under such rules. 
-- [MT-2] This guide only regulates newly added code.
-  Old code can be re-formatted when convenient.
-- [MT-3] This guide may be updated with a notification in the Gitter room. 
-  All the new rules take effect immediately as the page is uploaded. 
+- [GN-1] 保持 0 编译器警告。
+- [GN-2] 代码可维护性比性能重要，除非性能影响实际体验。
+- [GN-3] 提交代码前用 Uncrustify 统一代码风格。
+    - 如果是通过Qt项目`mjpancake.pro`编译的，这一步已自动完成。
+    - 使用配置文件`mjpancake/uncrustify.cfg`
+    - 下文所列出的规范都是 Uncrustify 未涉及的，需要手动修改。
 
-## General
+## 注释
 
-- [GN-1] Zero-warning is required under debug build.
-  - Unused variable warnings are allowed under release build
-  - Warnings caused by compiler's bugs are allowed under any build mode
-    (such as [this one](http://stackoverflow.com/a/33306000))
-- [GN-2] Basically high level readability and development efficiency
-  is considered more important, 
-  and low level optimizations should only be taken to critical performance problems. 
-- [GN-3] Format the code before committing by Uncrustify, using
-         `mjpancake/uncrusitify.cfg`.
-    - This is already automatically done by the pre-build
-      hook in `mjpancake.pro`. Just do not bypass it.
+- [CM-1] 通过自解释性代码避免注释。
+- [CM-2] 用注释标注 include guard 与 namespace 的结尾。
+- [CM-3] 仅使用 `//` 注释，禁用`/* */`注释。
+- [CM-4] 删除代码时直接删除，禁止通过注释屏蔽代码。
 
-## Comments
+## 命名
 
-- {CM-1] Avoid commenting, by making the code self-explainatory.
-- [CM-2] Always mark ends of include guards and namespaces with comments.
-- [CM-3] Use only `//` comments in committed code. `/* */` is reserved for debugging. 
-- [CM-4] Do not delete code by commenting-out, and just erase them instead.
+- [NM-1] 一般情况下，基于英文命名。
+         日麻术语基于日文罗马音，
+         国标术语基于拼音。
+         人名、校名基于本国语言拼写方式。
+- [NM-2] 使用大驼峰记法命名 class, struct, union, enum 的类型名称。
+- [NM-3] 使用小驼峰记法命名函数与变量。
+- [NM-4] 非公有非静态的类成员字段以`m`开头。
+- [NM-5] 全大写的单词在驼峰记法中当作普通单词处理
+  - 不要：`HTTP`
+  - 要：`Http`（大驼峰），`http`（小驼峰）
+- [NM-6] 用小写字母或数字为 namespace 命名。
+- [NM-7] 用大写字母和下划线为枚举值和常量命名。
+- [NM-8] 鼓励使用短命名与常见的缩写。
+- [NM-9] 命名需带有自解释性，禁止使用无意义命名。
+    - 好：`Dog odie;`
+    - 可以：`Dog d;`（`d`可看作`Dog`的缩写）
+    - 不可以：`Dog x;`（`x`不带有自解释性）
+- [NM-10] 回调函数命名规则：
+  - 某事发生前回调：`onDoSomething`（动词原形 + 名词形式，名词可省）
+  - 某事发生后回调：`onSomethingDone`（名词 + done 形式，名词可省）
+- [NM-11] 用小写字母，点，下划线命名文件。
+- [NM-12] 文件扩展名：头文件`.h`，源文件`.cpp`。
 
-## Naming
+## 内存管理与类型系统
 
-- [NM-1] Base naming on English. 
-         Mahjong terminologies, character names, and school names
-         can be represented by Japanese Romaji. 
-         Terminologies related to the Chinese GB Mahjong
-         can be represented by Pinyin. 
-- [NM-2] Use `UpperCamelCase` for class, struct, union, and enum type names. 
-- [NM-3] Use `lowerCamelCase` for function and variable names. 
-- [NM-4] Start non-public class member variables with `m`.
-- [NM-5] Treat all-capital words as ordinary words in camel cases. 
-  - Bad: `HTTP`
-  - Good: `Http` (upper camel), `http` (lower camel)
-- [NM-6] Use lower cases and digits within 7 characters for namespace names.
-- [NM-7] Use capitals and underscores for enum values and constants.
-- [NM-8] Shorter names and common abbreviations are approved. 
-- [NM-9] Callback function naming:
-  - Before something happen: `onDoSomething`;
-  - After something happen: `onSomethingDone`
-- [NM-10] Use only lower cases, `_`, and `.` for filenames. 
-- [NM-11] File extension: header: `.h`, source: `.cpp`
-- [NM-12] Nature of English can be sacrificed to beautify the alignment
+- [MM-1] 基于 RAII 管理内存。 
+- [MM-2] 尽可能用引用替代不拥有对象所有权的指针。
+- [MM-3] 拥有对象所有权时，优先考虑不使用指针。
+    - 拥有所有权，且必须使用指针时，使用`std::unique_ptr<T>`代替`T *`。
+- [MM-4] 禁止直接使用`delete`或`delete[]`。
+    - 所有`new`出来的东西都应该由`std::unique_ptr`或类似的东西保管。
+- [MM-5] `static`变量必须是`const`的。
+- [MM-6] 优先考虑使用数组 + 线性搜索的方式存取数据，
+         除非很有必要使用其它数据结构。
+- [MM-7] 禁用 C 风格数组。（用`std::array`代替）
+- [MM-8] `char`专门用来表示“字符”。表示“字节”时，用`int8_t`等类型。
+- [MM-9] `unsigned`专门用于位运算，禁止表达“非负整数”语义。
+- [MM-10] 整数一律用`int`，除非不用其它类型就会死。
+- [MM-11] `const`用于表达语义级只读，不表达内存级只读。
 
-```
-// bad
-quick_brown_fox.h
-slow_white_fox.h
+## 禁用的 C++ 特性
 
-// good
-fox_quick_brown.h
-fox_slow_white.h
-```
+- [AB-1] 禁用 RTTI。
+    - 使用类型枚举处理需要向下转型的需求。
+- [AB-2] 禁用异常。
+    - 可基于`std::tie`和`std::tuple`模拟多重返回值。
+- [AB-3] 禁用 `goto`。
+    - 需要一次性跳出多重嵌套时，通过拆分函数等方式重新组织逻辑。
+    - 需要做统一的收尾处理时，使用局部变量的析构函数。
+- [AB-4] 禁用 C++14 或 C++17。（为兼容一些坑爹的工具链）
 
-## Memory Management
+## 类定义格式
 
-- [MM-1] Base memory management generally on RAII. 
-- [MM-2] Use a pointer only if a reference cannot be used instead.
-- [MM-3] Use a `std::unique_ptr` whenever a pointer takes the ownership.
-- [MM-4] Re-design the code such that bare `delete` or `delete[]` is never needed. 
-- [MM-5] Do not use non-const static class members.
-- [MM-6] Do not use non-const static variable storage.
+- [CL-1] 用`overload`（异或`final`）标注重写。
+- [CL-2] 重写时省略`virtual`。
+- [CL-3] 用`explicit`标注有参数的构造函数，除非有意引入隐式行为。
+- [CL-4] 用`= delete`取代通过`private`隐藏自动生成的函数。
+- [CL-5] 先声明成员函数，后声明非静态成员变量。
+    - 静态成员变量、嵌套类等声明的顺序不受限制。
+- [CL-6] 以`public`->`protected`->`private`排序所有成员函数声明。
+- [CL-7] 以`public`->`protected`->`private`排序所有非静态成员变量声明。
 
-## Abandoned C++ features
+## 语句风格
 
-- [AB-1] No RTTI
-- [AB-2] No user defined exception
-- [AB-3] No `goto`
-- [AB-4] No `std::shared_ptr`
-- [AB-5] No C++14 or C++17 (for portability)
+- [SM-1] 禁止将多条语句挤进一行。
+- [SM-2] 一条声明语句最多声明一个变量。
+- [SM-3] `do while`和`switch`语句体必须加大括号。
+- [SM-4] 构成[简单阶梯形](/docs/cpp-note#stairs)的
+         `if`, `for`, `while`语句体禁止加大括号。
+- [SM-5] 构成[简单锯齿形](/docs/cpp-note#stairs)的
+         `if`语句体禁止加大括号
+- [SM-6] 既不构成简单阶梯形，也不构成简单锯齿形的`if`, `for`, `while`
+         语句体必须加大括号。
+- [SM-7] 只包含一个`if`语句的`else`块应写成`else if`格式。
+- [SM-8] `if`语句体结尾包含必经的`break`, `continue`, `return`时，
+         除非有利于对齐，否则不接`else`。
+- [SM-9] 用`[[fallthrough]];`标注`switch`中的 fall-through
+- [SM-10] 基于`int`的`for`循环条件写成`(int i = 0; i < N; i++)`格式。
+    - 使用`<`及后缀`++`
+- [SM-11] 基于迭代器的`for`循环条件写成
+          `(auto it = v.begin(); it != v.end(); ++it)`格式。
+    - 使用`auto`, `!=`, 前缀`++`
+    - 如果可以，优先使用`(T e : v)`格式。
+- [SM-12] 避免超长函数定义和超深缩进结构。
+- [SM-13] 尽量使用`using`替代`typedef`。
+- [SM-14] 要`const int *p`，不要`int const *p`.
+- [SM-15] 使用标准库的
+          `transform`, `accumulate`, `find_if`, `any_of`
+          等函数替代用意明显的循环语句。
 
-## Container Preferences
+## 表达式风格
 
-- [CP-1] Use arrays and array-likes for small data regardless of big-O.
-  - "Small" = "Less than a dozen of elements with primitive types".
-  - Use `std::array` for fix length arrays.
-  - Use `saki::util::Stactor` for variable length arrays.
-  - Do not use Raw C-style arrays.
-- [CP-2] Functional map/fold style is preferred over `for` loops.
+- [EX-1] 用`nullptr`表示空指针，禁用`NULL`或`0`。
+- [EX-2] 用`true`和`false`表示布尔常量，禁用`1`或`0`。
+- [EX-3] 用`ptr != nullptr`或`ptr == nullptr`检测空指针，
+         禁用`ptr`或`!ptr`。
+- [EX-4] 用`i != 0`或`i == 0`检测整数0，禁用`i`或`!i`。
+- [EX-5] 用`b`或`!b`检测布尔表达式，
+         禁用`b == true`或`b == false`。
+- [EX-6] 禁用 Yoda 大法。（例如`3 == b`）
+- [EX-7] 禁止依赖`&&`与`||`之间的优先级。
+  - 不要：`a && b || c`
+  - 要：`(a && b) || c`
+- [EX-8] 禁止依赖位运算之间的优先级。
+- [EX-9] 除非有意表达 2 的 n 次幂，禁止使用移位运算代替乘除运算。
+- [EX-10] 禁止利用整数与浮点数之间的隐式转型。
 
-## Class Definition Formatting
+## 其它
 
-- [CL-1] Mark overloading functions with the `overload` keyword.
-- [CL-2] Omit `virtual` in overloading functions.
-- [CL-3] Constructors taking one or more arguments should be prefixed by `explicit`
-  unless they are meant to be non-explicit.
-- [CL-4] Prefer `= delete` over hiding by making `private`.
-- [CL-5] Place all member functions above all non-static member fields.
-- [CL-6] Order member functions by `public`->`protected`->`private` order.
-- [CL-7] Order non-static member fields by `public`->`protected`->`private` order.
-
-## Statement Styling
-
-- [SM-1] Do not squash multiple statements into one line.
-- [SM-2] Declare one variable with one declaration statement.
-  - Unless in some common idioms like `int i, j, k`
-- [SM-3] Use brackets in the body of `if`, `for`, and `while`
-  if (but not only if) at least one of the following conditions are satisfied:
-  1. The condition expression takes more than one line;
-  2. The statement body has more than one statement;
-  3. The statement body is one `if`, `for`, or `while` block with
-     a bracketed body;
-  4. The statement body is one assignment or function call that
-     takes more than one line;
-  5. The statement body is one `if` statement that has an `else` block.
-- [SM-4] Use brackets for all bodies in an `if...else if...else` block 
-  as long as one of its body should be bracketed according to SM-3. 
-- [SM-5] Do not use brackets in the body of `if`, `for`, and `while`
-         if no bracket is required according to SM-5 and SM-6.
-- [SM-6] Write an `else` block whose body is exactly one `if` statement
-         in the `else if (...)` form.
-- [SM-7] With a `break`, `continue`, or `return`
-         that will be certainly reached in the end of an `if` body,
-         type the else-case outside rather than adding an `else` block, 
-         unless an `else` can make the whole block align better. 
-- [SM-8] Mark a fall-through in a `switch` statement
-         with a `[[fallthrough]];` attribute.
-- [SM-9] A typical integer `for` condition should look like
-  `(int i = 0; i < N; i++)`  (use `<` and postfix `++`)
-- [SM-10] A typical iterator `for` condition should look like
-  `(auto it = v.begin(); it != v.end(); ++it)`
-  (use `auto`, `!=`, and prefix `++`)
-- [SM-11] Avoid long (more than one page) function definition
-          and/or deep indentation level.
-- [SM-12] Prefer `using` over `typedef`.
-- [SM-13] Prefer `const int *p` over `int const *p`.
-
-## Expression Formatting
-
-- [EX-1] Always use `nullptr` for null pointers. Do not use `NULL` or `0`.
-- [EX-2] Use `ptr != nullptr` or `ptr == nullptr` to check pointers' nullity.
-  Do not use `ptr` or `!ptr`.
-- [EX-3] Use `i != 0` or `i == 0` to check zero integers. Do not use `i` or `!i`.
-- [EX-4] Directly use `b` or `!b` to check boolean conditions.
-  Do not use `b == true` or `b == false`.
-- [EX-5] Do not use Yoda conditions (like `3 == b`). 
-- [EX-6] Do not rely on the precedence between `&&` and `||`
-  - Bad: `a && b || c`
-  - Good: `(a && b) || c`
-- [EX-7] Do not rely on the precedence between bitwise operators
-         and always use parenthesises.
-
-## Other
-
-- [OT-1] Do not use any non-ASCII character, even in string literals and comments.
-- [OT-2] Wrap lines to 110 characters. Less than 80 is better.
-- [OT-3] Use Unix line terminators.
+- [OT-1] C++文件中禁用非ASCII字符。
+- [OT-2] 单行字符上限110，鼓励截到80字符以内。
 
 
 

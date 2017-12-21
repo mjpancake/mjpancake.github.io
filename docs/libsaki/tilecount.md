@@ -1,60 +1,91 @@
 ---
 layout: page
-title: "The Multiset for Tiles: TileCount"
+title: 一堆麻将牌
 permalink: /docs/libsaki/tilecount/
 ---
 
-`tilecount.h` and `tilecount.cpp` defines the `TileCount` class. 
-This class is basically an array of 34 `int`s, recording number of tiles of each id34.
-The array member is simply named as `c`, means counting. 
-In addition to `c`, there is another array of 3 `int`s called `mAka5s`, which records number of akadora of M, P, and S respectively. (Thus `mAka5s[static_cast<int>(Suit::M)]` gets the number of 0m in this set)
+`libsaki/form/tile_count.h`定义了一个类`TileCount`。
+`TileCount`是`T37`的一个多集（multiset），记录每种牌有几张。
+`TileCount`有很多用途，可用于表示手牌，也可以用于表示牌山。
+不过牌河是表示不了的，因为`TileCount`不记录牌之间的先后顺序。
 
-To clarify, `c` records both black and red tiles for number-5's. Therefore `c[4]` will never be less than `mAka5s[0]`, `c[13]` will never be less than `mAka5s[1]`, and `c[22]` will never be less than `mAka5s[2]`.
+<br />
 
-The element values of `c` and `mAka5s` typically range in 0 ~ 4. Although using a `char` type for array elements (or some super crazy bit masks) may save a lot of memory space, we are too lazy to change unless there occurs a super big difference shown by some scientific benchmark test. 
+## 构造函数
 
-## Constructors
+| Prototype                          | Explanation                   |
+| :--------------------------------- | :---------------------------- |
+| `TileCount()`                      | 一个空集                      |
+| `TileCount(AkadoraCount)`          | 包含136张牌的集合，赤牌数可定 |
+| `TileCount(std::initializer_list)` | 从已有数据创建                |
+| `TileCount(std::vector)`           | 从已有数据创建                |
 
-| Prototype                          | Explanation                                             |
-| :--------------------------------- | :------------------------------------------------------ |
-| `TileCount()`                      | An empty set with no tile                               |
-| `TileCount(AkadoraCount)`          | A set of 136 tiles with specified akadora configuration |
-| `TileCount(std::initializer_list)` | A set of specified tiles                                |
-| `TileCount(std::vector)`           | A set of specified tiles                                |
+<br />
 
-## Counting and Modifying
+## 计数、添加、删除
 
-The `ct(T34)`, `ct(const T37&)` methods return the number of specified tiles in the set. 
-Other methods prefixed by `ct` is also pretty trivial. 
-The `ct(T34)` summarizes black and red number-5 tiles and `ct(const T37 &)` strictly
-distinguishes them. 
-For example, if there are 055p in the set, `ct(T34(Suit::P, 5))` returns 3
-and `ct(T37(Suit::P, 5))` returns 2. 
+通过`ct(T34)`或`ct(const T37&)`可查看某种牌在集合里有几张。
+两者的区别见下面的例子：
 
-The `inc(const T37 &t, int delta)` method puts or removes tiles from the set. 
-A positive `delta` increases the number of `t`, and a negative `delta` decreases it. 
-Note that there is no `inc(T34 t, int delta)` because `T34` represents only "logical"
-tiles but not a puttable/removable tile entity. We must explicitly distinguish black/red
-number-5 tiles when we transfer them from or to a set. 
+```
+// 创建一个集合，里面有一张0p, 一张5p
+TileCount count({ T37(Suit::P, 0), T37(Suit::P, 5) });
 
-## Step Calculation
+T34 p(Suit::P, 5);
+T37 p5(Suit::P, 5);
+T37 p0(Suit::P, 0);
 
-Within the project, we use the term *step* to mean *shanten-number*. 
-We have separated method to calculate different types of steps.
+int i1 = count.ct(p);  // i1 == 2
+int i2 = count.ct(p5); // i2 == 1
+int i3 = count.ct(p0); // i3 == 1
+```
 
-| Prototype            | Explanation |
-| :------------------- | :---------- |
-| `step4(int barkCt)`  | 4-melds shanten number with specified bark count |
-| `step7()`            | 7-pairs shanten number |
-| `step13()`           | 13-orphans shanten number |
-| `step(int barkCt)`   | min(step4, step7, step13) |
-| `step7Gb()`          | 7-pairs shanten number allowing duplicate pairs |
-| `stepGb(int barkCt)` | min(step4, step7Gb, step13) |
+通过`inc(const T37 &t, int delta)`方法可修改集合中一种牌的个数。
+`delta`为正数即为添加，为负数即为去除。
+注意`inc`的参数只能是`T37`，不能是`T34`
+——虽然查个数时可以概括，但增删时必须清楚地表明增删的到底是赤牌还是黑牌。
 
-Within this project, we use the term *bark* to mean a meld call (chii, pon, daiminkan, ankan, kakan), 
-and the word "call" is avoided since it confuses as it can also mean a function call.  
+<br />
 
-Those step-methods can return 0 to mean formal ready hands or -1 to mean formal winning hands. 
+## 向听数计算
 
-(TODO)
+前文提到，`TileCount`可用于表示手牌。
+当`TileCount`表示手牌时，可以通过成员方法计算向听数。
+
+Libsaki 中我们用 *step* 一词代表向听数。
+`TileCount`中有一系列关于向听数计算的方法：
+
+| 方法                 | 用途                         |
+| :------------------- | :--------------------------- |
+| `step4(int barkCt)`  | 指定副露数，求四面子向听数   |
+| `step7()`            | 假设门前清，求七对子向听数   |
+| `step13()`           | 假设门前清，求国士向听数     |
+| `step(int barkCt)`   | min(step4, step7, step13)    |
+| `step7Gb()`          | 国标七对子向听数，允许四归一 |
+| `stepGb(int barkCt)` | min(step4, step7Gb, step13)  |
+
+Libsaki 内部我们用 *bark* 一词统称吃、碰、大明杠、暗杠、加杠。
+（本应该叫 call，但容易和 function call 弄混）
+
+向听数为 0 代表形式听牌或纯空听，向听数为 -1 代表和牌。
+
+四面子形的向听数计算采用的是暴力搜索算法，耗时为毫秒级。
+
+<br />
+
+## 有效牌计算
+
+代码内部通过`effA`表示一类有效牌（降低向听数），
+用`effB`表示二类有效牌（改良），
+用`effC`表示三类有效牌（改良增多）。
+
+`hasEffA`系列方法判断某张牌是否为当前手牌的一类有效牌。
+`effA`可以列举出所有的一类有效牌。
+后面的`4`, `7`, `13`等后缀意义与`step`系列相同。
+
+<br />
+
+## 其它方法
+
+`TileCount`里的其它方法都不是很常用，不必一一了解。
 

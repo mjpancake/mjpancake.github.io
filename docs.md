@@ -1,14 +1,17 @@
 ---
 layout: page
-title: 文档
+title: 攻略
 permalink: /docs/
 ---
 
-## 食用指南
+## 入坑必读系列
 
-- [松饼麻雀的定位](/docs/target/)
 - [能力表](/docs/girl/)
 - [麻将规则](/docs/rule/)
+- [企鹅群群规](/docs/qgroup/)
+- [还原度对照表](/docs/target/)
+
+<br />
 
 ## 开发者文档
 
@@ -19,9 +22,9 @@ permalink: /docs/
 以下链接供已熟悉松饼项目者使用：
 
 - [设计哲♂学](/docs/phil/)
-- [Libsaki Tutorial](/docs/libsaki/)
+- [Libsaki 代码导读](/docs/libsaki/)
 - [Client Tutorial](/docs/client/)
 - [Server Tutorial](/docs/server/)
-- [C++ Style Guide](/docs/cpp/)
-- [QML Style Guide](/docs/qml/)
+- [松饼 C++ 代码规范](/docs/cpp/)
+- [松饼 QML 代码规范](/docs/qml/)
 
