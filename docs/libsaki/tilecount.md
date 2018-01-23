@@ -18,7 +18,6 @@ permalink: /docs/libsaki/tilecount/
 | `TileCount()`                      | 一个空集                      |
 | `TileCount(AkadoraCount)`          | 包含136张牌的集合，赤牌数可定 |
 | `TileCount(std::initializer_list)` | 从已有数据创建                |
-| `TileCount(std::vector)`           | 从已有数据创建                |
 
 <br />
 

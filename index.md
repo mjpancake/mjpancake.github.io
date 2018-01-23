@@ -3,21 +3,6 @@ layout: home
 title: "松饼社区主站"
 ---
 
-<style>
-table {
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-</style>
-
 # 松饼麻雀简介
 
 「松饼麻雀」是一个 Saki 麻将模拟器，和官方游戏区别如下：
@@ -35,7 +20,7 @@ th, td {
 
 <br />
 总结起来，就是：
-> 一堆平台，五个“哇！！！”
+> 一堆平台，五个「哇！！！」
 
 ---
 <br />
@@ -48,7 +33,7 @@ th, td {
 1. [注册](/signup/)
 2. 加群 253708512 (Q)
 3. [下载]({{ site.data.link.releases }})
-4. [学习](/docs/)
+4. [看攻略](/docs/)
 5. [参与](/contribute/)
 
 ---

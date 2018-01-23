@@ -10,7 +10,8 @@ permalink: /docs/libsaki/
 
 *修改代码前必看[松饼C++代码规范](/docs/cpp/)。* 
 
-Libsaki由C++写成，不依赖第三方库。
+Libsaki 由 C++ 写成，
+依赖的第三方库都以源码形式位于代码树内，可直接无脑编译。
 
 ## 分层结构
 

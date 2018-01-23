@@ -37,7 +37,7 @@ Libsaki 中，我们把切牌、吃碰等操作统称为*行动（Action）*。
 | `CHII_AS_MIDDLE` | 吃（2+13）      | `int`晒赤数，`T37`吃后打牌 |
 | `CHII_AS_RIGHT`  | 吃（3+12）      | `int`晒赤数，`T37`吃后打牌 |
 | `PON`            | 碰              | `int`晒赤数，`T37`碰后打牌 |
-| `DAIMINKAN`      | 大明杠          | `T34`所杠牌种类 |
+| `DAIMINKAN`      | 大明杠          |  |
 | `ANKAN`          | 暗杠            | `T34`所杠牌种类 |
 | `KAKAN`          | 加杠            | `int`碰的下标 |
 | `TSUMO`          | 自摸和          |  |
@@ -54,9 +54,9 @@ Libsaki 中，我们把切牌、吃碰等操作统称为*行动（Action）*。
 - Swap：Libsaki 内部手切一律叫 swap。
 - Spin：职业雀士打牌的视频中，经常看到自摸牌橫放到手牌上方后，
         因为磁铁打转一周（spin），
-        然后这个雀士就顺着旋转把这张牌摸切出去的场面。
+        然后就顺着旋转把这张牌摸切出去的场面。
         因此 Libsaki 内部自摸切一律叫 spin。
-- IRS：In-Round Skill 的缩写，代表”局中技能“。
+- IRS：In-Round Skill 的缩写，代表「局中技能」。
        将来可能还会有局外技能（Out-of-Round Skill），
        例如赤土的情报收集。
 - 晒赤数：从手牌向副露中晒出的赤牌个数  

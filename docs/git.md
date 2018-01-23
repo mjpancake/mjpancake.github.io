@@ -6,7 +6,7 @@ permalink: /docs/git/
 
 ## 提交消息规范
 
-提交消息不符合规范的提交无法被合并。
+消息不符合规范的提交无法被合并。
 
 - [CM-1] 英语
 - [CM-2] 适当省略冠词
@@ -37,6 +37,6 @@ permalink: /docs/git/
 
 - [MG-1] 使用单线历史避免复杂的分支关系。
          每当新分支与最新的`upstream/develop`出现分歧时，
-         应当使用rebase便新新分支可通过fast-forward合并到`develop`上
+         应当使用rebase使新分支可通过fast-forward合并到`develop`上
 
 

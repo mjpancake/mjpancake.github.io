@@ -8,21 +8,6 @@ permalink: /crowd/
 <script src="/js/markdown.min.js"></script>
 <script src="/js/spin.min.js"></script>
 
-<style>
-table {
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-</style>
-
 <div id="loading">
     <div style="width:45px;height:45px">
         <div id="spinner" style="position:relative"></div>

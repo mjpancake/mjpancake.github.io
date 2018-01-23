@@ -4,7 +4,7 @@ title: 手役
 permalink: /docs/libsaki/form/
 ---
 
-`libsaki/form/form.h`
+位于`libsaki/form/form.h`目录。
 
 （待续）
 

@@ -6,7 +6,7 @@
 var teru = {};
 
 teru.send = function(method, api, msg, onSuccess) {
-	var domain = "cn.rolevax.xyz";
+	var domain = "hk.rolevax.xyz";
 	//var domain = "127.0.0.1";
     var url = "https://" + domain + api;
 
