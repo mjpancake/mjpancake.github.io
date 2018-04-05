@@ -47,8 +47,8 @@ title: "松饼社区主站"
 | Windows   | Windows 7 或以上（不支持 XP 和 Vista）|
 | Android   | Android 4.1 或以上                    |
 | Linux X11 | 依赖 Qt 5，需要自行编译               |
-| macOS     | 需要一台能跑 Xcode 的机器自行编译     |
-| iOS       | 需要一台能跑 Xcode 的机器自行编译     |
+| macOS     | 依赖 Qt 5 和 Xcode，需要自行编译      |
+| iOS       | 依赖 Qt 5 和 Xcode，需要自行编译      |
 |-----------|---------------------------------------|
 
 

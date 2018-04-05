@@ -43,11 +43,11 @@ Lua 是一门简单、简单、简单、简单的编程语言，
 ## 第一个栗子
 
 打开人物编辑器，点击「新建人物」，
-文件名、人物名、头像都随便弄一个，如图：
+文件名、人物名、头像都随便弄一个。
 
-（此处有图x）
+![新建]({{ "/assets/editor_new.png" | absolute_url }})
 
-文件名只能由字母、数字、下划线`_`组成，否则无法保存。
+文件名只能由字母、数字、下划线`_`组成。
 如果输入的文件名已存在，则会发生覆盖。
 人物名可以包含任意字符，而且重复了也没关系。
 
@@ -60,7 +60,7 @@ print("Vanishmennt this world!")
 点击「保存」，我们第一个原创角色就大功告成了。
 赶紧用三狗战测试一下x
 
-（此处有图x）
+![运行]({{ "/assets/editor_first_run.png" | absolute_url }})
 
 你会发现，一桌开始时，
 中间会蹦出一句「Vanishment this world!」，中二爆表。
@@ -77,7 +77,7 @@ print("Vanishmennt this world!")
 在现实中，很有可能看不到「Vanishment this world!」，
 而是得到一些奇怪的输出，比如下图：
 
-（此处有图x）
+![运行错误]({{ "/assets/editor_error.png" | absolute_url }})
 
 出现这种情况，说明你的代码有问题，比如这样：
 
@@ -282,5 +282,5 @@ end
 
 每一讲的习题答案都在下一讲的开头。
 
-下一讲：[变量与类型](/docs/editor/var/)
+下一讲：[数据类型](/docs/editor/var/)
 

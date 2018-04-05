@@ -27,8 +27,10 @@ permalink: /contribute/
 
 只要拥有松饼社区 ID，
 就可以通过 [Bug 反馈](/feedback/) 或 [众包任务](/crowd/)
-获得“贡献度”。
-贡献度是零食的领取基准，每周领取零食量 = 50 x 贡献度。
+获得「贡献度」。
+
+贡献度大于 0 的 ID 会出现在 app 封面上。
+同时，贡献度是零食的领取基准，每周领取零食量 = 50 x 贡献度。
 
 <script src="/js/teru.js"></script>
 <script src="/js/spin.min.js"></script>

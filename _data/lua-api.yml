@@ -1,0 +1,280 @@
+-
+  name: T34
+  members:
+    -
+      name: "构造<sup>1</sup>"
+      syntax: "`T34.new(Suit.M, 5)`"
+      params:
+        - "`Suit`"
+        - number
+      returns:
+        - "`T34`"
+      desc: 通过花色与数值创建。
+    -
+      name: "构造<sup>2</sup>"
+      syntax: '`T34.new("5m")`'
+      params:
+        - string
+      returns:
+        - "`T34`"
+      desc: 通过字符串创建。
+    -
+      name: "构造<sup>3</sup>"
+      syntax: "`T34.new(4)`"
+      params:
+        - number
+      returns:
+        - "`T34`"
+      desc: 通过 ID-34 创建。
+    -
+      name: "`id34`"
+      syntax: "`t:id34()`"
+      params:
+      returns:
+        - number
+      desc: 获取 ID-34。
+    -
+      name: "`isyakuhai`"
+      syntax: "`t:isyakuhai(sw, rw)`"
+      params:
+        - number
+        - number
+      returns:
+        - boolean
+      desc: "通过自风`sw`与场风`rw`，判断`t`是否为役牌。"
+    -
+      name: "`==`"
+      syntax: "`t1 == t2`"
+      params:
+        - "`T34`"
+        - "`T34`"
+      returns:
+        - boolean
+      desc: "判断两张牌是否相等，无视赤黑。"
+    - name: "static `all`"
+      syntax: "`ipairs(T34.all)`"
+      desc: 遍历全部 34 种牌。
+-
+  name: Who
+  members:
+    -
+      name: "`==`"
+      syntax: "`who1 == who2`"
+      params:
+        - "`Who`"
+        - "`Who`"
+      returns:
+        - boolean
+      desc: 判断`who1`和`who2`是否指代同一人。
+    -
+      name: "`right`"
+      syntax: "`who:right()`"
+      params:
+      returns:
+        - "`Who`"
+      desc: "`who`的下家。"
+    -
+      name: "`cross`"
+      syntax: "`who:cross()`"
+      params:
+      returns:
+        - "`Who`"
+      desc: "`who`的对家。"
+    -
+      name: "`left`"
+      syntax: "`who:left()`"
+      params:
+      returns:
+        - "`Who`"
+      desc: "`who`的上家。"
+-
+  name: M37
+  members:
+    -
+      name: "`type`"
+      syntax: "`meld:type()`"
+      params:
+      returns:
+        - "`M37.Type`"
+      desc:
+        获取 meld 类型。
+        返回值为`M37.Type.CHII`, `M37.Type.PON`, `M37.Type.DAIMINKAN`,
+        `M37.Type.ANKAN`, `M37.Type.KAKAN`中的一个。
+    -
+      name: "`[]`"
+      syntax: "`meld[2]`"
+      params:
+        - number
+      returns:
+        - "`T37`"
+      desc:
+        通过下标获取 meld 中的一张牌。
+        下标从 0 开始，越界时触发未定义行为。
+-
+  name: Mount
+  members:
+    -
+      name: "`lighta`<sup>1<sup>"
+      syntax: "`mount:lighta(tile, mk)`"
+      params:
+        - "`T34`"
+        - number
+      returns:
+      desc: 以`mk`增加 A 区中`tile`的存在感。
+    -
+      name: "`lighta`<sup>2<sup>"
+      syntax: "`mount:lighta(tile, mk, rinshan)`"
+      params:
+        - "`T34`"
+        - number
+        - boolean
+      returns:
+      desc: 同上，多一个指定是否为岭上出口的参数。
+-
+  name: Tilecount
+  members:
+    -
+      name: "`ct`<sup>1<sup>"
+      syntax: "`tc:ct(tile)`"
+      params:
+        - "`T34`"
+      returns:
+        - number
+      desc: 获取集合中`tile`的数量。
+    -
+      name: "`ct`<sup>2<sup>"
+      syntax: "`tc:ct(Suit.M)`"
+      params:
+        - "`Suit`"
+      returns:
+        - number
+      desc: 获取集合中某一花色牌的数量。
+-
+  name: Hand
+  members:
+    -
+      name: "`closed`"
+      syntax: "`hand:closed()`"
+      params:
+      returns:
+        - "`Tilecount`"
+      desc: 获取表示纯手牌部分的`Tilecount`。
+    -
+      name: "`barks`"
+      syntax: "`hand:barks()`"
+      params:
+      returns:
+        - "某类似数组的`M37`只读容器"
+      desc: 获取表示副露与暗杠的 barks 部分。
+    -
+      name: "`ct`"
+      syntax: "`hand:ct(tile)`"
+      params:
+        - "`T34`"
+      returns:
+        - number
+      desc: 计算某种牌的数量，含副露。
+    -
+      name: "`ready`"
+      syntax: "`hand:ready()`"
+      params:
+      returns:
+        - boolean
+      desc: 判断是否已形式听牌（不含纯空听）。
+    -
+      name: "`step`"
+      syntax: "`hand:step()`"
+      params:
+      returns:
+        - number
+      desc: 计算向听数。
+    -
+      name: "`step4`"
+      syntax: "`hand:step4()`"
+      params:
+      returns:
+        - number
+      desc: 计算四面子向听数。
+    -
+      name: "`step7`"
+      syntax: "`hand:step7()`"
+      params:
+      returns:
+        - number
+      desc: 计算七对子向听数。
+    -
+      name: "`step13`"
+      syntax: "`hand:step13()`"
+      params:
+      returns:
+        - number
+      desc: 计算国士向听数。
+    -
+      name: "`effa`"
+      syntax: "`hand:effa()`"
+      params:
+      returns:
+        - "某类似数组的`T34`容器"
+      desc: 计算一类有效牌。
+    -
+      name: "`effa4`"
+      syntax: "`hand:effa4()`"
+      params:
+      returns:
+        - "某类似数组的`T34`容器"
+      desc: 计算四面子一类有效牌。
+    -
+      name: "`ismenzen`"
+      syntax: "`hand:ismenzen()`"
+      params:
+      returns:
+        - boolean
+      desc: 判断是否为门前清。
+-
+  name: Game
+  members:
+    - 
+      name: "`gethand`"
+      syntax: "`game:gethand(who)`"
+      params:
+        - "`Who`"
+      returns:
+        - "`Hand`"
+      desc: 获取某家手牌。
+    - 
+      name: "`getround`"
+      syntax: "`game:getround()`"
+      params:
+      returns:
+        - number
+      desc: 获取当前 round 数。
+    - 
+      name: "`getextraround`"
+      syntax: "`game:getextraround()`"
+      params:
+      returns:
+        - number
+      desc: 获取当前本场数。
+    - 
+      name: "`getdealer`"
+      syntax: "`game:getdealer()`"
+      params:
+      returns:
+        - "`Who`"
+      desc: 获取本局庄家。
+    - 
+      name: "`getselfwind`"
+      syntax: "`game:getselfwind(who)`"
+      params:
+        - "`Who`"
+      returns:
+        - number
+      desc: 获取某家自风数值（1 ～ 4 分别表示东南西北）。
+    - 
+      name: "`getroundwind`"
+      syntax: "`game:getroundwind()`"
+      params:
+        - "`Who`"
+      returns:
+        - number
+      desc: 获取本局场风数值（1 ～ 4 分别表示东南西北）。

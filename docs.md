@@ -18,6 +18,8 @@ permalink: /docs/
 
 「松饼人物编辑器：从入门到欧耶」系列教程：
 
+- [搞起](/docs/editor/start/)
+- [数据类型](/docs/editor/var/)
 - (施工中)
 
 文档：

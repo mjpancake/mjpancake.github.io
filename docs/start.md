@@ -17,9 +17,9 @@ permalink: /docs/start/
 
 1. 入门（必修）：[廖雪峰的Git教程][lxf]{:target="_blank"}
   （学习时长：一至三天）
-3. 巩固补充（必修）：[Ruheng的Git教程][git-adv]{:target="_blank"}
+2. 巩固补充（必修）：[Ruheng的Git教程][git-adv]{:target="_blank"}
   （学习时长：一至三天）
-4. 深入（选修）：[Pro Git （中文版）][pro-git]{:target="_blank"}
+3. 深入（选修）：[Pro Git （中文版）][pro-git]{:target="_blank"}
   （学习时长：长期）
 
 <br />
@@ -35,8 +35,6 @@ Gitter 有网页版、桌面版、手机版，基本上什么系统都支持。
 
 - 松饼 Gitter 群链接：
   [mjpancake]({{ site.data.link.gitter }}){:target="_blank"}
-- 喵打 Gitter 私信链接：
-  [rolevax]({{ site.data.link.gitter-rolevax }}){:target="_blank"}
 
 <br />
 
@@ -66,21 +64,18 @@ GitHub 地址：
 
 ## 5. 工作流程
 
-下面以「为咲添加正负零技能」为例，介绍整个工作流程：
-
-- 第一步，创建新分支
+- 第一步，从`upstream/develop`创建新分支
     - `git fetch upstream`
-    - `git checkout -b plus-minus-zero upstream/develop`
+    - `git checkout -b my-skill upstream/develop`
 - 第二步，写代码，测试结果
     - 根据[松饼C++规范](/docs/cpp/)整理改动过的代码
 - 第三步，提交并上传
-    - `git commit -am "add +-0 skill"`
-    - `git push -u origin plus-minus-zero`
-    - 提交消息是有规范的，见[松饼Git提交消息规范](/docs/git/)
-- 第四步，创建 pull request 并等待 review
+    - `git commit -am "add xxxxx skill"`
+    - `git push -u origin my-skill`
+- 第四步，创建 pull request 并等待审查
     - 合并目标是`develop`分支
-- 第五步，根据 review 结果改进代码，提交上传并等待再次 review
-    - `git commit -am "improve +-0 skill"`
+- 第五步，根据审查结果修改代码，提交上传并等待再次审查
+    - `git commit -am "improve xxxxx skill"`
     - `git push`
 - 重复第五步直到分支被合并
 
