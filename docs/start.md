@@ -8,9 +8,7 @@ permalink: /docs/start/
 
 不怕神对手，只怕猪队友——我们希望所有的项目参与者都能认真读完本文。
 
-<br />
-
-## 1. 关于Git
+## 1. 关于 Git
 
 松饼开发者必须熟悉Git。
 如果没听说过、或不熟悉Git，可参考以下教程：
@@ -20,15 +18,13 @@ permalink: /docs/start/
 2. 巩固补充（必修）：[Ruheng的Git教程][git-adv]{:target="_blank"}
   （学习时长：一至三天）
 3. 深入（选修）：[Pro Git （中文版）][pro-git]{:target="_blank"}
-  （学习时长：长期）
-
-<br />
+  （学习时长：长期）<a name="_"></a>
 
 ## 2. 关于 Gitter
 
 松饼开发者之间通过 Gitter 交流。
 
-Gitter 是一个聊天工具，可私信可群聊。
+Gitter 是一个聊天工具。
 由于支持 Markdown 语法，并且可以和各类开发工具联动，
 所以很适合有关编程的讨论。
 Gitter 有网页版、桌面版、手机版，基本上什么系统都支持。
@@ -36,9 +32,7 @@ Gitter 有网页版、桌面版、手机版，基本上什么系统都支持。
 - 松饼 Gitter 群链接：
   [mjpancake]({{ site.data.link.gitter }}){:target="_blank"}
 
-<br />
-
-## 3. 松饼是用什么做出来的
+## 3. 项目构成
 
 「松饼」总共包含四个项目：核心库、客户端、服务器、主站。
 四个项目关系如图。
@@ -54,32 +48,25 @@ GitHub 地址：
 - [`rolevax/ih`][ih]
 - [`mjpancake/mjpancake.github.io`][pages]
 
-<br />
-
 ## 4. 开发环境的搭建步骤
 
 见 [搭建开发环境](/docs/dev-setup/) 页面。
 
-<br />
+## 5. 大致工作流程与审查标准
 
-## 5. 工作流程
-
-- 第一步，从`upstream/develop`创建新分支
-    - `git fetch upstream`
-    - `git checkout -b my-skill upstream/develop`
+- 第一步，从`develop`创建新分支
 - 第二步，写代码，测试结果
-    - 根据[松饼C++规范](/docs/cpp/)整理改动过的代码
 - 第三步，提交并上传
-    - `git commit -am "add xxxxx skill"`
-    - `git push -u origin my-skill`
-- 第四步，创建 pull request 并等待审查
-    - 合并目标是`develop`分支
+- 第四步，创建合并至`devleop`分支的 pull request 并等待审查
 - 第五步，根据审查结果修改代码，提交上传并等待再次审查
-    - `git commit -am "improve xxxxx skill"`
-    - `git push`
 - 重复第五步直到分支被合并
 
+明文审查标准：
 
+- [松饼 C++ 代码规范](/docs/cpp/)
+- [松饼 QML 代码规范](/docs/qml/)
+
+除明文标准外，还会有基于常识的考虑要素。
 
 [lxf]: https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
 [git-adv]: https://www.jianshu.com/p/072587b47515

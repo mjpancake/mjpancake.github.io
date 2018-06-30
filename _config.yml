@@ -7,10 +7,7 @@ baseurl: ""
 url: ""
 github_username:  rolevax
 header_pages:
-  - docs.md
   - feedback.md
-  - contribute.md
-  - crowd.md
 webrick:
   headers:
     Access-Control-Allow-Origin: "*"

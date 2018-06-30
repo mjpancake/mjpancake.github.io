@@ -30,7 +30,8 @@ permalink: /contribute/
 获得「贡献度」。
 
 贡献度大于 0 的 ID 会出现在 app 封面上。
-同时，贡献度是零食的领取基准，每周领取零食量 = 50 x 贡献度。
+
+[注册松饼社区 ID](/signup/)
 
 <script src="/js/teru.js"></script>
 <script src="/js/spin.min.js"></script>

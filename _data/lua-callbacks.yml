@@ -1,0 +1,53 @@
+-
+  name: checkinit
+  desc: 
+      检查配牌，当且仅当满意配牌时返回`true`
+  params:
+    -
+      name: game
+      type: userdata `Game`
+      desc: 当前牌桌数据
+    -
+      name: init
+      type: userdata `Hand`
+      desc: 待测配牌，无论亲子都是 13 张
+    -
+      name: who
+      type: userdata `Who`
+      desc: 待测配牌所有者
+    -
+      name: iter
+      type: number
+      desc: 检测轮数，从0 开始递增，最大 999
+-
+  name: ondraw
+  desc: 摸牌前被调用，可干涉牌山
+  params:
+    -
+      name: game
+      type: userdata `Game`
+      desc: 当前牌桌数据
+    -
+      name: mount
+      type: userdata `Mount`
+      desc: 牌山
+    -
+      name: who
+      type: userdata `Who`
+      desc: 将要摸牌的人
+    -
+      name: rinshan
+      type: boolean
+      desc: 下一张摸牌是否为岭上牌
+-
+  name: ongameevent
+  desc: 发生某些事件前调用，不可直接干涉牌山
+  params:
+    -
+      name: game
+      type: userdata `Game`
+      desc: 当前牌桌数据
+    -
+      name: event
+      type: table
+      desc: 发生的事件

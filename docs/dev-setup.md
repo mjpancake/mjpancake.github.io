@@ -4,47 +4,53 @@ title: 搭建开发环境
 permalink: /docs/dev-setup/
 ---
 
-## 概述
+## 索引
 
-所有的松饼项目都可以在 Linux, Windows, macOS 上开发。
+根据使用的平台和开发的目标选读：
 
-如果没啥特殊情况，强烈建议按照以下流程搭建环境。
-我们的开发环境对现有系统应该没有污染性。
-不按照以下步骤搭环境的，我们无法予以帮助。
+- [在 Linux 上开发`libsaki`或`mjpancake`](#linux-client)
+- [在 Windows 上开发`libsaki`或`mjpancake`](#windows-client)
+- [在 macOS 上开发`libsaki`或`mjpancake`](#macos-client)
+- [开发 Android 客户端](#android)
+- [开发`ih`](#ih)
 
-<br />
+{% capture client-cond %}
+理论上，只要满足以下所有条件，就可以进行开发：
 
-## 客户端或核心库的环境搭建
+- 有一个完整支持 C++17 的编译器
+- 装有最新版 Qt
+{% endcapture %}
 
-1. 根据平台不同，安装一些必要的东西
-    - Windows：安装 [mingw-w64][mingw-w64]{:target="_blank"}
-		- 安装路径不能带空格
-		- 安装时选择「最新版, i686, posix, dwarf」
-    - macOS：通过 AppStore 安装最新版 Xcode
-    - Linux：GCC/G++ 7.x 或以上
-2. 下载并安装 Qt 5.10.1 开源版
+{% capture install-qt %}
+1. 下载并安装 Qt 5.11.1 开源版
     - 下载地址：[镜像][qt-mirror]{:target="_blank"}
                 或 [官网][qt]{:target="_blank"}
-	- 大陆网络环境下推荐使用镜像
-	- Windows 安装时勾选 MinGW 组件
-    - Windows 安装 Qt 后需要额外的配置，见下面的 [关于Windows构建](#winbuild)
-3. 从`mjpancake`和`libsaki`创建fork （为将来方便，两个都fork）
-    - 进入[`mjpancake`][mjpancake]{:target="_blank"}页面，点右上角的fork
-    - 进入[`libsaki`][libsaki]{:target="_blank"}页面，点右上角的fork
-4. 通过以下命令克隆仓库并配置`upstream`远端：（替换掉`your-username`）
+    - 大陆网络环境下推荐使用镜像
+{% endcapture %}
+
+{% capture create-fork %}
+1. 从 [`mjpancake`][mjpancake]{:target="_blank"}
+   以及 [`libsaki`][libsaki]{:target="_blank"} 创建 fork 
+    - 同时可通过加 star 方便将来访问
+1. 通过以下命令克隆仓库并配置`upstream`远端：（替换掉`your-username`）
     - `git clone --recursive https://github.com/your-username/mjpancake.git`
     - `cd mjpancake`
     - `git remote add upstream https://github.com/rolevax/mjpancake.git`
     - `cd libsaki`
     - `git remote rename origin upstream`
     - `git remote add origin https://github.com/your-username/libsaki.git`
+    - 在以后的交流中，我们会假定`origin`指代 fork 出的仓库，
+      `upstream`指代松饼的官方仓库。
+{% endcapture %}
 
-在以后的交流中，我们会假定`origin`与`upstream`都是用上述命令配出来的。
-
+{% capture client-end %}
 环境搭建好以后，
 用 Qt Creator 打开代码目录下的`mjpancake.pro`项目，
-点击左下角的Build按钮进行编译。
+点击左下角的 Build 按钮进行编译。
 编译成功通过则说明环境搭建完成。
+
+首次编译时可能会报出有关 QML 的语法错误，
+此系静态分析器的问题所致，不影响程序的运行时行为，可无视。
 
 `libsaki`和`mjpancake`之间不存在必须同步更新的关系。
 众包平台上的任务通常只需要修改`mjpancake`和`libsaki`中的一个，
@@ -52,23 +58,43 @@ permalink: /docs/dev-setup/
 
 首次接触`libsaki`代码的，
 建议阅读[Libsaki代码导读](/docs/libsaki/)，快速了解整体设计。
+{% endcapture %}
 
-<br />
+## <a name="linux-client"></a> 在 Linux 上开发 libsaki 或 mjpancake
 
-## <a name="winbuild"></a>关于 Windows 构建
+{{ client-cond }}
 
-Qt 自带的 mingw 编不过 Libsaki，
-我们的解决方案是使用 mingw-w64。
-（mingw 和 mingw-w64 是两家东西）
+具体步骤：
 
-打开 Qt Creator，「工具」->「选项」，
-将 C 与 C++ 的编译器都改成 mingw-w64 的，如下图。
+1. 安装 7.x 或以上的 G++{{ install-qt }}{{ create-fork }}{{ client-end }}
+
+
+##  <a name="windows-client"></a>在 Windows 上开发 libsaki 或 mjpancake
+
+{{ client-cond }}
+
+具体步骤：
+
+1. 安装 [mingw-w64][mingw-w64]{:target="_blank"}
+           <a name="_"></a>
+    - 安装路径不能带空格
+    - 安装时选择「最新版, i686, posix, dwarf」
+{{ install-qt }}    - 安装时勾选 MinGW 组件
+{{ create-fork }}
+1. 打开 Qt Creator，「工具」->「选项」，
+   将 C 与 C++ 的编译器都改成 mingw-w64 的，如下图。
 
 ![配置mingw-w64]({{ "/assets/mingw.png" | absolute_url }})
 
-<br />
+{{ client-end }}
 
-## 关于 Android 客户端
+## <a name="macos-client"></a>在 macOS 上开发 libsaki 或 mjpancake
+
+1. 通过 AppStore 安装最新版 Xcode{{ install-qt }}
+{{ create-fork }}
+{{ client-end }}
+
+## <a name="android"></a>开发 Android 客户端
 
 Qt 官方建议使用 Android NDK r10e，
 然而 r10e 自带的 G++ 编不过 Libsaki。
@@ -80,9 +106,7 @@ Qt 官方建议使用 Android NDK r10e，
 3. 通过 NDK 里的 Clang 编译 Qt（需要几个小时）
 4. 通过这个新编译出的 Qt 构建`mjpancake.pro`
 
-<br />
-
-## 服务器开发环境搭建
+## <a name="ih"></a>开发 ih
 
 `ih`的开发环境和运行环境都被做成了 Docker 镜像，
 因此需要安装的东西只有 Docker 和 Docker Compose。
@@ -108,7 +132,7 @@ Qt 官方建议使用 Android NDK r10e，
 [mingw-w64]: https://mingw-w64.org/doku.php/download/mingw-builds
 [git-win]: https://git-for-windows.github.io/
 [qt]: https://www.qt.io
-[qt-mirror]: http://mirrors.ustc.edu.cn/qtproject/archive/qt/5.10/5.10.1/
+[qt-mirror]: http://mirrors.ustc.edu.cn/qtproject/archive/qt/5.11/5.11.1/
 
 [docker]: https://docs.docker.com/engine/installation/
 [docker-compose]: https://docs.docker.com/compose/install/

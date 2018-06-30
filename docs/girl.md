@@ -14,30 +14,31 @@ permalink: /docs/girl/
 {% endfor %}
 </p>
 
-<br />
-
 ## 正片
-----
-{% for girl in site.data.girls %}
-<h3><a name="{{ girl.id }}"></a>{{ girl.name }}</h3>
-{% for skill in girl.skills %}
-<h4> {{ skill.name }} </h4>
-<ul>
-{% for desc in skill.descs %}
-<li>{{ desc.content }}
-{% if desc.subdescs %}
-<ul>
-{% for subdesc in desc.subdescs %}
-<li>{{ subdesc }}</li>
-{% endfor %}
-</ul></li>
-{% else %}
-</li>
-{% endif %}
-{% endfor %}
-</ul>
-{% endfor %}
-----
-{% endfor %}
 
+<table>
+{% for girl in site.data.girls %}
+<tr>
+<td>{{ girl.name }}</td>
+<td>
+ <a name="{{ girl.id }}"></a>
+ {% for skill in girl.skills %}
+ {{ skill.name }}
+ <ul>
+ {% for desc in skill.descs %}
+  <li>
+  {{ desc.content }}
+  {% if desc.subdescs %}
+  <ul>
+  {% for subdesc in desc.subdescs %}<li>{{ subdesc }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  </li>
+ {% endfor %}
+ </ul>
+ {% endfor %}
+</td>
+</tr>
+{% endfor %}
+</table>
 

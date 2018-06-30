@@ -3,23 +3,18 @@
   members:
     -
       name: "构造<sup>1</sup>"
-      syntax: "`T34.new(Suit.M, 5)`"
-      params:
-        - "`Suit`"
-        - number
-      returns:
-        - "`T34`"
-      desc: 通过花色与数值创建。
-    -
-      name: "构造<sup>2</sup>"
       syntax: '`T34.new("5m")`'
       params:
         - string
       returns:
         - "`T34`"
-      desc: 通过字符串创建。
+      desc: 
+        通过字符串创建。<br />
+        第一个字符代表数值，第二个字符代表花色。<br />
+        `"1m"`, `"2p"`, `"3s"`代表 1 万、2 饼、3 索；<br />
+        `"1f"`, `"2f"`, `"3f"`, `"4f"`, `"1y"`, `"2y"`, `"3y"`分别代表东南西北白发中。
     -
-      name: "构造<sup>3</sup>"
+      name: "构造<sup>2</sup>"
       syntax: "`T34.new(4)`"
       params:
         - number
@@ -33,6 +28,34 @@
       returns:
         - number
       desc: 获取 ID-34。
+    -
+      name: "`suit`"
+      syntax: "`t:suit()`"
+      params:
+      returns:
+        - string
+      desc: 
+        获取花色。<br />
+       `"m"`, `"p"`, `"s"`, `"f"`, `"y"`分别表示万、饼、索、风牌、三元牌。
+    -
+      name: "`val`"
+      syntax: "`t:val()`"
+      params:
+      returns:
+        - number
+      desc: 
+        获取数值。<br />
+        数牌返回 1～9；
+        风牌通过 1, 2, 3, 4 分别表示东南西北；
+        三元牌通过 1, 2, 3 分别表示白发中。
+    -
+      name: "`str34`"
+      syntax: "`t:str34()`"
+      params:
+      returns:
+        - string
+      desc: 
+        获取对应的字符串。
     -
       name: "`isyakuhai`"
       syntax: "`t:isyakuhai(sw, rw)`"
@@ -50,10 +73,53 @@
         - "`T34`"
       returns:
         - boolean
-      desc: "判断两张牌是否相等，无视赤黑。"
+      desc: "判断两张牌是否相等。同花色的赤 5 和黑 5 也是相等的。"
     - name: "static `all`"
       syntax: "`ipairs(T34.all)`"
       desc: 遍历全部 34 种牌。
+-
+  name: T37
+  members:
+    -
+      name: "构造<sup>1</sup>"
+      syntax: '`T37.new("0m")`'
+      params:
+        - string
+      returns:
+        - "`T37`"
+      desc: 
+        通过字符串创建。<br />
+        可通过`"0m"`, `"0p"`, `"0s"`创建赤宝牌，其余同`T34`。
+    -
+      name: "构造<sup>2</sup>"
+      syntax: "`T37.new(4)`"
+      params:
+        - number
+      returns:
+        - "`T37`"
+      desc: 通过 ID-34 创建。此方法不创建赤牌。
+    -
+      name: 继承的方法
+      syntax: "`t.suit()`, `t.val()`, ..."
+      params:
+      returns:
+      desc: "`T34`的方法也可以用在`T37`上。"
+    -
+      name: "`isaka5`"
+      syntax: "`t:isaka5()`"
+      params:
+      returns:
+        - string
+      desc: 
+        判断是否为赤 5。
+    -
+      name: "`str37`"
+      syntax: "`t:str37()`"
+      params:
+      returns:
+        - string
+      desc: 
+        获取对应的字符串，以`"0m"`, `"0p"`, `"0s"`表示赤 5。
 -
   name: Who
   members:
@@ -95,11 +161,10 @@
       syntax: "`meld:type()`"
       params:
       returns:
-        - "`M37.Type`"
+        - string
       desc:
-        获取 meld 类型。
-        返回值为`M37.Type.CHII`, `M37.Type.PON`, `M37.Type.DAIMINKAN`,
-        `M37.Type.ANKAN`, `M37.Type.KAKAN`中的一个。
+        获取 meld 类型。返回值为
+        `"chii"`, `"pon"`, `"daiminkan"`,`"ankan"`, `"kakan"`中的一个。
     -
       name: "`[]`"
       syntax: "`meld[2]`"
@@ -113,6 +178,50 @@
 -
   name: Mount
   members:
+    -
+      name: "`remainpii`"
+      syntax: "`mount:remainpii()`"
+      params:
+      returns:
+        - number
+      desc: 查看壁牌残杖
+    -
+      name: "`remainrinshan`"
+      syntax: "`mount:remainrinshan()`"
+      params:
+      returns:
+        - number
+      desc: 查看岭上牌残杖
+    -
+      name: "`remaina`<sup>1<sup>"
+      syntax: "`mount:remaina(tile)`"
+      params:
+        - "`T34`"
+      returns:
+        - number
+      desc: 查看 A 区中`tile`的残杖
+    -
+      name: "`remaina`<sup>2<sup>"
+      syntax: "`mount:remaina(tile)`"
+      params:
+        - "`T37`"
+      returns:
+        - number
+      desc: 同上，以`T37`为参数，赤牌敏感
+    -
+      name: "`getdrids`"
+      syntax: "`mount:getdrids()`"
+      params:
+      returns:
+        - 某类似数组的`T37`容器
+      desc: 读取已翻出的（杠）宝牌指示牌序列
+    -
+      name: "`geturids`"
+      syntax: "`mount:geturids()`"
+      params:
+      returns:
+        - 某类似数组的`T37`容器
+      desc: 读取（立直和牌后）已亮出的（杠）里宝牌指示牌序列
     -
       name: "`lighta`<sup>1<sup>"
       syntax: "`mount:lighta(tile, mk)`"
@@ -130,6 +239,50 @@
         - boolean
       returns:
       desc: 同上，多一个指定是否为岭上出口的参数。
+    -
+      name: "`lightb`<sup>1<sup>"
+      syntax: "`mount:lightb(tile, mk)`"
+      params:
+        - "`T34`"
+        - number
+      returns:
+      desc: 以`mk`增加 B 区中`tile`的存在感。
+    -
+      name: "`lightb`<sup>2<sup>"
+      syntax: "`mount:lightb(tile, mk, rinshan)`"
+      params:
+        - "`T34`"
+        - number
+        - boolean
+      returns:
+      desc: 同上，多一个指定是否为岭上出口的参数。
+    -
+      name: "`incmk`<sup>1<sup>"
+      syntax: "`mount:incmk(exit, pos, tile, mk, bspace)`"
+      params:
+        - string
+        - number
+        - "`T34`"
+        - number
+        - boolean
+      returns:
+      desc:
+          以`mk`增加出口`exit`之`pos`处`tile`的存在感。<br />
+          `exit`需传入`"pii"`, `"rinshan"`, `"dorahyou"`, `"urahyou"`之一，
+          分别代表普通壁牌、岭上牌、未翻开的表宝牌指示牌、未挖出的里宝牌指示牌。<br />
+          `pos`为 0 时代表出口处队首牌，1 时代表队首的下一张牌，以此类推。<br />
+          `bspace`为`true`时干涉 B 区，否则干涉 A 区。
+    -
+      name: "`incmk`<sup>2<sup>"
+      syntax: "`mount:incmk(exit, pos, tile, mk, bspace)`"
+      params:
+        - string
+        - number
+        - "`T37`"
+        - number
+        - boolean
+      returns:
+      desc: "`incmk`的赤牌敏感版，以`T37`为参数，其余同上"
 -
   name: Tilecount
   members:
@@ -143,9 +296,9 @@
       desc: 获取集合中`tile`的数量。
     -
       name: "`ct`<sup>2<sup>"
-      syntax: "`tc:ct(Suit.M)`"
+      syntax: '`tc:ct("m")`'
       params:
-        - "`Suit`"
+        - string（详见`T34`的`suit`方法）
       returns:
         - number
       desc: 获取集合中某一花色牌的数量。
@@ -174,6 +327,13 @@
       returns:
         - number
       desc: 计算某种牌的数量，含副露。
+    -
+      name: "`ctaka5`"
+      syntax: "`hand:ctaka5()`"
+      params:
+      returns:
+        - number
+      desc: 计算赤 5 的数量，含副露。
     -
       name: "`ready`"
       syntax: "`hand:ready()`"
@@ -230,6 +390,14 @@
       returns:
         - boolean
       desc: 判断是否为门前清。
+    -
+      name: "`%`"
+      syntax: "`indicators % hand`, `tile % hand`"
+      params:
+        - "`mount:drids`或`mount:urids`的返回值，或`T34`"
+      returns:
+        - number
+      desc: 计算宝牌个数。
 -
   name: Game
   members:
@@ -274,7 +442,14 @@
       name: "`getroundwind`"
       syntax: "`game:getroundwind()`"
       params:
-        - "`Who`"
       returns:
         - number
       desc: 获取本局场风数值（1 ～ 4 分别表示东南西北）。
+    -
+      name: "`getriver`"
+      syntax: "`game:getriver(who)`"
+      params:
+        - "`Who`"
+      returns:
+        - "某类似数组的`T34`容器"
+      desc: 获取某家牌河。

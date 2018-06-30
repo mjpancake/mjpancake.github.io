@@ -1,0 +1,132 @@
+-
+  abbr: ct
+  full: count
+  desc: 计数、个数
+-
+  abbr: num
+  full: number
+  desc: 个数、号码
+-
+  abbr: s11n
+  full: serialization
+-
+  abbr: i18n
+  full: internationalization
+-
+  abbr: impl
+  full: implementation
+-
+  abbr: pimpl
+  full: pointer to implementation
+-
+  abbr: ptr
+  full: pointer
+-
+  abbr: ref
+  full: reference
+-
+  abbr: res
+  full: result
+-
+  abbr: iff
+  full: if and only if
+-
+  abbr: str
+  full: string
+-
+  abbr: err
+  full: error
+-
+  abbr: expr
+  full: expression
+-
+  abbr: stmt
+  full: statement
+-
+  abbr: cmd
+  full: command
+-
+  abbr: msg
+  full: message
+-
+  abbr: regex
+  full: regular expression
+-
+  abbr: uid
+  full: user ID
+-
+  abbr: func
+  full: function
+-
+  abbr: dir
+  full: directory
+-
+  abbr: tan90
+  full: does not exist
+-
+  abbr: iter
+  full: iterator, iteration
+-
+  abbr: val
+  full: value
+-
+  abbr: var
+  full: variable
+-
+  abbr: prev
+  full: previous
+-
+  abbr: indic
+  full: indicator
+-
+  abbr: perm
+  full: permutation
+-
+  abbr: seq
+  full: sequence
+-
+  abbr: inc
+  full: increase
+-
+  abbr: eff
+  full: effect, effective
+-
+  abbr: arg
+  full: argument
+-
+  abbr: param
+  full: parameter
+-
+  abbr: init
+  full: initialize
+-
+  abbr: ctrl
+  full: control, controller
+-
+  abbr: ctx
+  full: context
+-
+  abbr: cp
+  full: chii or pon
+-
+  abbr: dmk
+  full: daiminkan
+-
+  abbr: cpdmk
+  full: chii,  pon, or daiminkan
+-
+  abbr: irs
+  full: in-round skill
+-
+  abbr: ors
+  full: out-of-round skill
+-
+  abbr: drid
+  full: dora indicator
+-
+  abbr: urid
+  full: uradora indicator
+-
+  abbr: desc
+  full: description
+

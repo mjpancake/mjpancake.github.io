@@ -135,23 +135,23 @@ print("Vanishmennt this world!")
 
 ```lua
 function ondraw()
-  print("waaah!!")
+  print("哇！")
 end
 ```
 
-三狗战测试，发现每当有人摸牌时都会输出一次「waaah!!」。
+三狗战测试，发现每当有人摸牌时都会输出一次「哇！!」。
 这意味着，我们成功地实现了一个完整的摸牌挂 ——
 每次摸牌时，这个挂都会生效 —— 虽然只是打印一行字。
 
 不过多数情况下，自己的进张和他家的进张需要区别对待 ——
 比如给自己塞有效牌，给他家塞铳牌什么的。
 所以我们继续改进代码，让程序区另对待自己和他家的摸牌 ——
-自己摸牌时输出「waaaah!!」，而他家摸牌时输出「emmmm...」。
+自己摸牌时输出「哇！」，而他家摸牌时输出「emmmm...」。
 
 ```lua
 function ondraw()
   if who == self then
-    print("waaah!!")
+    print("哇！")
   else
     print("emmm...")
   end
@@ -171,7 +171,7 @@ end
 
 ```lua
 function ondraw()
-  print("waaah!!")
+  print("哇！")
 end
 ```
 
@@ -192,7 +192,7 @@ end
 ```lua
 function ondraw()
   if who == self then
-    print("waaah!!")
+    print("哇！")
   else
     print("emmm...")
   end
@@ -229,7 +229,7 @@ end
 ```lua
 function ondraw()
 if who == self then
-print("waaah!!")
+print("哇！")
 else
 print("emmm...")
 end
