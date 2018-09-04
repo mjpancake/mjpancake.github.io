@@ -109,7 +109,7 @@
       syntax: "`t:isaka5()`"
       params:
       returns:
-        - string
+        - boolean
       desc: 
         判断是否为赤 5。
     -
@@ -283,6 +283,14 @@
         - boolean
       returns:
       desc: "`incmk`的赤牌敏感版，以`T37`为参数，其余同上"
+    -
+      name: "`loadb`"
+      syntax: "`mount:loadb(t, 1)`"
+      params:
+        - "`T37`"
+        - number
+      returns:
+      desc: 将指定数量的牌由 A 区放入 B 区。若 A 区储量不足，则能放多少放多少。
 -
   name: Tilecount
   members:

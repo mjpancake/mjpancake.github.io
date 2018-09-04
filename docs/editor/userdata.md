@@ -183,7 +183,48 @@ self:right()       -- 写法2
 
 ## 基本牌山干涉
 
+进张挂、喂牌挂，本质上都是牌山挂。
+一个简单的自家进张挂栗子：
+
+```lua
+function ondraw()
+  if who ~= self then
+    return
+  end
+  
+  local t = T34.new("1s")
+  mount:lighta(t, 50)
+end
+```
+
+三狗测试，感觉好像没什么特别的地方。
+为什么会这样呢？是不是代码没被执行到？
+是不是不小心打错了什么东西，或者搞错了什么逻辑？
+
+为了确认我们的代码是否确实已被执行，可以加一行`print`：
+
+```lua
+function ondraw()
+  if who ~= self then
+    return
+  end
+  
+  local t = T34.new("1s")
+  mount:lighta(t, 50)
+  print("外挂工作中")
+end
+```
+
+三狗测试，见自己摸牌前输出「外挂工作中」，
+说明`print`之前的代码确实被执行了，不然也不会有输出。
+
+通过`print`打日志，确认代码执行状况，是一种常见的查错手段。
+尤其是在松饼中，由于绝大多数能力都是「有一定概率发生」的，
+常常不能一眼就看出挂的明显效果。
+这个时候，就要用`print`大法了。
+
 (TODO)
+
 [mount](/docs/libsaki/mount/)
 1. examples `lighta`
 2. simple logging

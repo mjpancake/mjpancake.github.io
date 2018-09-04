@@ -68,8 +68,6 @@ title: "松饼社区主站"
 - [数据类型](/docs/editor/var/)
 - [函数](/docs/editor/func/)
 - [局部变量](/docs/editor/local/)
-- [userdata](/docs/editor/userdata/)
-- [控制流](/docs/editor/flow/)
 - (施工中)
 
 文档：
