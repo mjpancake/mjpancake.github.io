@@ -8,6 +8,40 @@ permalink: /docs/editor/flow/
 
 ## 上一讲的习题参考答案
 
+1)
+
+自己摸牌前输出（false），
+下家摸牌前输出（true），
+对家摸牌前输出（false），
+上家摸牌前输出（false）。
+
+2)
+
+`on_draw`应为`ondraw`，
+`self.right()`应为`self:right()`，
+`T34:new`应为`T34.new`，
+`3m`应为`"3m"`，
+`Mount:lighta`应为`mount:lighta`。
+
+
+3)
+
+变量`t`的定义出现过早，
+`who == self`的判断也是多余的。
+
+4)
+
+```lua
+function ondraw()
+  if who ~= self then
+    return
+  end
+
+  local t = T34.new("1m")
+  mount:lighta(t, 100)
+end
+```
+
 <br />
 
 ## 多级 if 嵌套
@@ -172,6 +206,10 @@ end
 <br />
 
 ## 逻辑运算
+
+<br />
+
+## return 与 else 的节操
 
 <br />
 
