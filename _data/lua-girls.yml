@@ -41,4 +41,9 @@
   name: 丰音（限先负、友引） 0.9.6
   code: builtin_toyone.girl.lua
   desc: emmmmm
+-
+  id: 710114
+  name: 诚哥 0.9.6
+  code: builtin_seiko.girl.lua
+  desc: emmmmm
 
