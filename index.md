@@ -60,11 +60,12 @@ title: "松饼社区主站"
 
 「松饼人物编辑器：从入门到欧耶」系列教程：
 
-- [搞起](/docs/editor/start/)
-- [数据类型](/docs/editor/var/)
-- [函数](/docs/editor/func/)
-- [局部变量](/docs/editor/local/)
-- [userdata](/docs/editor/userdata/)
+- [第一讲：搞起](/docs/editor/start/)
+- [第二讲：数据类型](/docs/editor/var/)
+- [第三讲：函数](/docs/editor/func/)
+- [第四讲：局部变量](/docs/editor/local/)
+- [第五讲：userdata](/docs/editor/userdata/)
+- [第六讲：控制流](/docs/editor/flow/)
 - (施工中)
 
 文档：
