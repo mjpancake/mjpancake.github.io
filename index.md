@@ -70,7 +70,7 @@ title: "松饼社区主站"
 
 文档：
 
-- [范例](/docs/editor/examples/)
+- [范例]({{ site.data.link.lua-examples }}){:target="_blank"}<a name="_"></a>
 - [API 文档](/docs/editor/api/)
 
 # <a name="rtfm"></a>开发者 RTFM 系列
