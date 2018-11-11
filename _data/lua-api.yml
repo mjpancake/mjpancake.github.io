@@ -213,14 +213,14 @@
       syntax: "`mount:getdrids()`"
       params:
       returns:
-        - 某类似数组的`T37`容器
+        - table (`T37` array)
       desc: 读取已翻出的（杠）宝牌指示牌序列
     -
       name: "`geturids`"
       syntax: "`mount:geturids()`"
       params:
       returns:
-        - 某类似数组的`T37`容器
+        - table (`T37` array)
       desc: 读取（立直和牌后）已亮出的（杠）里宝牌指示牌序列
     -
       name: "`lighta`<sup>1<sup>"
@@ -325,7 +325,7 @@
       syntax: "`hand:barks()`"
       params:
       returns:
-        - "某类似数组的`M37`只读容器"
+        - table (`M37` array)
       desc: 获取表示副露与暗杠的 barks 部分。
     -
       name: "`ct`"
@@ -382,14 +382,14 @@
       syntax: "`hand:effa()`"
       params:
       returns:
-        - "某类似数组的`T34`容器"
+        - table (`T34` array)
       desc: 计算一类有效牌。
     -
       name: "`effa4`"
       syntax: "`hand:effa4()`"
       params:
       returns:
-        - "某类似数组的`T34`容器"
+        - table (`T34` array)
       desc: 计算四面子一类有效牌。
     -
       name: "`ismenzen`"
@@ -459,5 +459,5 @@
       params:
         - "`Who`"
       returns:
-        - "某类似数组的`T34`容器"
+        - table (`T37` array)
       desc: 获取某家牌河。
