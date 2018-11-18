@@ -178,7 +178,7 @@ self:right()       -- 写法2
 因为可以穿，可以脱，所以才称得上是衣服。
 
 至于每一种类型具体都有哪些方法，
-可在需要时查找 [API 文档](/docs/editor/api/)，无须刻意记忆。
+可在需要时查找 [API 文档]({{ site.data.link.slate }})，无须刻意记忆。
 
 <br />
 
@@ -396,7 +396,7 @@ local t = T34.new(game:getroundwind() .. "f")
 除了`getroundwind`以外，`Game`这个类型还有许多其它的方法，
 可以用来读取各种场况相关的数据。
 这些方法不需要一个一个地刻意记住，
-在需要时查找 [API 文档](/docs/editor/api/) 即可。
+在需要时查找 [API 文档]({{ site.data.link.slate }}) 即可。
 在编写松饼人物时，API 文档最好也一直开着，以备随时查阅。
 
 <br />

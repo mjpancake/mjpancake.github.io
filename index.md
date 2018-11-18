@@ -71,7 +71,7 @@ title: "松饼社区主站"
 文档：
 
 - [范例]({{ site.data.link.lua-examples }}){:target="_blank"}<a name="_"></a>
-- [API 文档](/docs/editor/api/)
+- [API 文档]({{ site.data.link.slate }}){:target="_blank"}<a name="_"></a>
 
 # <a name="rtfm"></a>开发者 RTFM 系列
 
