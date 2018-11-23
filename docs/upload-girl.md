@@ -78,7 +78,7 @@ function onSubmit() {
     <tr>
       <td>GitHub 用户名：</td>
       <td><input type="text" name="username" value="" /></td>
-      <td>是英文小写的那个 ID，不是昵称，不是邮箱</td>
+      <td>是那个登录名，不是昵称，不是邮箱</td>
     </tr>
     <tr>
       <td>GitHub 代码库名：</td>
@@ -123,5 +123,4 @@ function onSubmit() {
 4. 人物包内容引起麻学家强♂烈不适
 5. 发现刷 star、屠屏、马甲泛滥、冒充他人等作弊行为
 6. 未按照相应的 license 使用他人代码
-7. 被喵打嫌弃
 
