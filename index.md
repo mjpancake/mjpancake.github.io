@@ -38,7 +38,7 @@ title: "松饼社区主站"
     - 通过其它途径下载的很有可能是魔改版
 - 系统要求：
     - Windows: 7 或以上（不支持 XP 和 Vista）
-    - Android: 4.1 或以上
+    - Android: 5.0 或以上
     - Linux, macOS, iOS: 主流版本均可，需自行编译
 
 # 讨论/提问
