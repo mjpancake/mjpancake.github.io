@@ -32,16 +32,8 @@ permalink: /docs/dev-setup/
 {% capture create-fork %}
 1. 从 [`mjpancake`][mjpancake]{:target="_blank"}
    以及 [`libsaki`][libsaki]{:target="_blank"} 创建 fork 
-    - 同时可通过加 star 方便将来访问
-1. 通过以下命令克隆仓库并配置`upstream`远端：（替换掉`your-username`）
+1. 通过以下命令克隆仓库：（替换掉`your-username`）
     - `git clone --recursive https://github.com/your-username/mjpancake.git`
-    - `cd mjpancake`
-    - `git remote add upstream https://github.com/rolevax/mjpancake.git`
-    - `cd libsaki`
-    - `git remote rename origin upstream`
-    - `git remote add origin https://github.com/your-username/libsaki.git`
-    - 在以后的交流中，我们会假定`origin`指代 fork 出的仓库，
-      `upstream`指代松饼的官方仓库。
 {% endcapture %}
 
 {% capture client-end %}
@@ -52,10 +44,6 @@ permalink: /docs/dev-setup/
 
 首次编译时可能会报出有关 QML 的语法错误，
 此系静态分析器的问题所致，不影响程序的运行时行为，可无视。
-
-`libsaki`和`mjpancake`之间不存在必须同步更新的关系。
-众包平台上的任务通常只需要修改`mjpancake`和`libsaki`中的一个，
-不会出现两者都需要提交的情况。
 
 首次接触`libsaki`代码的，
 建议阅读[Libsaki代码导读](/docs/libsaki/)，快速了解整体设计。
@@ -122,12 +110,8 @@ Qt 官方建议使用 Android NDK r10e，
           和 [Docker Compose][docker-compose]{:target="_blank"}
 - 第二步：从`ih`创建fork
     - 进入[`ih`][ih]{:target="_blank"}页面，点右上角的fork
-- 第三步：克隆仓库并配置`upstream`远端：（替换掉`your-username`）
+- 第三步：克隆仓库：（替换掉`your-username`）
     - `git clone https://github.com/your-username/ih.git`
-    - `cd ih`
-    - `git remote add upstream https://github.com/rolevax/ih.git`
-
-在以后的交流中，我们会假定`origin`与`upstream`都是用上述命令配出来的。
 
 编译和运行都只需要一行命令，见[`ih`][ih]里的`README.md`。
 
