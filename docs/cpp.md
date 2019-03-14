@@ -15,7 +15,7 @@ permalink: /docs/cpp/
 ## 通用
 
 - [GN-1] 保持在最新稳定版 G++ 及 Clang++ 下编译 0 警告。
-    - 警告选项：`-Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-unused-macros -Wno-newline-eof -Wno-exit-time-destructors -Wno-global-constructors -Wno-gnu-zero-variadic-macro-arguments -Wno-documentation -Wno-shadow -Wno-switch-enum -Wno-missing-prototypes -Wno-used-but-marked-unused -Wno-padded`
+    - 警告选项：`-Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-unused-macros -Wno-newline-eof -Wno-exit-time-destructors -Wno-global-constructors -Wno-gnu-zero-variadic-macro-arguments -Wno-documentation -Wno-shadow -Wno-switch-enum -Wno-missing-prototypes -Wno-used-but-marked-unused -Wno-padded -Wno-covered-switch-default`
 - [GN-2] 代码可维护性比性能重要，除非性能影响实际体验。
 - [GN-3] 提交代码前用最新稳定版 Uncrustify 统一代码风格。
     - 配置文件：`mjpancake/uncrustify.cfg`。
