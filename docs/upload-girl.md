@@ -37,6 +37,8 @@ function onSubmit() {
 - 便于 UP 主们直接通过 GitHub 合作交流
 - 直接具备 Git 版本控制的一切好处
 
+Git/GitHub 新手可参考松饼官方推荐的 [Git 学习路线](/docs/learn-git/)。
+
 ## 创建人物包代码库
 
 假如你已经通过松饼人物编辑器做了一堆原创人物，

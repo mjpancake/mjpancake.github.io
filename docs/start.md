@@ -11,14 +11,7 @@ permalink: /docs/start/
 ## 1. 关于 Git
 
 松饼开发者必须熟悉Git。
-如果没听说过、或不熟悉Git，可参考以下教程：
-
-1. 入门（必修）：[廖雪峰的Git教程][lxf]{:target="_blank"}
-  （学习时长：一至三天）
-2. 巩固补充（必修）：[Ruheng的Git教程][git-adv]{:target="_blank"}
-  （学习时长：一至三天）
-3. 深入（选修）：[Pro Git （中文版）][pro-git]{:target="_blank"}
-  （学习时长：长期）<a name="_"></a>
+如果没听说过、或不熟悉Git，可参考松饼官方推荐的 [Git 学习路线](/docs/learn-git/)。
 
 ## 2. 关于 Gitter
 
