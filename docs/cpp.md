@@ -47,7 +47,7 @@ permalink: /docs/cpp/
 - [MM-3] 禁止使用裸露的`new`或`delete`。
 - [MM-4] 简化对象生命周期，慎用`std::shared_ptr<T>`。
 - [MM-5] 禁用 C 风格数组。（用`std::array`代替）
-- [MM-6] `unsigned`专门用于位运算，禁止表达“非负整数”语义。
+- [MM-6] `unsigned`专门用于位运算及标准库兼容，禁止表达「非负整数」语义。
 
 ## 禁用的 C++ 特性
 
