@@ -6,13 +6,16 @@ permalink: /docs/editor/start/
 
 「松饼人物编辑器：从入门到欧耶」系列教程（一）
 
-## 编辑器是干什么的
+## 编辑器是个啥
 
-- 创建和编辑「原创角色」
-    - 自由指定名字、头像、以及技能
-- 编辑好的角色存在本地
-    - 所以就算头像 R-18 也不会被查水表
-    - 将来是否做成分享原创角色的平台 -> 待定
+松饼人物编辑器可以用来创建和编辑「原创角色」，自由指定名字、头像、以及技能。
+原创角色可直接上传到松饼本体的「人物下载」列表中。
+
+到松饼麻雀 0.10 版本为止，人物编辑器是松饼本体自带的一个功能。
+为了提高人物编辑的便利性，从 0.11 版本开始，
+人物编辑器已从松饼本体中独立，成为了 Visual Studio Code 的一个插件。
+松饼本体自带的编辑器仍可在「麻将部备品」页面中找到，
+但我们更鼓励使用 Visual Studio Code，以获得更为丝滑的创作体验。
 
 <br />
 
@@ -31,7 +34,7 @@ permalink: /docs/editor/start/
 
 ## 关于 Lua
 
-技能的编辑方式是「Lua 脚本」。
+若想自制技能，就要会 Lua。
 Lua 是一门简单、简单、简单、简单的编程语言，
 无论是萝莉还是大叔，攻还是受，看一眼就能学会，无需特别的专业背景。
 
@@ -41,7 +44,36 @@ Lua 是一门简单、简单、简单、简单的编程语言，
 
 <br />
 
-## 第一个栗子
+## 安装 Visual Studio Code 及松饼插件
+
+1. 前往 [官网][vscode]{:target="_blank"} <a name="_"></a>
+   下载并安装 Visual Studio Code
+2. 打开 Visual Studio Code，点击左侧的 Extensions 图标，
+   搜索并安装松饼插件「Pancake Mahjong」
+3. 完事了
+
+![安装松饼插件]({{ "/assets/editor_install_extension.png" | absolute_url }})
+
+<br />
+
+## 新建人物包
+
+人物包是个什么鬼？就是文件夹。
+
+在 Visual Studio Code 中，打开「File」菜单，点「Open Folder...」。
+然后随便找个你喜欢的地方建个空文件夹，打开之。
+以后创建的人物都放到这个文件夹里就行了。
+
+<br />
+
+## 新建人物
+
+在 Visual Studio Code 中，按 Ctrl + P，出现迷之输入框。
+在其中输入「new girl」并回车。
+这个输入是基于模糊匹配的，输到一半时，只要下面的第一项为
+「Pancake Mahjong: New Girl」，就可以直接按回车了。
+
+(TODO)
 
 打开人物编辑器，点击「新建人物」，
 文件名、人物名、头像都随便弄一个。
@@ -285,3 +317,4 @@ end
 
 下一讲：[数据类型](/docs/editor/var/)
 
+[vscode]: https://code.visualstudio.com/
