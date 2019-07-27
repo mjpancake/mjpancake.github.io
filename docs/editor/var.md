@@ -8,8 +8,26 @@ permalink: /docs/editor/var/
 
 ## 上一讲的习题参考答案
 
-1) 略  
-2) 略  
+1)
+```lua
+function ondraw()
+  print("哈哈")
+end
+
+print("呵呵")
+```
+2)
+```lua
+function ondraw()
+  if who == self then
+    print("哈哈")
+  else
+    print("嘿嘿嘿")
+  end
+end
+
+print("呵呵")
+```
 3) 把 TA 吊起来啪啪啪
 
 <br />
