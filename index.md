@@ -66,6 +66,7 @@ title: "松饼社区主站"
 - [第四讲：局部变量](/docs/editor/local/)
 - [第五讲：userdata](/docs/editor/userdata/)
 - [第六讲：控制流](/docs/editor/flow/)
+- [第七讲：表](/docs/editor/table/)
 - (施工中)
 
 文档：
