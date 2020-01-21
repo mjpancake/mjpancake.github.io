@@ -395,7 +395,7 @@ local b = T34.new("3s")
 local t = {}
 t[a:id34()] = "必须死"
 t[b:id34()] = "就打这张"
-print(t[a])
+print(t[a:id34()])
 ```
 
 测试可知，改用返回 number 的`id34`后，输出「就打这张」。
