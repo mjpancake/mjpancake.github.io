@@ -22,9 +22,8 @@ permalink: /feedback/
 [GitHub]({{ site.data.link.issues }}){:target="_blank"}
 发起新 issue。
 
-注意：
-
-- 如果是有关牌局的 bug，附上牌谱截图
-    - 截图需完整包含整张牌桌，不要裁剪
+如果是有关牌局的 bug，请附上牌谱截图。
+（No picture you say a J8）
+截图需完整包含整张牌桌，不要裁剪。
 
 
