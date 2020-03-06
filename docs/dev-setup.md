@@ -135,7 +135,7 @@ Qt 官方建议使用 Android NDK r10e，
 [mingw-w64]: https://mingw-w64.org/doku.php/download/mingw-builds
 [git-win]: https://git-for-windows.github.io/
 [qt]: https://www.qt.io
-[qt-mirror]: http://mirrors.ustc.edu.cn/qtproject/archive/qt/5.14/5.14.1/
+[qt-mirror]: https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.14/5.14.1/
 
 [docker]: https://docs.docker.com/engine/installation/
 [docker-compose]: https://docs.docker.com/compose/install/
