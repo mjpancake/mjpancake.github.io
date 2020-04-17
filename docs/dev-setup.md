@@ -23,7 +23,7 @@ permalink: /docs/dev-setup/
 {% endcapture %}
 
 {% capture install-qt %}
-1. 下载并安装 Qt 5.14.1 开源版
+1. 下载并安装 Qt 5.14.2 开源版
     - 下载地址：[镜像][qt-mirror]{:target="_blank"}
                 或 [官网][qt]{:target="_blank"}
     - 大陆网络环境下推荐使用镜像
@@ -135,7 +135,7 @@ Qt 官方建议使用 Android NDK r10e，
 [mingw-w64]: https://mingw-w64.org/doku.php/download/mingw-builds
 [git-win]: https://git-for-windows.github.io/
 [qt]: https://www.qt.io
-[qt-mirror]: https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.14/5.14.1/
+[qt-mirror]: https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.14/5.14.2/
 
 [docker]: https://docs.docker.com/engine/installation/
 [docker-compose]: https://docs.docker.com/compose/install/
